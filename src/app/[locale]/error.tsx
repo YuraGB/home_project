@@ -1,4 +1,4 @@
-"use client"; // Error _components must be Client Components
+"use client"; // Error _modules must be Client Components
 
 import { type ReactNode, useEffect } from "react";
 

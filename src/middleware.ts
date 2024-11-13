@@ -9,13 +9,16 @@ export async function middleware(request: NextRequestWithAuth) {
   const token = await getToken({ req: request });
   // Check if there is any supported locale in the pathname
   const { pathname } = request.nextUrl;
-  const pathnameHasLocale = locales.some(
+
+  const locale = locales.find(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
-  if (pathnameHasLocale) {
+  if (locale) {
     if (!token && !pathname.endsWith("login")) {
-      return NextResponse.redirect(new URL("login", request.nextUrl));
+      return NextResponse.redirect(
+        new URL(`/${locale}/login`, request.nextUrl),
+      );
     }
     return;
   }
