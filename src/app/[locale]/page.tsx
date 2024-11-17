@@ -27,8 +27,8 @@ export default function Home() {
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="/uk"
-            hrefLang={'/uk'}
+            href="/uk-UA"
+            hrefLang={"/uk"}
             rel="noopener noreferrer"
           >
             <Image

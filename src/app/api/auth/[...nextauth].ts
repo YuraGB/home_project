@@ -4,29 +4,42 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
-      // The name to display on the sign in form (e.g. 'Sign in with...')
+      // The name to display on the sign in form (e.g. "Sign in with...")
       name: "Credentials",
-      // The credentials is used to generate a suitable form on the sign in page.
-      // You can specify whatever fields you are expecting to be submitted.
+      // `credentials` is used to generate a form on the sign in page.
+      // You can specify which fields should be submitted, by adding keys to the `credentials` object.
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "Full name" },
-        email: { label: "Username", type: "text", placeholder: "Email" },
-        password: { label: "Password", type: "password", placeholder: "password" },
+        username: { label: "E-mail", type: "text", placeholder: "email" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // You need to provide your own logic here that takes the credentials
-        // submitted and returns either a object representing a user or value
-        // that is false/null if the credentials are invalid.
-        // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
-        // You can also use the `req` object to obtain additional parameters
-        // (i.e., the request IP address)
-        console.log(credentials)
-        return null;
+        // Add logic here to look up the user from the credentials supplied
+        console.log(credentials);
+        const user = {
+          password: "12345678",
+          email: "jsmith@example.com",
+        };
+
+        if (user) {
+          // Any object returned will be saved in `user` property of the JWT
+          return user as {
+            password: string;
+            email: string;
+          };
+        } else {
+          // If you return null then an error will be displayed advising the user to check their details.
+          return null;
+
+          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+        }
       },
     }),
   ],
+  // pages: {
+  //   signIn: "/login",
+  // },
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
@@ -34,8 +47,7 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     session({ session, token }) {
-      if (token && token.role) {
-        session.user.role = token.role;
+      if (token) {
         session.user.id = token.sub!;
       }
       return session;
