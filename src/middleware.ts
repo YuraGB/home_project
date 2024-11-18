@@ -15,6 +15,7 @@ export async function middleware(request: NextRequestWithAuth) {
   );
 
   if (locale) {
+    console.log(token);
     if (!token && !pathname.endsWith("login")) {
       return NextResponse.redirect(
         new URL(`/${locale}/login`, request.nextUrl),

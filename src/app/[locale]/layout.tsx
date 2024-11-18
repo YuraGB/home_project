@@ -20,11 +20,7 @@ export default async function RootLayout<T>({
   const intl = await getIntl(locale);
   return (
     <ServerIntlProvider messages={intl.messages} locale={intl.locale}>
-      <AuthProvider>
-        <html lang="en">
-          <body>{children}</body>
-        </html>
-      </AuthProvider>
+      <AuthProvider>{children}</AuthProvider>
     </ServerIntlProvider>
   );
 }

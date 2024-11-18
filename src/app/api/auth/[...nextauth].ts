@@ -14,7 +14,7 @@ export const authOptions: NextAuthOptions = {
         username: { label: "E-mail", type: "text", placeholder: "email" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
+      async authorize<T>(credentials) {
         // Add logic here to look up the user from the credentials supplied
         console.log(credentials);
         const user = {
@@ -24,10 +24,7 @@ export const authOptions: NextAuthOptions = {
 
         if (user) {
           // Any object returned will be saved in `user` property of the JWT
-          return user as {
-            password: string;
-            email: string;
-          };
+          return user as T;
         } else {
           // If you return null then an error will be displayed advising the user to check their details.
           return null;
@@ -45,14 +42,24 @@ export const authOptions: NextAuthOptions = {
     maxAge: 30 * 24 * 60 * 60, // 30 days
     updateAge: 24 * 60 * 60, // 24 hours
   },
-  callbacks: {
-    session({ session, token }) {
-      if (token) {
-        session.user.id = token.sub!;
-      }
-      return session;
-    },
-  },
+
+  // callbacks: {
+  //   jwt({ token, user }) {
+  //     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+  //     if (user) {
+  //       token.role = user?.role;
+  //       token.sub = user?.id;
+  //     }
+  //     return token;
+  //   },
+  //   session({ session, token }) {
+  //     if (token) {
+  //       console.log(token);
+  //       session.user.id = token.sub!;
+  //     }
+  //     return session;
+  //   },
+  // },
   // pages: {
   //   signIn: Pages.LOGIN,
   // },
