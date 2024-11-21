@@ -1,4 +1,4 @@
-import NextAuth, { type NextAuthOptions } from "next-auth";
+import NextAuth, { type NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
@@ -11,20 +11,20 @@ export const authOptions: NextAuthOptions = {
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        username: { label: "E-mail", type: "text", placeholder: "email" },
-        password: { label: "Password", type: "password" },
+        email: { label: "E-mail", type: "text", placeholder: "email" },
       },
-      async authorize<T>(credentials) {
+
+      async authorize(credentials): Promise<User | null> {
         // Add logic here to look up the user from the credentials supplied
         console.log(credentials);
         const user = {
-          password: "12345678",
+          id: "q",
           email: "jsmith@example.com",
         };
 
         if (user) {
           // Any object returned will be saved in `user` property of the JWT
-          return user as T;
+          return user as User;
         } else {
           // If you return null then an error will be displayed advising the user to check their details.
           return null;
