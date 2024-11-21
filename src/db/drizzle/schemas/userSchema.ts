@@ -1,4 +1,5 @@
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { InferSelectModel } from "drizzle-orm";
 
 export const usersTable = pgTable("users", {
   id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
@@ -7,3 +8,5 @@ export const usersTable = pgTable("users", {
   salt: varchar({ length: 255 }).notNull(),
   hash: varchar({ length: 255 }).notNull(),
 });
+
+export type TUserSchema = InferSelectModel<typeof usersTable>;
