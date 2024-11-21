@@ -1,9 +1,44 @@
-import { z } from "zod";
+import {
+  baseObjectInputType,
+  baseObjectOutputType,
+  objectUtil,
+  z,
+  ZodObject,
+  ZodString,
+  ZodTypeAny,
+} from "zod";
 import { useIntl } from "react-intl";
 
-export const useValidationSchema = () => {
+export const useValidationSchema = (): ZodObject<
+  {
+    password: ZodString;
+    email: ZodString;
+  },
+  "strip",
+  ZodTypeAny,
+  {
+    [k in keyof objectUtil.addQuestionMarks<
+      baseObjectOutputType<{
+        password: ZodString;
+        email: ZodString;
+      }>
+    >]: objectUtil.addQuestionMarks<
+      baseObjectOutputType<{ password: ZodString; email: ZodString }>
+    >[k];
+  },
+  {
+    [k_1 in keyof baseObjectInputType<{
+      password: ZodString;
+      email: ZodString;
+    }>]: baseObjectInputType<{
+      password: ZodString;
+      email: ZodString;
+    }>[k_1];
+  }
+> => {
   const { formatMessage } = useIntl();
 
+  // translations for error messages
   const emailErrorMessage = formatMessage({
     defaultMessage: "E-mail should be valid",
     id: "emailErrorMessage",
@@ -13,6 +48,7 @@ export const useValidationSchema = () => {
     id: "passwordErrorMessage",
   });
 
+  // validation
   return z.object({
     email: z.string().email({
       message: emailErrorMessage,
@@ -22,5 +58,3 @@ export const useValidationSchema = () => {
     }),
   });
 };
-
-export type Schema = z.infer<typeof useValidationSchema>;

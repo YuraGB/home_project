@@ -1,6 +1,6 @@
 "use client";
-
-import { Button } from "@/components/ui/button";
+import { ReactNode } from "react";
+import { useRegistrationForm } from "@/app/[locale]/(auth)/registration/_modules/registration_form/hooks/registrationFormHook";
 import {
   Form,
   FormControl,
@@ -9,13 +9,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { useLoginFormHook } from "@/app/[locale]/(auth)/login/_modules/login_form/hooks/loginFormHook";
 import { FormattedMessage } from "react-intl";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-export function LoginForm() {
-  const { form, onSubmit } = useLoginFormHook();
-
+const RegistrationForm = (): ReactNode => {
+  const { form, onSubmit } = useRegistrationForm();
   return (
     <Form
       control={form.control}
@@ -35,6 +34,32 @@ export function LoginForm() {
       unregister={form.unregister}
     >
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+        <FormField
+          defaultValue={""}
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                <FormattedMessage
+                  defaultMessage={"User name"}
+                  id={"username"}
+                />
+              </FormLabel>
+              <FormControl>
+                <Input
+                  name={field.name}
+                  ref={field.ref}
+                  value={field.value}
+                  onBlur={field.onBlur}
+                  onChange={field.onChange}
+                  disabled={field.disabled}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           defaultValue={""}
           control={form.control}
@@ -85,6 +110,6 @@ export function LoginForm() {
       </form>
     </Form>
   );
-}
+};
 
-export default LoginForm;
+export default RegistrationForm;

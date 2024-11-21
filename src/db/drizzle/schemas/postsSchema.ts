@@ -1,10 +1,10 @@
-import { integer, pgTable, serial, varchar } from "drizzle-orm/pg-core";
-import { categorySchema } from "@/drizzle/schemas/categorySchema";
-import { subCategoriesSchema } from "@/drizzle/schemas/subCategoriesSchema";
+import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { categorySchema } from "@/db/drizzle/schemas/categorySchema";
+import { subCategoriesSchema } from "@/db/drizzle/schemas/subCategoriesSchema";
 import { relations } from "drizzle-orm/relations";
 
 export const postsSchema = pgTable("posts", {
-  id: serial("id").primaryKey(),
+  id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
   name: varchar({ length: 255 }).notNull(),
   description: varchar({ length: 255 }).notNull(),
   value: varchar().notNull(),

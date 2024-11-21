@@ -3,29 +3,38 @@ import { getToken } from "next-auth/jwt";
 import { type NextRequestWithAuth } from "next-auth/middleware";
 
 const locales = ["en-US", "uk-UA"];
+const usersPages = ["registration", "login"];
 const defaultLocale = "en-US";
 
 export async function middleware(request: NextRequestWithAuth) {
   const token = await getToken({ req: request });
   // Check if there is any supported locale in the pathname
   const { pathname } = request.nextUrl;
+  let newPathName = "";
 
   const locale = locales.find(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
+  const isLoginIn = usersPages.find(
+    (userPage) => pathname.endsWith(userPage) || pathname === `/${userPage}`,
+  );
+
+  if (!token) {
+    newPathName = isLoginIn ? isLoginIn : usersPages[1];
+  }
+
   if (locale) {
-    console.log(token);
-    if (!token && !pathname.endsWith("login")) {
+    if (!token && !isLoginIn) {
       return NextResponse.redirect(
-        new URL(`/${locale}/login`, request.nextUrl),
+        new URL(`/${locale}/${newPathName}`, request.nextUrl),
       );
     }
     return;
   }
 
   // Redirect if there is no locale and login
-  request.nextUrl.pathname = `/${defaultLocale}${!token ? "/login" : pathname}`;
+  request.nextUrl.pathname = `/${defaultLocale}${!token ? "/" + newPathName : pathname}`;
 
   return NextResponse.redirect(request.nextUrl);
 }

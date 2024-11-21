@@ -2,5 +2,7 @@
   "email": "Е-мейл",
   "password": "Пароль",
   "passwordErrorMessage": "Пароль повинен складатися хоча б із 8 символів",
-  "emailErrorMessage": "Е-мейл повинен бути правильним"
+  "emailErrorMessage": "Е-мейл повинен бути правильним",
+  "usernameErrorMessage": "Ваше ім'я повинно бути довшим чим два символа",
+  "username": "Ім'я користувача"
 }
