@@ -18,12 +18,17 @@ export const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials): Promise<User | null> {
-        const { id, email, password } = credentials;
+        if (!credentials) return null;
+        let user = null;
+        let isValid = false;
+
+        const { email, password } = credentials;
 
         // sign in after registration
-        if (id && !password && email) {
+        if (!password && email) {
           try {
-            return await getUserByEmail(email);
+            user = await getUserByEmail(email);
+            return user;
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
           } catch (e) {
             throw new Error("Oops we couldn't sign you in");
@@ -32,24 +37,43 @@ export const authOptions: NextAuthOptions = {
         // sign in after login
         if (password && email) {
           try {
-            const user = await getUserByEmail(email);
+            user = await getUserByEmail(email);
 
-            const { salt, hash } = user;
+            if (user) {
+              const { salt, hash } = user;
 
-            const validation = validPassword(password, hash, salt);
-
-            if (validation) {
-              return user;
+              isValid = validPassword(password, hash, salt);
             }
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
           } catch (e) {
             throw new Error("Oops we couldn't sign you in");
           }
         }
-        return null;
+
+        if (isValid) {
+          return user;
+        }
+
+        throw new Error("The password is not correct");
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = Number(user.id);
+      }
+
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id;
+      }
+
+      return session;
+    },
+  },
   pages: {
     signIn: "/login",
   },

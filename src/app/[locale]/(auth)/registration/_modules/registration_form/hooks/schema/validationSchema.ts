@@ -1,26 +1,15 @@
 import { z } from "zod";
 import { useIntl } from "react-intl";
 
-export const validationNewUser = ({
-  emailErrorMessage = "E-mail should be valid",
-  passwordErrorMessage = "Password should be at least 8 characters",
-  usernameErrorMessage = "User name should be longer then 2 characters",
-}) =>
-  z.object({
-    email: z.string().email({
-      message: emailErrorMessage,
-    }),
-    password: z.string().min(8, {
-      message: passwordErrorMessage,
-    }),
-    username: z.string().min(2, {
-      message: usernameErrorMessage,
-    }),
-  });
+export const validationNewUser = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+  username: z.string().min(2),
+});
 
 export type NewUser = z.infer<typeof validationNewUser>;
 
-export const useNewUserValidationSchema = (): NewUser => {
+export const useNewUserValidationSchema = () => {
   const { formatMessage } = useIntl();
 
   // translations for error messages
@@ -38,9 +27,17 @@ export const useNewUserValidationSchema = (): NewUser => {
   });
 
   // validation
-  return validationNewUser({
-    usernameErrorMessage,
-    emailErrorMessage,
-    passwordErrorMessage,
-  });
+  return validationNewUser.merge(
+    z.object({
+      email: z.string().email({
+        message: emailErrorMessage,
+      }),
+      password: z.string().min(8, {
+        message: passwordErrorMessage,
+      }),
+      username: z.string().min(2, {
+        message: usernameErrorMessage,
+      }),
+    }),
+  );
 };
