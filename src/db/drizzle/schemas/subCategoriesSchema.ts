@@ -1,20 +1,24 @@
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { categorySchema } from "@/db/drizzle/schemas/categorySchema";
 import { relations } from "drizzle-orm/relations";
+import { postsSchema } from "@/db/drizzle/schemas/postsSchema";
 
 export const subCategoriesSchema = pgTable("sub_categories", {
   id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
   name: varchar({ length: 255 }).notNull(),
   description: varchar({ length: 512 }).notNull(),
+  image: varchar(),
   categoryId: integer().references(() => categorySchema.id),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
 export const subCategoryRelations = relations(
   subCategoriesSchema,
-  ({ one }) => ({
+  ({ one, many }) => ({
     category: one(categorySchema, {
       fields: [subCategoriesSchema.categoryId],
       references: [categorySchema.id],
     }),
+    posts: many(postsSchema),
   }),
 );

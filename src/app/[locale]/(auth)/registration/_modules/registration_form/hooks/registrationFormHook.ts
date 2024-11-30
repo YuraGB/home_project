@@ -1,21 +1,19 @@
 "use client";
-import { FieldValues, useForm, UseFormReturn } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-//
-
-import { useNewUserValidationSchema } from "@/app/[locale]/(auth)/registration/_modules/registration_form/hooks/schema/validationSchema";
+import {
+  NewUser,
+  useNewUserValidationSchema,
+} from "@/app/[locale]/(auth)/registration/_modules/registration_form/hooks/schema/validationSchema";
 import { useApiRegistration } from "@/app/[locale]/(auth)/registration/_modules/api";
 import { useEffect } from "react";
 import { signIn } from "next-auth/react";
 
-export const useRegistrationForm = (): {
-  form: UseFormReturn;
-  onSubmit: (values: FieldValues) => void;
-} => {
+export const useRegistrationForm = () => {
   const formSchema = useNewUserValidationSchema();
   const { addNewUser, newUser, errorCreateNewUser } = useApiRegistration();
 
-  const form = useForm<FieldValues>({
+  const form = useForm<NewUser>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
@@ -51,7 +49,7 @@ export const useRegistrationForm = (): {
     }
   }, [newUser]);
 
-  const onSubmit = async (values: FieldValues) => {
+  const onSubmit = async (values: NewUser) => {
     addNewUser(values);
   };
 

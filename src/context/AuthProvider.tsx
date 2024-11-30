@@ -8,5 +8,9 @@ export default function AuthProvider({
 }: {
   children: React.ReactNode;
 }): React.ReactNode {
-  return <SessionProvider>{children}</SessionProvider>;
+  return (
+    <SessionProvider refetchInterval={5 * 60} refetchOnWindowFocus={false}>
+      {children}
+    </SessionProvider>
+  );
 }

@@ -6,14 +6,15 @@ import { DefaultJWT } from "next-auth/jwt";
 declare module "next-auth" {
   interface Session {
     user: {
-      id: string;
+      id: number;
       salt: string;
       hash: string;
+      email: string;
     } & DefaultSession;
   }
 
   interface User extends DefaultUser {
-    id: string;
+    id: number;
     salt: string;
     hash: string;
   }
@@ -29,6 +30,6 @@ declare module "@auth/core/adapters" {
 declare module "next-auth/jwt" {
   interface JWT extends DefaultJWT {
     role: string;
-    id: string;
+    id: number;
   }
 }
