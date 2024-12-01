@@ -8,15 +8,18 @@ import { useAddCategoryHandler } from "@/app/[locale]/_modules/api/addCategoryHa
 import { useEffect } from "react";
 
 export const useAddCategoryForm = (userId: number, onClose: () => void) => {
-  const { addCategoryHandler, newCategory, errorCreateNewCategory } =
-    useAddCategoryHandler();
+  const {
+    addCategoryHandler,
+    newCategory,
+    errorCreateNewCategory,
+    loadingNewCategory,
+  } = useAddCategoryHandler();
   const formSchema = useAddNewCategoryValidation();
   const form = useForm<NewCategory>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       description: "",
-      url: "",
     },
   });
 
@@ -38,5 +41,6 @@ export const useAddCategoryForm = (userId: number, onClose: () => void) => {
     onSubmit,
     newCategory,
     errorCreateNewCategory,
+    loadingNewCategory,
   };
 };

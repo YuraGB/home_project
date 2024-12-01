@@ -20,7 +20,10 @@ export const AddCategoryForm = ({
   userId: number;
   onClose: () => void;
 }): ReactNode => {
-  const { onSubmit, form } = useAddCategoryForm(userId, onClose);
+  const { onSubmit, form, loadingNewCategory } = useAddCategoryForm(
+    userId,
+    onClose,
+  );
   return (
     <Form
       control={form.control}
@@ -39,7 +42,7 @@ export const AddCategoryForm = ({
       watch={form.watch}
       unregister={form.unregister}
     >
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-1/2 space-y-2">
         <FormField
           defaultValue={""}
           control={form.control}
@@ -92,31 +95,17 @@ export const AddCategoryForm = ({
             </FormItem>
           )}
         />
-        <FormField
-          defaultValue={""}
-          control={form.control}
-          name="url"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                <FormattedMessage defaultMessage={"Url"} id={"url"} />
-              </FormLabel>
-              <FormControl>
-                <Input
-                  name={field.name}
-                  ref={field.ref}
-                  value={field.value}
-                  onBlur={field.onBlur}
-                  onChange={field.onChange}
-                  disabled={field.disabled}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit" disabled={loadingNewCategory}>
+          {loadingNewCategory ? (
+            <FormattedMessage id={"savingCategory"} defaultMessage={"Saving"} />
+          ) : (
+            <FormattedMessage
+              id={"saveCategory"}
+              defaultMessage={"Save new category"}
+            />
+          )}
+        </Button>
       </form>
     </Form>
   );
