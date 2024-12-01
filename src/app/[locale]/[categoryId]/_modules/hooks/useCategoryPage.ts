@@ -9,7 +9,7 @@ export const useCategoryPage = async ({ params }: Readonly<TParams>) => {
   const { categoryId } = await params;
 
   const session = await getServerSession(authOptions);
-  if (!categoryId || !session) {
+  if (!categoryId || session !== null) {
     redirect("/login");
   }
   const pageData = await getCatalogByUserIdWithData(
