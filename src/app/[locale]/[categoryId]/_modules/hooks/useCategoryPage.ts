@@ -9,13 +9,16 @@ export const useCategoryPage = async ({ params }: Readonly<TParams>) => {
   const { categoryId } = await params;
 
   const session = await getServerSession(authOptions);
-  if (!categoryId || session !== null) {
+  if (!categoryId || !session?.user) {
     redirect("/login");
   }
-  const pageData = await getCatalogByUserIdWithData(
-    Number(session.user.id),
-    Number(categoryId),
-  );
+
+  const pageData = !session?.user
+    ? await getCatalogByUserIdWithData(
+        Number(session.user.id),
+        Number(categoryId),
+      )
+    : null;
 
   return {
     posts: pageData?.posts ? [pageData.posts] : null,
