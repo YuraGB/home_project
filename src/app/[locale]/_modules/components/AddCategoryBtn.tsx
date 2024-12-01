@@ -9,7 +9,13 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { AddCategoryForm } from "@/app/[locale]/_modules/components/AddCategoryForm";
+const AddCategoryForm = dynamic(() =>
+  import("@/app/[locale]/_modules/components/AddCategoryForm").then(
+    (mod) => mod.AddCategoryForm,
+  ),
+);
+import { FormattedMessage } from "react-intl";
+import dynamic from "next/dynamic";
 
 export const AddCategoryBtn = ({
   userId,
@@ -24,17 +30,29 @@ export const AddCategoryBtn = ({
     <section>
       <Dialog open={openDialog} onOpenChange={setDialogOpen}>
         <DialogTrigger asChild>
-          <Button variant="outline">Edit Profile</Button>
+          <Button variant="outline">
+            <FormattedMessage
+              id={"addCategory"}
+              defaultMessage={"Create new category"}
+            />
+          </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[725px]">
           <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
+            <DialogTitle>
+              <FormattedMessage
+                id={"newCategoryTitlePopup"}
+                defaultMessage={"A new category"}
+              />
+            </DialogTitle>
             <DialogDescription>
-              Make changes to your profile here. Click save when you`&apos;re
-              done.
+              <FormattedMessage
+                id={"addCategoryDescription"}
+                defaultMessage={"New category will be in the list"}
+              />
             </DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4 py-4">
+          <div className="grid gap-4 py-4 justify-items-end">
             <AddCategoryForm
               userId={userId}
               onClose={() => setDialogOpen(false)}

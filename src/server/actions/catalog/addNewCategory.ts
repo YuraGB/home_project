@@ -3,11 +3,11 @@ import { db } from "@/db";
 import { categorySchema, TCategory } from "@/db/drizzle/schemas/categorySchema";
 import { z } from "zod";
 import logger from "@/lib/logger";
+import { revalidatePath } from "next/cache";
 
 const categoryValidationSchema = z.object({
   name: z.string(),
   description: z.string(),
-  url: z.string(),
   userId: z.number(),
 });
 export const addNewCategory = async (data: {
@@ -23,6 +23,7 @@ export const addNewCategory = async (data: {
       .returning() // Specify columns
       .execute();
 
+    revalidatePath("/");
     return categoryCreated;
   } catch (error) {
     logger.error((error as Error).stack);

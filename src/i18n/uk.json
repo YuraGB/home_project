@@ -4,5 +4,15 @@
   "passwordErrorMessage": "Пароль повинен складатися хоча б із 8 символів",
   "emailErrorMessage": "Е-мейл повинен бути правильним",
   "usernameErrorMessage": "Ваше ім'я повинно бути довшим чим два символа",
-  "username": "Ім'я користувача"
+  "username": "User name",
+  "addCategory": "Create new category",
+  "newCategoryTitlePopup": "A new category",
+  "addCategoryDescription": "New category will be in the list",
+  "nameErrorMessage": "Name must be at least 2 characters",
+  "descriptionErrorMessage": "Description should be at least 8 characters",
+  "urlErrorMessage": "Invalid url address",
+  "name": "Name of the category",
+  "description": "description",
+  "saveCategory": "Save new category",
+  "savingCategory": "Saving in progress"
 }

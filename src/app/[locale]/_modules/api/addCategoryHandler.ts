@@ -3,9 +3,8 @@ import { createNewCategory } from "@/server/services/category/createNewCategory"
 
 type TAddCategoryData = {
   name: string;
-  url: string;
   description: string;
-  userId?: number;
+  userId: number;
 };
 
 export const useAddCategoryHandler = () => {
@@ -13,9 +12,15 @@ export const useAddCategoryHandler = () => {
     mutate: addCategoryHandler,
     data: newCategory,
     error: errorCreateNewCategory,
+    isPending: loadingNewCategory,
   } = useMutation({
     mutationFn: async (data: TAddCategoryData) => await createNewCategory(data),
   });
 
-  return { addCategoryHandler, newCategory, errorCreateNewCategory };
+  return {
+    addCategoryHandler,
+    newCategory,
+    errorCreateNewCategory,
+    loadingNewCategory,
+  };
 };

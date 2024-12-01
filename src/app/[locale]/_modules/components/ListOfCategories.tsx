@@ -4,11 +4,15 @@ import { CategoryItem } from "@/app/[locale]/_modules/components/CategoryItem";
 
 export const ListOfCategories = ({
   categories,
+  locale,
 }: {
   categories: TCategory[] | null;
+  locale: string;
 }): ReactNode => {
+  if (!categories) return null;
+
   const list = categories?.map((category) => (
-    <CategoryItem category={category} key={category.id} />
+    <CategoryItem category={category} key={category.id} locale={locale} />
   ));
-  return <>{list}</>;
+  return <article className={"columns-4"}>{list}</article>;
 };

@@ -5,6 +5,8 @@ import ServerIntlProvider from "@/context/i18nProvider";
 import getIntl from "@/lib/intl";
 import { FetchProvider } from "@/context/FetchProvider";
 import { ReactNode } from "react";
+import { Toaster } from "@/components/ui/toaster";
+import { Header } from "@/components/header/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,8 +25,18 @@ export default async function RootLayout({
   return (
     <ServerIntlProvider messages={intl.messages} locale={intl.locale}>
       <FetchProvider>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <Header />
+          {children}
+          <Toaster />
+        </AuthProvider>
       </FetchProvider>
     </ServerIntlProvider>
   );
+}
+
+export function generateStaticParams(): Array<{ locale: string }> {
+  const locales = ["en-US", "uk-UA"];
+
+  return locales.map((locale) => ({ locale }));
 }

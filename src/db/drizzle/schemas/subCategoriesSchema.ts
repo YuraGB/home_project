@@ -22,3 +22,5 @@ export const subCategoryRelations = relations(
     posts: many(postsSchema),
   }),
 );
+
+export type TSubCategory = typeof subCategoriesSchema.$inferSelect;
