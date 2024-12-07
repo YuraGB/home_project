@@ -4,9 +4,11 @@ import AuthProvider from "@/context/AuthProvider";
 import ServerIntlProvider from "@/context/i18nProvider";
 import getIntl from "@/lib/intl";
 import { FetchProvider } from "@/context/FetchProvider";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Header } from "@/components/header/Header";
+import { Background } from "@/components/background";
+import { ProviderTheme } from "@/context/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,13 +24,19 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params;
   const intl = await getIntl(locale);
+
   return (
     <ServerIntlProvider messages={intl.messages} locale={intl.locale}>
       <FetchProvider>
         <AuthProvider>
-          <Header />
-          {children}
-          <Toaster />
+          <ProviderTheme>
+            <Header />
+            {children}
+            <Suspense fallback={null}>
+              <Background />
+            </Suspense>
+            <Toaster />
+          </ProviderTheme>
         </AuthProvider>
       </FetchProvider>
     </ServerIntlProvider>

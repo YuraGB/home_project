@@ -34,6 +34,12 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+  html {
+    --color-primary: #4285f4;
+    --color-secondary: #34a853;
+    --color-buttons: #fbbc05;
+    --color-typography: #ea4335;
+  }
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;

@@ -1,3 +1,4 @@
+"use client";
 import { TSubCategory } from "@/db/drizzle/schemas/subCategoriesSchema";
 import { ReactNode } from "react";
 

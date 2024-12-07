@@ -8,4 +8,5 @@ export type TCreatePostData = {
   image?: string;
   categoryId?: number;
   subCategoryId?: number;
+  userId: number;
 };

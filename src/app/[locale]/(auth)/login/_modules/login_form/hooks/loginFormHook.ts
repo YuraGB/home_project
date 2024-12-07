@@ -5,11 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useSession, signIn } from "next-auth/react";
 import { useEffect } from "react";
 
-// type TLoginFormValues = {
-//   email: string | undefined;
-//   password: string | undefined;
-// };
-
 export const useLoginFormHook = (): {
   form: UseFormReturn;
   onSubmit: (values: FieldValues) => void;

@@ -5,15 +5,14 @@ import { getCatalogByUserIdWithData } from "@/server/actions/catalog/getCatalogB
 
 export type TParams = { params: Promise<{ categoryId: string }> };
 
-export const useCategoryPage = async ({ params }: Readonly<TParams>) => {
+export const getCategoryPage = async ({ params }: Readonly<TParams>) => {
   const { categoryId } = await params;
-
   const session = await getServerSession(authOptions);
   if (!categoryId || !session?.user) {
     redirect("/login");
   }
 
-  const pageData = !session?.user
+  const pageData = session?.user
     ? await getCatalogByUserIdWithData(
         Number(session.user.id),
         Number(categoryId),
@@ -21,8 +20,10 @@ export const useCategoryPage = async ({ params }: Readonly<TParams>) => {
     : null;
 
   return {
-    posts: pageData?.posts ? [pageData.posts] : null,
-    categories: pageData?.categories ? pageData.categories : null,
-    sub_category: pageData?.sub_categories ? [pageData.sub_categories] : null,
+    posts: pageData ? pageData.posts : null,
+    categories: pageData ? pageData.categories : null,
+    sub_category: pageData ? pageData.sub_categories : null,
+    userId: session?.user.id,
+    rating: pageData ? pageData.rating : null,
   };
 };
