@@ -12,5 +12,6 @@ export const SubCategoryList = ({
   const listOfSubCategories = sub_categories.map((item) => (
     <SubCategoryItem key={item.id} item={item} />
   ));
+
   return <section>{listOfSubCategories}</section>;
 };

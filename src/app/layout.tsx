@@ -13,8 +13,8 @@ export default async function Layout({
   children: ReactNode;
 }>) {
   return (
-    <html lang={"en"}>
-      <body>{children}</body>
+    <html lang={"en"} suppressHydrationWarning>
+      <body className={"relative"}>{children}</body>
     </html>
   );
 }

@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     reactCompiler: true,
   },
   trailingSlash: false,
+  transpilePackages: ["three"],
 };
 
 export default nextConfig;

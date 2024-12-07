@@ -6,10 +6,12 @@ export const postValidationSchema = z.object({
 });
 
 export const creatingPostValidationData = z.object({
-  name: z.string(),
-  description: z.string(),
-  url: z.string().url(),
-  image: z.string(),
+  name: z.string().min(1),
+  description: z.string().min(1),
+  url: z.string().url().min(1),
+  image: z.string().optional(),
   categoryId: z.number().optional(),
   subcategoryId: z.number().optional(),
+  userId: z.number().min(1),
+  rating: z.boolean(),
 });

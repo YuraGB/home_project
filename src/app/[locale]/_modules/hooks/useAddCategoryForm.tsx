@@ -4,7 +4,7 @@ import {
 } from "@/app/[locale]/_modules/hooks/schema/useAddCategorySchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useAddCategoryHandler } from "@/app/[locale]/_modules/api/addCategoryHandler";
+import { useAddCategoryHandler } from "@/app/[locale]/_modules/apiCalls/addCategoryHandler";
 import { useEffect } from "react";
 
 export const useAddCategoryForm = (userId: number, onClose: () => void) => {

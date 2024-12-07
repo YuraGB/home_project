@@ -9,7 +9,7 @@ type TUseHomePage = {
   categories: TCategory[] | null;
 };
 
-export const useHomePage = async (): Promise<TUseHomePage | null> => {
+export const getHomePage = async (): Promise<TUseHomePage | null> => {
   const session = await getServerSession(authOptions);
   if (session?.user?.id) {
     const categories = await getCatalogByUserId(session.user.id);
