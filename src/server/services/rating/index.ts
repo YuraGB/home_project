@@ -18,7 +18,7 @@ export const getRatingById = async (
   const validData = validationPostId.parse(id);
 
   const result = await getRatingDataById(validData);
-  console.log("getRatingById", result);
+
   // undefined is not excepted
   return result ?? null;
 };

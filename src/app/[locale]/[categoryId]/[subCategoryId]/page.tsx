@@ -1,11 +1,22 @@
-import React, { ReactNode } from "react";
+import React from "react";
+import { Bradcrmbs } from "@/components/bradcrumbs/Bradcrmbs";
+import { breadcrumbsService } from "@/server/services/breadcrumbs";
+import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
 
-export default function SubCategory(): ReactNode {
+export default async function SubCategory({
+  params,
+}: {
+  params: Promise<{ subCategoryId: string; categoryId: string }>;
+}) {
+  const { subCategoryId, categoryId } = await params;
+  const breadcrumbsData = await breadcrumbsService({
+    subCategoryId: Number(subCategoryId),
+    catalogId: Number(categoryId),
+  });
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1>subCategory</h1>
-      </main>
-    </div>
+    <DefaultPageLayout>
+      <Bradcrmbs bradcrumbs={breadcrumbsData} />
+      <h1>subCategory</h1>
+    </DefaultPageLayout>
   );
 }

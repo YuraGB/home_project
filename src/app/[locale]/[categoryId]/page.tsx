@@ -8,20 +8,24 @@ import { PostsList } from "@/app/[locale]/[categoryId]/_modules/components/Posts
 import { AddPostButton } from "@/app/[locale]/[categoryId]/_modules/components/AddPost/AddPostButton";
 import { AddSubCategoryButton } from "@/app/[locale]/[categoryId]/_modules/components/AddSubCategory/AddSubCategoryButton";
 import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
+import { Bradcrmbs } from "@/components/bradcrumbs/Bradcrmbs";
+import { PageTitle } from "@/components/pageTitle";
 
 export default async function CategoryPage(props: TParams) {
-  const { posts, categories, sub_category, userId, rating } =
+  const { posts, categories, sub_category, userId, rating, breadcrumbsData } =
     await getCategoryPage(props);
+
   if (!categories?.id) return null;
 
   return (
     <DefaultPageLayout>
-      <h1>{categories.name}</h1>
-      <article>
+      <Bradcrmbs bradcrumbs={breadcrumbsData} />
+      <PageTitle title={categories.name} />
+      <article className={"h-full w-full"}>
         <SubCategoryList sub_categories={sub_category} />
         <PostsList posts={posts} rating={rating} />
       </article>
-      <footer>
+      <footer className={"flex gap-2 justify-center items-center w-full"}>
         <AddPostButton userId={userId} categoryId={categories.id} />
         <AddSubCategoryButton userId={userId} categoryId={categories.id} />
       </footer>

@@ -13,5 +13,5 @@ export const SubCategoryList = ({
     <SubCategoryItem key={item.id} item={item} />
   ));
 
-  return <section>{listOfSubCategories}</section>;
+  return <section className={"border-b p-4"}>{listOfSubCategories}</section>;
 };

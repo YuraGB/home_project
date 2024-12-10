@@ -14,5 +14,5 @@ export const ListOfCategories = ({
   const list = categories?.map((category) => (
     <CategoryItem category={category} key={category.id} locale={locale} />
   ));
-  return <article className={"columns-4"}>{list}</article>;
+  return <article className={"columns-4 w-full"}>{list}</article>;
 };

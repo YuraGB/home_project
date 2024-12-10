@@ -13,8 +13,8 @@ export default async function Home({ params }: Readonly<TParams>) {
 
   return (
     <DefaultPageLayout>
-      <ListOfCategories categories={categories} locale={locale} />
       <AddCategoryBtn userId={userId} />
+      <ListOfCategories categories={categories} locale={locale} />
     </DefaultPageLayout>
   );
 }

@@ -8,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 const AddCategoryForm = dynamic(() =>
   import("@/app/[locale]/_modules/components/AddCategoryForm").then(
@@ -27,14 +28,17 @@ export const AddCategoryBtn = ({
     return null;
   }
   return (
-    <section>
+    <section className={"flex justify-center p-4 w-full"}>
       <Dialog open={openDialog} onOpenChange={setDialogOpen}>
         <DialogTrigger asChild>
-          <Button variant="outline">
-            <FormattedMessage
-              id={"addCategory"}
-              defaultMessage={"Create new category"}
-            />
+          <Button variant="ghost" className={"border-[1px]"}>
+            <Plus />
+            <span className={"hidden"}>
+              <FormattedMessage
+                id={"addCategory"}
+                defaultMessage={"Create new category"}
+              />
+            </span>
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[725px]">

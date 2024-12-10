@@ -12,7 +12,6 @@ export const getRatingDataById = async (
       .select()
       .from(ratingTable)
       .where(eq(ratingTable.id, id));
-    console.log(rating);
     return rating;
   } catch (e) {
     logger.error((e as Error).stack);
