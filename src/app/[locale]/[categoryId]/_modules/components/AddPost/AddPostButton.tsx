@@ -31,7 +31,7 @@ export const AddPostButton = ({
     <section>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button variant="outline">
+          <Button variant="ghost">
             <FormattedMessage
               id={"addNewPostBtn"}
               defaultMessage={"Create new post"}

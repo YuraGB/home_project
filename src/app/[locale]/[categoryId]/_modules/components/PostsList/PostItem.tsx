@@ -16,8 +16,12 @@ export const PostItem = ({
   rate: TRatingSchema | null;
 }): ReactNode => {
   return (
-    <div>
-      {post.name}
+    <div
+      className={
+        "rounded border h-20 grid grid-rows-[1fr,25px] items-center justify-items-end p-2"
+      }
+    >
+      <h4 className={"text-center text-2xl mt-auto"}>{post.name}</h4>
       {rate ? <RatingComponent rate={rate} /> : null}
     </div>
   );
