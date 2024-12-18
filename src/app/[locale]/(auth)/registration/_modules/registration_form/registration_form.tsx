@@ -138,7 +138,7 @@ const RegistrationForm = (): ReactNode => {
         <LinkWithLocale
           href={"login"}
           className={
-            "absolute top-1/2 left-[-60px] transform -translate-y-1/2 p-4 border-[1px] rounded-[50%] border-[--foreground]"
+            "absolute top-1/2 left-[-60px] transform -translate-y-1/2 p-4 pr-5 pb-5 border rounded-[50%]"
           }
         >
           <LogInIcon />
