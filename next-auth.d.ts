@@ -2,6 +2,7 @@
 
 import { DefaultSession, DefaultUser } from "next-auth";
 import { DefaultJWT } from "next-auth/jwt";
+import { Water } from "three-stdlib";
 
 declare module "next-auth" {
   interface Session {
@@ -32,4 +33,8 @@ declare module "next-auth/jwt" {
     role: string;
     id: number;
   }
+}
+
+declare module "three" {
+  export { Water };
 }

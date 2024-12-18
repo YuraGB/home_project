@@ -23,7 +23,7 @@ interface RatingsProps extends React.HTMLAttributes<HTMLDivElement> {
   totalstars?: number;
   size?: number;
   fill?: boolean;
-  icon?: React.ReactElement;
+  icon?: React.ReactElement<React.SVGProps<SVGSVGElement>>; // Розширимо тип для React-компонентів SVG
   variant?: keyof typeof ratingVariants;
   cb?: (rData: number) => void;
 }
@@ -54,40 +54,47 @@ const Ratings = ({ ...props }: RatingsProps) => {
 
   return (
     <div className={cn("flex items-center gap-2 cursor-pointer")} {...rest}>
-      {[...Array(fullStars)].map((_, i) =>
-        React.cloneElement(icon, {
-          key: i,
-          size,
-          className: cn(
-            fill ? "fill-current" : "fill-transparent",
-            ratingVariants[variant].star,
-          ),
-          onClick: () => cb(i + 1),
-        }),
+      {[...Array(fullStars)].map(
+        (_, i) =>
+          React.cloneElement(icon, {
+            key: i,
+            size: size,
+            className: cn(
+              fill ? "fill-current" : "fill-transparent",
+              ratingVariants[variant].star,
+            ),
+            onClick: () => cb(i + 1),
+          } as React.SVGProps<SVGSVGElement>), // Уточнюємо тип для size
       )}
       {partialStar}
-      {[...Array(totalstars - fullStars - (partialStar ? 1 : 0))].map((_, i) =>
-        React.cloneElement(icon, {
-          key: i + fullStars + 1,
-          size,
-          className: cn(ratingVariants[variant].emptyStar),
-          onClick: () =>
-            partial ? cb(i + fullStars + 2) : cb(i + fullStars + 1),
-        }),
+      {[...Array(totalstars - fullStars - (partialStar ? 1 : 0))].map(
+        (_, i) =>
+          React.cloneElement(icon, {
+            key: i + fullStars + 1,
+            size: size,
+            className: cn(ratingVariants[variant].emptyStar),
+            onClick: () =>
+              partial ? cb(i + fullStars + 2) : cb(i + fullStars + 1),
+          } as React.SVGProps<SVGSVGElement>), // Уточнюємо тип для size
       )}
     </div>
   );
 };
-
 interface PartialStarProps {
   fillPercentage: number;
   size: number;
   className?: string;
-  icon: React.ReactElement;
+  icon: React.ReactElement<React.SVGProps<SVGSVGElement>>; // Розширимо тип для React-компонентів SVG
   callback: () => void;
 }
 const PartialStar = ({ ...props }: PartialStarProps) => {
-  const { fillPercentage, size, className, icon, callback = () => {} } = props;
+  const {
+    fillPercentage,
+    size = 20,
+    className,
+    icon,
+    callback = () => {},
+  } = props;
 
   return (
     <div
@@ -95,7 +102,8 @@ const PartialStar = ({ ...props }: PartialStarProps) => {
       onClick={() => callback()}
     >
       {React.cloneElement(icon, {
-        size,
+        width: size,
+        height: size,
         className: cn("fill-transparent", className),
       })}
       <div
@@ -107,7 +115,8 @@ const PartialStar = ({ ...props }: PartialStarProps) => {
         }}
       >
         {React.cloneElement(icon, {
-          size,
+          width: size,
+          height: size,
           className: cn("fill-current", className),
         })}
       </div>

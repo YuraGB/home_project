@@ -1,34 +1,17 @@
-"use client";
-import * as THREE from "three";
 import React from "react";
-import { useGLTF } from "@react-three/drei";
-import { GLTF } from "three-stdlib";
+import { TextContent } from "@/components/background/TextContent";
+import { useWall } from "@/components/background/hooks/useWall";
+import { motion } from "framer-motion-3d";
 
-type GLTFResult = GLTF & {
-  nodes: {
-    Object_2: THREE.Mesh;
-  };
-  materials: {
-    wall2_Material_u1_v1: THREE.MeshStandardMaterial;
-  };
-};
-
-export function Model() {
-  const { nodes, materials } = useGLTF(
-    "/models/brick_wall_united_kingdom.glb",
-  ) as GLTFResult;
+export const Wall: React.FC = () => {
+  const { material, position, rotation } = useWall();
   return (
-    <group dispose={null}>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_2.geometry}
-        material={materials.wall2_Material_u1_v1}
-        position={[0, -10, -4]}
-        rotation={[3.118, 0, 0]}
-      />
-    </group>
+    <motion.group position={position} rotation={rotation}>
+      <mesh receiveShadow={true} castShadow={true}>
+        <boxGeometry args={[270, 120, 10]} />
+        {material}
+      </mesh>
+      <TextContent />
+    </motion.group>
   );
-}
-
-useGLTF.preload("/models/brick_wall_united_kingdom.glb");
+};

@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { UserPlus } from "lucide-react";
@@ -112,7 +111,7 @@ export function LoginForm() {
         <LinkWithLocale
           href={"registration"}
           className={
-            "absolute top-1/2 right-[-60px] transform -translate-y-1/2 p-4 border-[1px] rounded-[50%] border-[--foreground]"
+            "absolute top-1/2 right-[-60px] transform -translate-y-1/2 p-4 pl-5 pb-5 border rounded-[50%]"
           }
         >
           <UserPlus />
