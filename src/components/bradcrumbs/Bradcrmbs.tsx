@@ -3,13 +3,13 @@ import { ReactNode } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Slash } from "lucide-react";
 import { useIntl } from "react-intl";
 import { List } from "@/components/bradcrumbs/list";
+import { LinkWithLocale } from "@/components/linkWithLocale/LinkWithLocale";
 export type TBradcrmb = {
   name: string;
   url: string | number;
@@ -27,7 +27,7 @@ export const Bradcrmbs = ({
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href={`/${locale}/`}>Home</BreadcrumbLink>
+          <LinkWithLocale href={`/`}>Home</LinkWithLocale>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
           <Slash />

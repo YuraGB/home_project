@@ -1,10 +1,14 @@
 import { Sky } from "@react-three/drei";
-const Ocean = dynamic(() =>
-  import("@/components/background/Ocean").then((mod) => mod.Ocean),
-);
-import { Wall } from "@/components/background/Wall";
+import { Ocean } from "@/components/background/Ocean";
+
 import dynamic from "next/dynamic";
-import { City } from "@/components/background/City";
+
+const City2 = dynamic(() =>
+  import("@/components/background/City2").then((mod) => mod.City2),
+);
+const Wall = dynamic(() =>
+  import("@/components/background/Wall").then((mod) => mod.Wall),
+);
 
 export const Model = () => {
   return (
@@ -25,7 +29,8 @@ export const Model = () => {
       <ambientLight intensity={0.8} />
       <Ocean />
       <Wall />
-      <City />
+      {/*<City />*/}
+      <City2 />
       <Sky distance={10000} rayleigh={0.5} turbidity={5} />
     </>
   );
