@@ -46,7 +46,7 @@ export const AddPostForm = (props: TPropsAddForm): ReactNode => {
               <FormLabel>
                 <FormattedMessage
                   defaultMessage={"Name of the post"}
-                  id={"name"}
+                  id={"namePost"}
                 />
               </FormLabel>
               <FormControl>

@@ -46,12 +46,6 @@ export const AddSubCategoryButton = ({
                 defaultMessage={"The new post"}
               />
             </DialogTitle>
-            {/*<DialogDescription>*/}
-            {/*  <FormattedMessage*/}
-            {/*    id={"addCategoryDescription"}*/}
-            {/*    defaultMessage={"New category will be in the list"}*/}
-            {/*  />*/}
-            {/*</DialogDescription>*/}
           </DialogHeader>
           <div className="grid gap-4 py-4 justify-items-end">
             <AddPostForm

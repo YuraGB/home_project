@@ -9,7 +9,7 @@ export const ListOfCategories = ({
   categories: TCategory[] | null;
   locale: string;
 }): ReactNode => {
-  if (!categories) return null;
+  if (!categories || !categories.length) return null;
 
   const list = categories?.map((category) => (
     <CategoryItem category={category} key={category.id} locale={locale} />
