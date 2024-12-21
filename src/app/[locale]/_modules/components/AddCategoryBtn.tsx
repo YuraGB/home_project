@@ -59,7 +59,7 @@ export const AddCategoryBtn = ({
           <div className="grid gap-4 py-4 justify-items-end">
             <AddCategoryForm
               userId={userId}
-              onClose={() => setDialogOpen(false)}
+              onCloseAction={() => setDialogOpen(false)}
             />
           </div>
         </DialogContent>

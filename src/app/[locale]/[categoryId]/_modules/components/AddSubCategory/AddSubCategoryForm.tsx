@@ -43,7 +43,7 @@ export const AddSubCategoryForm = (props: TPropsAddForm): ReactNode => {
             <FormItem>
               <FormLabel aria-required={true}>
                 <FormattedMessage
-                  defaultMessage={"Name of the sub category"}
+                  defaultMessage={"The name of the sub category"}
                   id={"nameSubCategory"}
                 />
                 <span className="text-red-500">*</span>

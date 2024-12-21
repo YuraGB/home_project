@@ -22,11 +22,10 @@ export const useLoginFormHook = (): {
   });
 
   useEffect(() => {
-    console.log(session, status);
     if (status === "authenticated") {
       router.push("/");
     }
-  }, [session, status]);
+  }, [router, session, status]);
 
   const onSubmit = (values: FieldValues) => {
     return signIn("credentials", {

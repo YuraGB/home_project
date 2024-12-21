@@ -15,14 +15,14 @@ import { ReactNode } from "react";
 
 export const AddCategoryForm = ({
   userId,
-  onClose,
+  onCloseAction,
 }: {
   userId: number;
-  onClose: () => void;
+  onCloseAction: () => void;
 }): ReactNode => {
   const { onSubmit, form, loadingNewCategory } = useAddCategoryForm(
     userId,
-    onClose,
+    onCloseAction,
   );
   return (
     <Form
@@ -77,7 +77,7 @@ export const AddCategoryForm = ({
             <FormItem>
               <FormLabel>
                 <FormattedMessage
-                  defaultMessage={"description"}
+                  defaultMessage={"Description"}
                   id={"description"}
                 />
               </FormLabel>

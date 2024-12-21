@@ -31,7 +31,7 @@ export const AddPostButton = ({
     <section>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button variant="ghost">
+          <Button variant="outline">
             <FormattedMessage
               id={"addNewPostBtn"}
               defaultMessage={"Create new post"}
@@ -46,12 +46,6 @@ export const AddPostButton = ({
                 defaultMessage={"The new post"}
               />
             </DialogTitle>
-            {/*<DialogDescription>*/}
-            {/*  <FormattedMessage*/}
-            {/*    id={"addCategoryDescription"}*/}
-            {/*    defaultMessage={"New category will be in the list"}*/}
-            {/*  />*/}
-            {/*</DialogDescription>*/}
           </DialogHeader>
           <div className="grid gap-4 py-4 justify-items-end">
             <AddPostForm
