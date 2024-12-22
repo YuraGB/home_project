@@ -17,6 +17,7 @@ import { LinkWithLocale } from "@/components/linkWithLocale/LinkWithLocale";
 
 export function LoginForm() {
   const { form, onSubmit } = useLoginFormHook();
+  const { formState } = form;
 
   return (
     <article className={"grid grid-cols-2 w-full "}>
@@ -103,6 +104,11 @@ export function LoginForm() {
                 </FormItem>
               )}
             />
+            {formState.errors.root?.serverError && (
+              <FormMessage className={"text-destructive"}>
+                {formState.errors.root.serverError.message}
+              </FormMessage>
+            )}
             <Button type="submit" className={"w-full"}>
               Login in
             </Button>

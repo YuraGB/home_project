@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useSession, signIn } from "next-auth/react";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "@/hooks/use-toast";
 
 export const useLoginFormHook = (): {
   form: UseFormReturn;
@@ -27,12 +28,21 @@ export const useLoginFormHook = (): {
     }
   }, [router, session, status]);
 
-  const onSubmit = (values: FieldValues) => {
-    return signIn("credentials", {
+  const onSubmit = async (values: FieldValues) => {
+    const resp = await signIn("credentials", {
       email: values.email,
       password: values.password,
       redirect: false,
     });
+
+    if (resp?.error) {
+      toast({
+        title: "Error",
+        variant: "destructive",
+        description: resp.error,
+      });
+      form.setError("root.serverError", { type: "400", message: resp.error });
+    }
   };
 
   return {
