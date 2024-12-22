@@ -2,12 +2,14 @@ import NextAuth, { type NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { getUserByEmail } from "@/server/actions/user/getUserByEmail";
 import { validPassword } from "@/lib/crypto";
+import logger from "@/lib/logger";
 
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
+        id: { type: "text" },
         username: { label: "Username", type: "text", placeholder: "Full name" },
         email: { label: "E-mail", type: "text", placeholder: "email" },
         password: {
@@ -25,12 +27,12 @@ export const authOptions: NextAuthOptions = {
         const { email, password } = credentials;
 
         // sign in after registration
-        if (!password && email) {
+        if (!password && email && credentials.id) {
           try {
             user = await getUserByEmail(email);
             return user;
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
           } catch (e) {
+            logger.error((e as Error).stack);
             throw new Error("Oops we couldn't sign you in");
           }
         }
@@ -38,16 +40,20 @@ export const authOptions: NextAuthOptions = {
         if (password && email) {
           try {
             user = await getUserByEmail(email);
-
             if (user) {
               const { salt, hash } = user;
 
               isValid = validPassword(password, hash, salt);
             }
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
           } catch (e) {
+            logger.error((e as Error).stack);
             throw new Error("Oops we couldn't sign you in");
           }
+        }
+
+        if (!user) {
+          logger.error(`User not found. Email: ${email}`);
+          throw new Error("The user is not found");
         }
 
         if (isValid) {
