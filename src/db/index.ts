@@ -1,13 +1,32 @@
-import { drizzle } from "drizzle-orm/vercel-postgres";
-import { drizzle as drizzleLocal } from "drizzle-orm/node-postgres";
+import {
+  drizzle as drizzleVercel,
+  VercelPgDatabase,
+} from "drizzle-orm/vercel-postgres";
+import {
+  drizzle as drizzleNodePostgres,
+  NodePgDatabase,
+} from "drizzle-orm/node-postgres";
+import { Pool } from "pg"; // Required for node-postgres client
 import "dotenv/config";
 
-let db;
+// Define a unified type for the database instance
+type Database =
+  | VercelPgDatabase<Record<string, unknown>>
+  | NodePgDatabase<Record<string, unknown>>;
+
+let db: Database;
 
 if (process.env.NODE_ENV === "production") {
-  db = drizzle();
+  // Use Vercel Postgres drizzle in production
+  db = drizzleVercel();
 } else {
-  db = drizzleLocal(process.env.POSTGRES_LOCAL_URL!);
+  // Use Node Postgres drizzle in development
+  const connectionString = process.env.POSTGRES_LOCAL_URL;
+  if (!connectionString) {
+    throw new Error("POSTGRES_LOCAL_URL is not defined.");
+  }
+  const pool = new Pool({ connectionString });
+  db = drizzleNodePostgres(pool);
 }
 
 export { db };
