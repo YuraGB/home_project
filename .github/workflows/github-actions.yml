@@ -8,6 +8,8 @@ on:
 jobs:
   Init:
     runs-on: ubuntu-latest
+    env:
+      POSTGRES_LOCAL_URL: ${{ secrets.POSTGRES_LOCAL_URL }}
     strategy:
       matrix:
         node-version: [22.x]
