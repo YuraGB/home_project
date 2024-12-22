@@ -9,7 +9,6 @@ import {
 import { Pool } from "pg"; // Required for node-postgres client
 import "dotenv/config";
 
-// Define a unified type for the database instance
 type Database =
   | VercelPgDatabase<Record<string, unknown>>
   | NodePgDatabase<Record<string, unknown>>;
