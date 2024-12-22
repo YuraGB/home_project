@@ -13,7 +13,8 @@ const config = {
     "!**/node_modules/**",
   ],
   coverageReporters: ["json", "lcov", "text", "clover"],
-  testEnvironment: "jest-environment-jsdom",
+  testEnvironment: "jsdom",
+  setupFiles: ["dotenv/config"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   testPathIgnorePatterns: [
     "<rootDir>/node_modules/",
