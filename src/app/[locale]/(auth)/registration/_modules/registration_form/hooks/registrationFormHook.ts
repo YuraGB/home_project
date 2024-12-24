@@ -41,8 +41,7 @@ export const useRegistrationForm = () => {
   useEffect(() => {
     if (newUser) {
       signIn("credentials", {
-        redirect: true,
-        callbackUrl: "/",
+        redirect: false,
         id: newUser.id,
         email: newUser.email,
       });

@@ -5,6 +5,12 @@ import { AddCategoryForm } from "@/app/[locale]/_modules/components/AddCategoryF
 import QueryWrapper from "@/testMockUps/queryMockUpProvider";
 import { ReactNode } from "react";
 
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(() => ({
+    refresh: jest.fn(), // Мок функції refresh
+  })),
+}));
+
 describe("AddCategoryForm component", () => {
   function Wrapper({ children }: { children: ReactNode }): ReactNode {
     return (

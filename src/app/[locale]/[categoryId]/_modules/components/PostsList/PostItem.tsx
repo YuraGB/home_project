@@ -7,6 +7,7 @@ const RatingComponent = dynamic(() =>
 );
 import { TRatingSchema } from "@/db/drizzle/schemas/ratingSchema";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 export const PostItem = ({
   post,
@@ -18,11 +19,13 @@ export const PostItem = ({
   return (
     <div
       className={
-        "rounded border h-20 grid grid-rows-[1fr,25px] items-center justify-items-end p-2"
+        "rounded border h-20 grid grid-rows-[1fr,25px] items-center justify-items-end p-2  bg-gradient-to-r from-transparent to-green bg-cover bg-left-top"
       }
     >
-      <h4 className={"text-center text-2xl mt-auto"}>{post.name}</h4>
-      {rate ? <RatingComponent rate={rate} /> : null}
+      <Link href={post.url} target={"_blank"} rel={"noreferrer"}>
+        <h4 className={"text-center text-2xl mt-auto"}>{post.name}</h4>
+        {rate ? <RatingComponent rate={rate} /> : null}
+      </Link>
     </div>
   );
 };

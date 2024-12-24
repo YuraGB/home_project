@@ -24,12 +24,9 @@ describe("AddSubCategoryForm component", () => {
   }
 
   it("should have input 'name of the category' text", () => {
-    render(
-      <AddSubCategoryForm categoryId={1} onClose={() => {}} userId={1} />,
-      {
-        wrapper: Wrapper,
-      },
-    ); //ARRANGE
+    render(<AddSubCategoryForm parentId={1} onClose={() => {}} userId={1} />, {
+      wrapper: Wrapper,
+    }); //ARRANGE
 
     const inputNode = screen.getByLabelText("The name of the sub category*"); //ACT
 
@@ -37,12 +34,9 @@ describe("AddSubCategoryForm component", () => {
   });
 
   it("should have input 'description of the category' text", () => {
-    render(
-      <AddSubCategoryForm categoryId={1} onClose={() => {}} userId={1} />,
-      {
-        wrapper: Wrapper,
-      },
-    ); //ARRANGE
+    render(<AddSubCategoryForm parentId={1} onClose={() => {}} userId={1} />, {
+      wrapper: Wrapper,
+    }); //ARRANGE
 
     const inputNode = screen.getByLabelText(
       "The description of the subCategory*",
@@ -52,12 +46,9 @@ describe("AddSubCategoryForm component", () => {
   });
 
   it("should have submit button", () => {
-    render(
-      <AddSubCategoryForm categoryId={1} onClose={() => {}} userId={1} />,
-      {
-        wrapper: Wrapper,
-      },
-    ); //ARRANGE
+    render(<AddSubCategoryForm parentId={1} onClose={() => {}} userId={1} />, {
+      wrapper: Wrapper,
+    }); //ARRANGE
 
     const submitButton = screen.getByRole("button", {
       name: "Save new sub category",

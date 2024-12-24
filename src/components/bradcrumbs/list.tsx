@@ -6,11 +6,10 @@ import {
 import { Slash } from "lucide-react";
 import { TBradcrmb } from "@/components/bradcrumbs/Bradcrmbs";
 import { Fragment, ReactNode } from "react";
-import { LinkWithLocale } from "@/components/linkWithLocale/LinkWithLocale";
+import Link from "next/link";
 
 export const List = ({
   list,
-  locale = "en-US",
 }: {
   list: TBradcrmb;
   locale: string;
@@ -20,9 +19,7 @@ export const List = ({
       return (
         <Fragment key={b.name}>
           <BreadcrumbItem>
-            <LinkWithLocale href={`/${locale}/${b.url}`}>
-              {b.name}
-            </LinkWithLocale>
+            <Link href={`/${b.url}`}>{b.name}</Link>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
             <Slash />

@@ -22,7 +22,6 @@ export const createNewPost = async (
     };
     return await addNewPostWithRating(validatedData, ratingData);
   }
-
   return await addNewPost(rest);
 };
 

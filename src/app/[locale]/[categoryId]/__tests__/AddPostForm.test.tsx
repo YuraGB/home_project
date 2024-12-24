@@ -23,7 +23,7 @@ describe("AddPostForm component", () => {
     );
   }
   it("should input 'name of the post' has label text", async () => {
-    render(<AddPostForm userId={1} categoryId={1} onClose={() => {}} />, {
+    render(<AddPostForm userId={1} parentId={1} onClose={() => {}} />, {
       wrapper: Wrapper,
     }); //ARRANGE
 
@@ -33,7 +33,7 @@ describe("AddPostForm component", () => {
   });
 
   it("should input 'description of the post' has label text", async () => {
-    render(<AddPostForm userId={1} categoryId={1} onClose={() => {}} />, {
+    render(<AddPostForm userId={1} parentId={1} onClose={() => {}} />, {
       wrapper: Wrapper,
     }); //ARRANGE
 
@@ -43,7 +43,7 @@ describe("AddPostForm component", () => {
   });
 
   it("should input 'url post' has label text", async () => {
-    render(<AddPostForm userId={1} categoryId={1} onClose={() => {}} />, {
+    render(<AddPostForm userId={1} parentId={1} onClose={() => {}} />, {
       wrapper: Wrapper,
     }); //ARRANGE
 

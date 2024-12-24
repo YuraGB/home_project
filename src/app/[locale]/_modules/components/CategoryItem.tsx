@@ -11,14 +11,14 @@ export const CategoryItem = ({
 }): ReactNode => {
   if (!category.id) return null;
   return (
-    <section>
+    <section className={"rounded bg-green"}>
       <Link
         href={{
           pathname: `/${locale}/${category.id}`,
         }}
-        prefetch={false}
+        prefetch={true}
         className={
-          "flex rounded-sm items-center justify-center p-2 gap-2 border-2 border-grey border-solid mb-2"
+          "flex  items-center justify-center p-2 gap-2 text-gold border border-gold border-solid mb-2"
         }
       >
         <h3>{category.name}</h3>
