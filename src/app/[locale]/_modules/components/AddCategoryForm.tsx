@@ -95,8 +95,12 @@ export const AddCategoryForm = ({
             </FormItem>
           )}
         />
-
-        <Button type="submit" disabled={loadingNewCategory}>
+        <br />
+        <Button
+          type="submit"
+          disabled={loadingNewCategory}
+          className={"w-full"}
+        >
           {loadingNewCategory ? (
             <FormattedMessage id={"savingCategory"} defaultMessage={"Saving"} />
           ) : (

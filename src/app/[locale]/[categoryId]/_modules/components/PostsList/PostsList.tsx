@@ -21,7 +21,11 @@ export const PostsList = ({
   ));
 
   return (
-    <section className={"grid grid-cols-4 items-center gap-4 pt-4"}>
+    <section
+      className={
+        "grid grid-cols-2 items-center gap-1 pt-4 md:grid-cols-3 lg:grid-cols-4 md:gap-4"
+      }
+    >
       {list}
     </section>
   );

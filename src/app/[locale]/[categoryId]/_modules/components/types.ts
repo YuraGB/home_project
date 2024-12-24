@@ -1,5 +1,6 @@
 export type TPropsAddForm = {
-  categoryId: number;
+  categoryId?: number;
+  subCategoryId?: number;
   userId: number;
   onClose: () => void;
 };

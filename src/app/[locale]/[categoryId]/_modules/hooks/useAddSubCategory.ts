@@ -48,13 +48,21 @@ export const useAddSubCategory = ({
     }
   }, [onClose, newSubCategory]);
 
-  const onSubmit = (values: NewSubCategory) =>
-    createSubCategory({
-      userId,
-      categoryId,
-      ...values,
-    });
-
+  const onSubmit = (values: NewSubCategory) => {
+    if (categoryId) {
+      createSubCategory({
+        userId,
+        categoryId,
+        ...values,
+      });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Category not found",
+        description: "There was a problem with creating new sub category.",
+      });
+    }
+  };
   return {
     loadingNewSubCategory,
     onSubmit,

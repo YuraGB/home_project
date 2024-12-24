@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { createNewCategory } from "@/server/services/category/createNewCategory";
+import { useRouter } from "next/navigation";
 
 type TAddCategoryData = {
   name: string;
@@ -8,6 +9,7 @@ type TAddCategoryData = {
 };
 
 export const useAddCategoryHandler = () => {
+  const { refresh } = useRouter();
   const {
     mutate: addCategoryHandler,
     data: newCategory,
@@ -15,6 +17,7 @@ export const useAddCategoryHandler = () => {
     isPending: loadingNewCategory,
   } = useMutation({
     mutationFn: async (data: TAddCategoryData) => await createNewCategory(data),
+    onSuccess: () => refresh(),
   });
 
   return {

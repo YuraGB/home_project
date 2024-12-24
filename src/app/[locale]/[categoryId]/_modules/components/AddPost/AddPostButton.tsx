@@ -20,10 +20,12 @@ const AddPostForm = dynamic(() =>
 
 export const AddPostButton = ({
   userId,
+  subCategoryId,
   categoryId,
 }: {
   userId: number;
-  categoryId: number;
+  categoryId?: number;
+  subCategoryId?: number;
 }): ReactNode => {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -51,6 +53,7 @@ export const AddPostButton = ({
             <AddPostForm
               userId={userId}
               categoryId={categoryId}
+              subCategoryId={subCategoryId}
               onClose={() => setOpen(false)}
             />
           </div>

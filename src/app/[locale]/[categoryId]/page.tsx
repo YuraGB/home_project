@@ -10,6 +10,7 @@ import { AddSubCategoryButton } from "@/app/[locale]/[categoryId]/_modules/compo
 import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
 import { Bradcrmbs } from "@/components/bradcrumbs/Bradcrmbs";
 import { PageTitle } from "@/components/pageTitle";
+import { getAllCategories } from "@/server/actions/catalog/getAllCategories";
 
 export default async function CategoryPage(props: TParams) {
   const { posts, categories, sub_category, userId, rating, breadcrumbsData } =
@@ -31,4 +32,12 @@ export default async function CategoryPage(props: TParams) {
       </footer>
     </DefaultPageLayout>
   );
+}
+
+export async function generateStaticParams(): Promise<
+  { categoryId: string }[] | []
+> {
+  const categories = await getAllCategories();
+
+  return categories.map(({ id }) => ({ categoryId: String(id) }));
 }

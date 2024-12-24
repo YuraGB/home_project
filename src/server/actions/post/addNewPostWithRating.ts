@@ -11,12 +11,10 @@ export type TPostWithRating = {
 };
 export const addNewPostWithRating = async (
   postData: TCreatePostData,
-  ratingData: Omit<TCreateNewRating, "postId">,
+  ratingData: Omit<TCreateNewRating, "postId">, // postId will be added in the transaction
 ): Promise<TPostWithRating | null> => {
   try {
-    // Start a transaction
     return await db.transaction(async (trx) => {
-      // Step 1: Create the post
       const [post] = await trx.insert(postsSchema).values(postData).returning();
 
       // Step 2: Create the rating for the post (using the postId)

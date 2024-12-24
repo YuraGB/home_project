@@ -9,7 +9,12 @@ import { useToast } from "@/hooks/use-toast";
 import { useAddPostApi } from "@/app/[locale]/[categoryId]/_modules/apiCalls/useAddPostApi";
 import { TPropsAddForm } from "@/app/[locale]/[categoryId]/_modules/components/types";
 
-export const useAddPost = ({ categoryId, userId, onClose }: TPropsAddForm) => {
+export const useAddPost = ({
+  categoryId,
+  subCategoryId,
+  userId,
+  onClose,
+}: TPropsAddForm) => {
   const { toast } = useToast();
   const { newPost, loadingNewPost, createPost, errorCreateNewPost } =
     useAddPostApi();
@@ -24,8 +29,6 @@ export const useAddPost = ({ categoryId, userId, onClose }: TPropsAddForm) => {
       rating: false,
     },
   });
-  const ratingWatch = form.watch("rating");
-  useEffect(() => {}, [ratingWatch]);
 
   useEffect(() => {
     if (errorCreateNewPost) {
@@ -44,12 +47,14 @@ export const useAddPost = ({ categoryId, userId, onClose }: TPropsAddForm) => {
     }
   }, [onClose, newPost]);
 
-  const onSubmit = (values: NewPost) =>
+  const onSubmit = (values: NewPost) => {
     createPost({
       userId,
       categoryId,
+      subCategoryId,
       ...values,
     });
+  };
 
   return {
     loadingNewPost,

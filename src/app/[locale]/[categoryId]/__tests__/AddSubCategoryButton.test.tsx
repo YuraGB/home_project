@@ -5,7 +5,7 @@ import { AddSubCategoryButton } from "@/app/[locale]/[categoryId]/_modules/compo
 
 describe("AddSubCategoryButton component", () => {
   it("should have text", async () => {
-    render(<AddSubCategoryButton userId={1} categoryId={1} />, {
+    render(<AddSubCategoryButton userId={1} parentId={1} />, {
       wrapper: Wrapper,
     }); //ARRANGE
 

@@ -11,7 +11,7 @@ export const creatingPostValidationData = z.object({
   url: z.string().url().min(1),
   image: z.string().optional(),
   categoryId: z.number().optional(),
-  subcategoryId: z.number().optional(),
+  subCategoryId: z.number().optional(),
   userId: z.number().min(1),
   rating: z.boolean(),
 });

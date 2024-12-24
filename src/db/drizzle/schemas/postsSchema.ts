@@ -4,6 +4,7 @@ import { subCategoriesSchema } from "@/db/drizzle/schemas/subCategoriesSchema";
 import { relations } from "drizzle-orm/relations";
 import { InferSelectModel } from "drizzle-orm";
 import { usersTable } from "@/db/drizzle/schemas/userSchema";
+import { resourceTable } from "@/db/drizzle/schemas/postResourses";
 
 export const postsSchema = pgTable("posts", {
   id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
@@ -17,7 +18,7 @@ export const postsSchema = pgTable("posts", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
-export const postsRelations = relations(postsSchema, ({ one }) => ({
+export const postsRelations = relations(postsSchema, ({ one, many }) => ({
   categories: one(categorySchema, {
     fields: [postsSchema.categoryId],
     references: [categorySchema.id],
@@ -30,6 +31,7 @@ export const postsRelations = relations(postsSchema, ({ one }) => ({
     fields: [postsSchema.userId],
     references: [usersTable.id],
   }),
+  relations: many(resourceTable),
 }));
 
 export type TDBPost = InferSelectModel<typeof postsSchema>;
