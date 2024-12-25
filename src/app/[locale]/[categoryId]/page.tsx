@@ -27,7 +27,7 @@ export default async function CategoryPage(props: TParams) {
         <PostsList posts={posts} rating={rating} />
       </article>
       <footer className={"flex gap-2 justify-center items-center w-full"}>
-        <AddPostButton userId={userId} categoryId={categories.id} />
+        <AddPostButton categoryId={categories.id} />
         <AddSubCategoryButton userId={userId} categoryId={categories.id} />
       </footer>
     </DefaultPageLayout>

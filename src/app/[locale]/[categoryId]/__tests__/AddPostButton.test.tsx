@@ -5,7 +5,7 @@ import { screen } from "@testing-library/dom";
 
 describe("AddPostButton component", () => {
   it("should have text", () => {
-    render(<AddPostButton userId={1} categoryId={1} />, {
+    render(<AddPostButton categoryId={1} />, {
       wrapper: Wrapper,
     }); //ARRANGE
 

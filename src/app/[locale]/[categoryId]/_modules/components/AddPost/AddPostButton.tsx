@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { FormattedMessage } from "react-intl";
 
 import dynamic from "next/dynamic";
+import { useSession } from "next-auth/react";
 const AddPostForm = dynamic(() =>
   import(
     "@/app/[locale]/[categoryId]/_modules/components/AddPost/AddPostForm"
@@ -19,15 +20,14 @@ const AddPostForm = dynamic(() =>
 );
 
 export const AddPostButton = ({
-  userId,
   subCategoryId,
   categoryId,
 }: {
-  userId: number;
   categoryId?: number;
   subCategoryId?: number;
 }): ReactNode => {
   const [open, setOpen] = useState<boolean>(false);
+  const { data: session } = useSession();
 
   return (
     <section>
@@ -51,7 +51,7 @@ export const AddPostButton = ({
           </DialogHeader>
           <div className="grid gap-4 py-4 justify-items-end">
             <AddPostForm
-              userId={userId}
+              userId={session?.user.id}
               categoryId={categoryId}
               subCategoryId={subCategoryId}
               onClose={() => setOpen(false)}

@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useAddPostApi } from "@/app/[locale]/[categoryId]/_modules/apiCalls/useAddPostApi";
 import { TPropsAddForm } from "@/app/[locale]/[categoryId]/_modules/components/types";
+import { useRouter } from "next/navigation";
 
 export const useAddPost = ({
   categoryId,
@@ -16,6 +17,7 @@ export const useAddPost = ({
   onClose,
 }: TPropsAddForm) => {
   const { toast } = useToast();
+  const router = useRouter();
   const { newPost, loadingNewPost, createPost, errorCreateNewPost } =
     useAddPostApi();
   const formSchema = useNewPostValidationSchema();
@@ -48,12 +50,16 @@ export const useAddPost = ({
   }, [onClose, newPost]);
 
   const onSubmit = (values: NewPost) => {
-    createPost({
-      userId,
-      categoryId,
-      subCategoryId,
-      ...values,
-    });
+    if (userId) {
+      createPost({
+        userId,
+        categoryId,
+        subCategoryId,
+        ...values,
+      });
+    } else {
+      router.push("/login");
+    }
   };
 
   return {

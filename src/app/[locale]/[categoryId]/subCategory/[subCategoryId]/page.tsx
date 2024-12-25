@@ -11,17 +11,17 @@ export default async function SubCategory({
 }: {
   params: Promise<{ subCategoryId: string; categoryId: string }>;
 }) {
-  const { breadcrumbsData, userId, subCategoryId, posts, rating } =
+  const { breadcrumbsData, posts, rating, subCategoryId } =
     await getSubCategoryPage({
       params,
     });
-  console.log(rating, posts);
+
   return (
     <DefaultPageLayout>
       <Bradcrmbs bradcrumbs={breadcrumbsData} />
       <h1>subCategory</h1>
       <article className={"h-full w-full"}>
-        <AddPostButton userId={userId} subCategoryId={subCategoryId} />
+        <AddPostButton subCategoryId={subCategoryId} />
         <PostsList posts={posts} rating={rating} />
       </article>
     </DefaultPageLayout>

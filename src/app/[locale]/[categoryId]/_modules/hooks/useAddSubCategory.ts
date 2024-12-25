@@ -49,7 +49,7 @@ export const useAddSubCategory = ({
   }, [onClose, newSubCategory]);
 
   const onSubmit = (values: NewSubCategory) => {
-    if (categoryId) {
+    if (categoryId && userId) {
       createSubCategory({
         userId,
         categoryId,
