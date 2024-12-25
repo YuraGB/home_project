@@ -1,30 +1,23 @@
-import winston, { createLogger, format, transports } from "winston";
-import "winston-daily-rotate-file";
+import { createLogger, format, transports } from "winston";
 
-const logger = (fileName = "application") => {
-  const fileLogTransport = new transports.DailyRotateFile({
-    filename: `logs/${fileName}-%DATE%.log`,
-    datePattern: "YYYY-MM-DD",
-    zippedArchive: true,
-    maxFiles: "30d",
-    maxSize: "20m",
-  });
-
+const logger = () => {
   const consoleTransport = new transports.Console({
-    level: process.env.LOG_LEVEL,
-    handleExceptions: false,
-    format: winston.format.combine(
-      winston.format.colorize(),
-      winston.format.simple(),
+    level: process.env.LOG_LEVEL || "info",
+    handleExceptions: true,
+    format: format.combine(
+      format.colorize(),
+      format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+      format.printf(
+        ({ level, message, label = process.env.NODE_ENV, timestamp }) =>
+          `${timestamp} [${label}] ${level}: ${message}`,
+      ),
     ),
   });
 
   const newLogger = createLogger({
-    level: "info",
+    level: process.env.LOG_LEVEL || "info",
     format: format.combine(
-      format.timestamp({
-        format: "YYYY-MM-DD HH:mm:ss",
-      }),
+      format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
       format.errors({ stack: true }),
       format.splat(),
       format.printf(
@@ -32,13 +25,10 @@ const logger = (fileName = "application") => {
           `${timestamp} [${label}] ${level}: ${message}`,
       ),
     ),
-    defaultMeta: "home_project",
+    defaultMeta: { service: "home_project" },
     transports: [consoleTransport],
   });
 
-  if (process.env.NODE_ENV === "development") {
-    newLogger.add(fileLogTransport);
-  }
   return newLogger;
 };
 
