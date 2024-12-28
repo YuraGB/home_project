@@ -30,7 +30,7 @@ export const getSubCategoryPage = async ({ params }: Readonly<TParams>) => {
     posts: postsData,
     sub_category:
       sub_categories && !Array.isArray(sub_categories) ? sub_categories : null,
-    rating: pageData && !Array.isArray(pageData) ? pageData.rating : null,
+    rating: !Array.isArray(pageData) ? pageData.rating : null,
     breadcrumbsData,
     subCategoryId: subId,
     categoryId: catId,
