@@ -1,9 +1,6 @@
 import { TSubData, TSubReturnType } from "@/server/actions/subCategory/types";
 
-export const formatDataHelper = (
-  data: TSubData,
-): TSubReturnType | null | [] => {
-  if (!data.length) return null;
+export const formatDataHelper = (data: TSubData): TSubReturnType | [] => {
   return data.reduce(
     (acc, row) => {
       const posts = acc.posts;

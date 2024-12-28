@@ -19,7 +19,7 @@ export const getSubCategoryPage = async ({ params }: Readonly<TParams>) => {
 
   const pageData = await getSubCategoryById(Number(subCategoryId));
 
-  if (!pageData || Array.isArray(pageData)) {
+  if (Array.isArray(pageData)) {
     redirect("/");
   }
   const { sub_categories, rating, posts } = pageData;

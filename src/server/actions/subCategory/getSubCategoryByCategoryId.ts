@@ -9,7 +9,7 @@ import { formatDataHelper } from "@/server/actions/subCategory/formatHelper";
 
 export const getSubCategoryById = async (
   id: number,
-): Promise<TSubReturnType | [] | null> => {
+): Promise<TSubReturnType | []> => {
   try {
     const results = await db
       .select()
