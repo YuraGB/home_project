@@ -50,6 +50,7 @@ export const useAddPost = ({
   }, [onClose, newPost]);
 
   const onSubmit = (values: NewPost) => {
+    console.log("subMit", categoryId, subCategoryId);
     if (userId) {
       createPost({
         userId,

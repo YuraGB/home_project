@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -12,6 +13,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { TPropsAddForm } from "@/app/[locale]/[categoryId]/_modules/components/types";
 import { useAddSubCategory } from "@/app/[locale]/[categoryId]/_modules/hooks/useAddSubCategory";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export const AddSubCategoryForm = (props: TPropsAddForm): ReactNode => {
   const { onSubmit, form, loadingNewSubCategory } = useAddSubCategory(props);
@@ -113,6 +121,50 @@ export const AddSubCategoryForm = (props: TPropsAddForm): ReactNode => {
                   disabled={field.disabled}
                 />
               </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="layoutSchema"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                <FormattedMessage
+                  defaultMessage={"Layout schema"}
+                  id={"layoutSchema"}
+                />
+              </FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a layout for displaying posts" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="default">
+                    <FormattedMessage
+                      id={"defaultPostLayout"}
+                      defaultMessage={"The default layout"}
+                    />{" "}
+                  </SelectItem>
+                  <SelectItem value="topRate">
+                    <FormattedMessage
+                      id={"topRatePostLayout"}
+                      defaultMessage={"The top rate layout"}
+                    />
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+              <FormDescription>
+                <FormattedMessage
+                  defaultMessage={
+                    "The posts will will be shown in the specific layout"
+                  }
+                  id={"layoutSchemaDescription"}
+                />
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}

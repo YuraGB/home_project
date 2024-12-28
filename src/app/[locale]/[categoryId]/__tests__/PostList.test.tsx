@@ -1,11 +1,11 @@
 import { PostsList } from "@/app/[locale]/[categoryId]/_modules/components/PostsList/PostsList";
-import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
 import { render, waitFor } from "@testing-library/react";
 import Wrapper from "@/testMockUps/intlMoskUpProvider";
 import { screen } from "@testing-library/dom";
+import { TPostWithRating } from "@/lib/formatPostData";
 
 describe("PostList component", () => {
-  const posts: TDBPost[] = [
+  const posts: TPostWithRating[] = [
     {
       id: 1,
       name: "Post 1",
@@ -16,6 +16,7 @@ describe("PostList component", () => {
       categoryId: 1,
       userId: 1,
       image: null,
+      rate: null,
     },
     {
       id: 2,
@@ -27,10 +28,11 @@ describe("PostList component", () => {
       categoryId: 1,
       userId: 1,
       image: null,
+      rate: null,
     },
   ];
   it("should have heading of the post name", async () => {
-    render(<PostsList posts={posts} rating={null} />, {
+    render(<PostsList posts={posts} />, {
       wrapper: Wrapper,
     }); //ARRANGE
 
@@ -42,7 +44,7 @@ describe("PostList component", () => {
   });
 
   it("should not to be in the DOM", () => {
-    render(<PostsList posts={[]} rating={null} />, {
+    render(<PostsList posts={[]} />, {
       wrapper: Wrapper,
     }); //ARRANGE
 

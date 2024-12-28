@@ -1,0 +1,56 @@
+@import "animations.css";
+
+.rate-row {
+    margin: 30px;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    align-content: center;
+
+    &:before {
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5em;
+        width: 200px;
+        background: #004444;
+        height: 100%;
+    }
+
+    &:first-child {
+        background:  white/*linear-gradient(45deg, #ffd700, #ffcc00, #b8860b)*/;
+        margin: 0;
+        border-color: #ffcc00;
+
+        &:before {
+            content: 'Top 1';
+            background: #b8860b;
+        }
+
+    }
+
+
+    &:nth-child(2) {
+        background: white/*linear-gradient(45deg, #c0c0c0, #808080, #696969)*/;
+        margin: 10px 10px 0;
+        border-color: #c0c0c0;
+
+        &:before {
+            content: 'Top 2';
+            background: #c0c0c0;
+        }
+    }
+
+    &:nth-child(3) {
+        background: white/*linear-gradient(45deg, #cd7f32, #8b4513, #8b0000)*/;
+        margin: 10px 20px 30px;
+        border-color: #8b4513;
+
+        &:before {
+            content: 'Top 3';
+            background: #cd7f32;
+        }
+    }
+}

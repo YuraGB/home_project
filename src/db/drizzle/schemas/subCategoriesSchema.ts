@@ -12,6 +12,7 @@ export const subCategoriesSchema = pgTable("sub_categories", {
   userId: integer().references(() => usersTable.id),
   categoryId: integer().references(() => categorySchema.id),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+  layoutSchema: varchar().default("default"),
 });
 
 export const subCategoryRelations = relations(

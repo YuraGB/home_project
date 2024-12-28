@@ -10,6 +10,7 @@ export const categorySchema = pgTable("categories", {
   description: varchar({ length: 512 }).notNull(),
   userId: integer().references(() => usersTable.id),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+  layoutSchema: varchar().default("default"),
 });
 
 export const categoryRelations = relations(categorySchema, ({ one, many }) => ({

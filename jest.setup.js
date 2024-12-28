@@ -11,5 +11,11 @@ global.fetch = jest.fn(() =>
   }),
 );
 
+global.Request = jest.fn(() => ({
+  method: "GET",
+  // url: '/some-path',
+  // add other necessary properties here
+}));
+
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
