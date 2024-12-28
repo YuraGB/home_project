@@ -1,5 +1,7 @@
 import { breadcrumbsService } from "@/server/services/breadcrumbs";
 import { getSubCategoryById } from "@/server/actions/subCategory/getSubCategoryByCategoryId";
+import { formatPostData } from "@/lib/formatPostData";
+import { redirect } from "next/navigation";
 
 export type TParams = {
   params: Promise<{ categoryId: string; subCategoryId: string }>;
@@ -16,13 +18,21 @@ export const getSubCategoryPage = async ({ params }: Readonly<TParams>) => {
   });
 
   const pageData = await getSubCategoryById(Number(subCategoryId));
-  console.log(pageData);
+
+  if (!pageData || Array.isArray(pageData)) {
+    redirect("/");
+  }
+  const { sub_categories, rating, posts } = pageData;
+
+  const postsData = formatPostData(posts ?? [], rating);
+
   return {
-    posts: pageData && !Array.isArray(pageData) ? pageData.posts : null,
+    posts: postsData,
     sub_category:
-      pageData && !Array.isArray(pageData) ? pageData.sub_categories : null,
+      sub_categories && !Array.isArray(sub_categories) ? sub_categories : null,
     rating: pageData && !Array.isArray(pageData) ? pageData.rating : null,
     breadcrumbsData,
     subCategoryId: subId,
+    categoryId: catId,
   };
 };

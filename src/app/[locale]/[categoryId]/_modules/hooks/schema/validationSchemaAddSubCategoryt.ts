@@ -5,6 +5,7 @@ export const validationNewSubCategory = z.object({
   name: z.string().min(2),
   description: z.string().min(2),
   image: z.string().url("Must be a valid URL").optional().or(z.literal("")),
+  layoutSchema: z.string(),
 });
 
 export type NewSubCategory = z.infer<typeof validationNewSubCategory>;

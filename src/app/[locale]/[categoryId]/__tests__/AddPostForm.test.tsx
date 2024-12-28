@@ -23,9 +23,17 @@ describe("AddPostForm component", () => {
     );
   }
   it("should input 'name of the post' has label text", async () => {
-    render(<AddPostForm userId={1} parentId={1} onClose={() => {}} />, {
-      wrapper: Wrapper,
-    }); //ARRANGE
+    render(
+      <AddPostForm
+        userId={1}
+        subCategoryId={1}
+        categoryId={1}
+        onClose={() => {}}
+      />,
+      {
+        wrapper: Wrapper,
+      },
+    ); //ARRANGE
 
     const inputNode = screen.getByLabelText("Name of the post"); //ACT
 
@@ -33,9 +41,17 @@ describe("AddPostForm component", () => {
   });
 
   it("should input 'description of the post' has label text", async () => {
-    render(<AddPostForm userId={1} parentId={1} onClose={() => {}} />, {
-      wrapper: Wrapper,
-    }); //ARRANGE
+    render(
+      <AddPostForm
+        userId={1}
+        categoryId={1}
+        subCategoryId={1}
+        onClose={() => {}}
+      />,
+      {
+        wrapper: Wrapper,
+      },
+    ); //ARRANGE
 
     const inputNode = screen.getByLabelText("The description of the post"); //ACT
 
@@ -43,9 +59,17 @@ describe("AddPostForm component", () => {
   });
 
   it("should input 'url post' has label text", async () => {
-    render(<AddPostForm userId={1} parentId={1} onClose={() => {}} />, {
-      wrapper: Wrapper,
-    }); //ARRANGE
+    render(
+      <AddPostForm
+        userId={1}
+        categoryId={1}
+        subCategoryId={1}
+        onClose={() => {}}
+      />,
+      {
+        wrapper: Wrapper,
+      },
+    ); //ARRANGE
 
     const inputNode = screen.getByLabelText("The url of the post"); //ACT
 

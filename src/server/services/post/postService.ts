@@ -8,11 +8,12 @@ import {
 } from "@/server/services/post/validationSchemas";
 import { addNewPost } from "@/server/actions/post/addNewPost";
 import { addNewPostWithRating } from "@/server/actions/post/addNewPostWithRating";
+import { revalidatePath } from "next/cache";
 
 export const createNewPost = async (
-  data: TCreatePostData & { rating: boolean },
+  data: TCreatePostData & { rating: boolean } & { locale: string },
 ) => {
-  const { rating, ...rest } = data;
+  const { rating, locale = "en-US", ...rest } = data;
   const validatedData = creatingPostValidationData.parse(data);
 
   if (rating) {
@@ -20,9 +21,24 @@ export const createNewPost = async (
       votes: 0,
       amountRating: 0,
     };
-    return await addNewPostWithRating(validatedData, ratingData);
+    const createdPost = await addNewPostWithRating(validatedData, ratingData);
+    if (createdPost?.post) {
+      revalidatePath(
+        `/${locale}${data.categoryId ? "/" + data.categoryId : ""}/subCategory/${data.subCategoryId}`,
+      );
+      return createdPost;
+    }
+  } else {
+    const newPost = await addNewPost(rest);
+
+    if (newPost?.id) {
+      revalidatePath(
+        `/${locale}${data.categoryId ? "/" + data.categoryId : ""}/subCategory/${data.subCategoryId}`,
+      );
+
+      return newPost;
+    }
   }
-  return await addNewPost(rest);
 };
 
 export const getPosts = async (data: TFindPost): Promise<TDBPost[] | null> => {

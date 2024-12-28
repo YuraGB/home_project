@@ -28,6 +28,7 @@ export const useAddSubCategory = ({
       name: "",
       description: "",
       image: "",
+      layoutSchema: "",
     },
   });
 
@@ -49,6 +50,7 @@ export const useAddSubCategory = ({
   }, [onClose, newSubCategory]);
 
   const onSubmit = (values: NewSubCategory) => {
+    console.log("submit", values);
     if (categoryId && userId) {
       createSubCategory({
         userId,

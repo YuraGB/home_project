@@ -4,16 +4,16 @@ import {
   TParams,
 } from "@/app/[locale]/[categoryId]/_modules/hooks/useCategoryPage";
 import { SubCategoryList } from "@/app/[locale]/[categoryId]/_modules/components/SubCategoryList/SubCategoryList";
-import { PostsList } from "@/app/[locale]/[categoryId]/_modules/components/PostsList/PostsList";
 import { AddPostButton } from "@/app/[locale]/[categoryId]/_modules/components/AddPost/AddPostButton";
 import { AddSubCategoryButton } from "@/app/[locale]/[categoryId]/_modules/components/AddSubCategory/AddSubCategoryButton";
 import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
 import { Bradcrmbs } from "@/components/bradcrumbs/Bradcrmbs";
 import { PageTitle } from "@/components/pageTitle";
 import { getAllCategories } from "@/server/actions/catalog/getAllCategories";
+import { PostListLayout } from "@/components/postListLayout";
 
 export default async function CategoryPage(props: TParams) {
-  const { posts, categories, sub_category, userId, rating, breadcrumbsData } =
+  const { posts, categories, sub_category, userId, breadcrumbsData } =
     await getCategoryPage(props);
 
   if (!categories?.id) return null;
@@ -24,7 +24,7 @@ export default async function CategoryPage(props: TParams) {
       <PageTitle title={categories.name} />
       <article className={"h-full w-full"}>
         <SubCategoryList sub_categories={sub_category} />
-        <PostsList posts={posts} rating={rating} />
+        <PostListLayout posts={posts} postListType={categories.layoutSchema} />
       </article>
       <footer className={"flex gap-2 justify-center items-center w-full"}>
         <AddPostButton categoryId={categories.id} />
@@ -34,6 +34,7 @@ export default async function CategoryPage(props: TParams) {
   );
 }
 
+//SSG
 export async function generateStaticParams(): Promise<
   { categoryId: string }[] | []
 > {

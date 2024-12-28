@@ -31,5 +31,9 @@
   "addNewSubCategoryBtn": "Create new sub category",
   "postRating": "The rating of the post",
   "ratingDescription": "The rating will be shown with the post",
-  "titleRatingCheckbox": "Rating"
+  "titleRatingCheckbox": "Rating",
+  "layoutSchema": "The layout of the post",
+  "layoutSchemaDescription": "The layout will be shown with the post",
+  "defaultPostLayout": "Default layout",
+  "topRatePostLayout": "Top rate layout"
 }
