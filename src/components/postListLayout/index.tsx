@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { TPostWithRating } from "@/lib/formatPostData";
 import { TopRateLayout } from "@/components/topRateLayout";
 import { TopRateList } from "@/components/topRate/topRateList";
-import { PostsList } from "@/app/[locale]/[categoryId]/_modules/components/PostsList/PostsList";
+import { PostsList } from "@/app/_modules/Posts/PostsList";
 
 export const PostListLayout = ({
   postListType = "default",

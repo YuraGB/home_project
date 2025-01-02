@@ -9,6 +9,7 @@ import {
 } from "@/server/services/rating/validationSchema";
 import { updateRate } from "@/server/actions/rating/updateRate";
 import { createNewRating } from "@/server/actions/rating/createNewRating";
+import { getRatingDataByPostId } from "@/server/actions/rating/getRatingByPostId";
 
 const validationPostId = z.number().min(1);
 
@@ -23,10 +24,21 @@ export const getRatingById = async (
   return result ?? null;
 };
 
+export const getRatingByPostId = async (
+  id: number,
+): Promise<TRatingSchema | null> => {
+  const validData = validationPostId.parse(id);
+
+  const result = await getRatingDataByPostId(validData);
+
+  // undefined is not excepted
+  return result ?? null;
+};
+
 export const addNewRating = async ({ postId }: TNewRating) => {
   const newRating = {
     postId,
-    addNewRating: 0,
+    amountRating: 0,
     votes: 0,
   };
 

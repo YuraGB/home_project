@@ -10,7 +10,18 @@ export const formatRows = (posts: Array<TPostWithRating>): TRatingRowPosts =>
         acc["noRating"].push(post);
         return acc;
       }
-      const rate = Math.round(post.rate.amountRating! / (post.rate.votes ?? 1));
+      if (post.rate.amountRating === null) {
+        acc["noRating"].push(post);
+        return acc;
+      }
+
+      if (post.rate.amountRating === 0) {
+        acc[0] = acc[0] || [];
+        acc[0].push(post);
+        return acc;
+      }
+
+      const rate = Math.round(post.rate.amountRating / (post.rate.votes ?? 1));
       if (!acc[rate]) {
         acc[rate] = [];
       }

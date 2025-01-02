@@ -15,3 +15,16 @@ export const creatingPostValidationData = z.object({
   userId: z.number().min(1),
   rating: z.boolean(),
 });
+
+export const updatePostValidationData = z.object({
+  id: z.number().min(1),
+  name: z.string().min(1),
+  description: z.string().min(1),
+  url: z.string().url().min(1),
+  image: z.string(),
+  categoryId: z.number().nullable(),
+  subCategoryId: z.number(),
+  userId: z.number().min(1),
+  rating: z.boolean(),
+  createdAt: z.date(),
+});

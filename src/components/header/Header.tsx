@@ -1,4 +1,5 @@
 import { ModeToggle } from "@/components/theme/themeSwitcher";
+import { Profile } from "@/components/user/Profile";
 
 export const Header = () => {
   return (
@@ -12,7 +13,7 @@ export const Header = () => {
       >
         <ModeToggle />
         <p>Logo</p>
-        <p>user</p>
+        <Profile />
       </section>
     </header>
   );

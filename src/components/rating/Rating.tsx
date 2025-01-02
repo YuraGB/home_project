@@ -20,6 +20,7 @@ const ratingVariants = {
 
 interface RatingsProps extends React.HTMLAttributes<HTMLDivElement> {
   rating: number;
+  disabled?: boolean;
   totalstars?: number;
   size?: number;
   fill?: boolean;
@@ -32,6 +33,7 @@ const Ratings = ({ ...props }: RatingsProps) => {
   const {
     rating,
     totalstars = 5,
+    disabled = false,
     size = 20,
     fill = true,
     icon = <Star />,
@@ -41,6 +43,7 @@ const Ratings = ({ ...props }: RatingsProps) => {
   } = props;
   const partial = rating % 1 > 0;
   const fullStars = Math.floor(rating);
+  const disabledClass = disabled ? "opacity-20 pointer-events-none" : "";
 
   const partialStar = partial ? (
     <PartialStar
@@ -54,7 +57,11 @@ const Ratings = ({ ...props }: RatingsProps) => {
 
   return (
     <div
-      className={cn("flex items-center gap-2 cursor-pointer z-[1] relative")}
+      className={cn(
+        "flex items-center gap-2 cursor-pointer z-[1] relative" +
+          " " +
+          disabledClass,
+      )}
       {...rest}
     >
       {[...Array(fullStars)].map(

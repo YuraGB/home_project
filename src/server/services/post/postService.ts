@@ -1,14 +1,25 @@
 "use server";
 import { getPostsByEntityId } from "@/server/actions/post/getAllPostsByEntityId";
 import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
-import { TCreatePostData, TFindPost } from "@/server/services/post/types";
+import {
+  TCreatePostData,
+  TFindPost,
+  TUpdatePostData,
+} from "@/server/services/post/types";
 import {
   creatingPostValidationData,
   postValidationSchema,
+  updatePostValidationData,
 } from "@/server/services/post/validationSchemas";
 import { addNewPost } from "@/server/actions/post/addNewPost";
 import { addNewPostWithRating } from "@/server/actions/post/addNewPostWithRating";
 import { revalidatePath } from "next/cache";
+import { updatePost } from "@/server/actions/post/updatePost";
+import { addNewRating, getRatingByPostId } from "@/server/services/rating";
+import logger from "@/lib/logger";
+import { getRatingDataByPostId } from "@/server/actions/rating/getRatingByPostId";
+import { deleteRating } from "@/server/actions/rating/deleteRating";
+import { deletePost } from "@/server/actions/post/deletePost";
 
 export const createNewPost = async (
   data: TCreatePostData & { rating: boolean } & { locale: string },
@@ -51,4 +62,49 @@ export const getPosts = async (data: TFindPost): Promise<TDBPost[] | null> => {
   postValidationSchema.parse(data);
 
   return await getPostsByEntityId(entry);
+};
+
+export const updatePostData = async (
+  data: TUpdatePostData & { rating: boolean },
+) => {
+  const { rating, ...rest } = data;
+
+  if (!rest.id) {
+    logger.error(`Update post data: No post id provided`);
+    throw new Error("No post id provided");
+  }
+
+  const validatedData = updatePostValidationData.parse(data);
+
+  // if rating is true, we need to check if the post already has a rating
+  // if it doesn't, we need to create a new rating for the post
+  if (rating) {
+    const existRating = await getRatingByPostId(rest.id);
+
+    if (!existRating) {
+      const rate = await addNewRating({ postId: rest.id });
+
+      if (!rate) {
+        logger.error(`Update post data: Error creating rating for post`);
+        throw new Error("Error creating rating for post");
+      }
+    }
+
+    return await updatePost(validatedData);
+  }
+};
+
+export const deletePostData = async (postId: number) => {
+  if (!postId) {
+    logger.error(`Delete post data: No post id provided`);
+    throw new Error("No post id provided");
+  }
+
+  const rate = await getRatingDataByPostId(postId);
+
+  if (rate) {
+    await deleteRating(rate.id);
+  }
+
+  return await deletePost(postId);
 };

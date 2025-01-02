@@ -1,5 +1,3 @@
-import { useAddPost } from "@/app/[locale]/[categoryId]/_modules/hooks/useAddPost";
-import { ReactNode } from "react";
 import {
   Form,
   FormControl,
@@ -11,13 +9,22 @@ import {
 } from "@/components/ui/form";
 import { FormattedMessage } from "react-intl";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { TPropsAddForm } from "@/app/[locale]/[categoryId]/_modules/components/types";
 import { Checkbox } from "@/components/ui/checkbox";
+import { ReactNode } from "react";
+import { SubmitHandler, UseFormReturn } from "react-hook-form";
+import { NewPost } from "@/app/_modules/Posts/hooks/schema/validationSchemaAddPost";
 
-export const AddPostForm = (props: TPropsAddForm): ReactNode => {
-  const { onSubmit, form, loadingNewPost } = useAddPost(props);
+type TProps = {
+  children: ReactNode;
+  form: UseFormReturn<NewPost>;
+  onSubmitAction: SubmitHandler<NewPost>;
+};
 
+export const CreateUpdateForm = ({
+  children,
+  form,
+  onSubmitAction,
+}: TProps): ReactNode => {
   return (
     <Form
       control={form.control}
@@ -36,7 +43,10 @@ export const AddPostForm = (props: TPropsAddForm): ReactNode => {
       watch={form.watch}
       unregister={form.unregister}
     >
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-1/2 space-y-2">
+      <form
+        onSubmit={form.handleSubmit(onSubmitAction)}
+        className="w-1/2 space-y-2"
+      >
         <FormField
           defaultValue={""}
           control={form.control}
@@ -174,16 +184,7 @@ export const AddPostForm = (props: TPropsAddForm): ReactNode => {
           )}
         />
 
-        <Button type="submit" disabled={loadingNewPost}>
-          {loadingNewPost ? (
-            <FormattedMessage id={"savingPost"} defaultMessage={"Saving"} />
-          ) : (
-            <FormattedMessage
-              id={"savePost"}
-              defaultMessage={"Save new post"}
-            />
-          )}
-        </Button>
+        {children}
       </form>
     </Form>
   );

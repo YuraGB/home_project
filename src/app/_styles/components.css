@@ -1,12 +1,21 @@
-@import "animations.css";
 
 .rate-row {
     margin: 30px;
-    justify-content: space-between;
-    padding: 20px;
+    padding: 10px;
     border-radius: 12px;
     border: 2px solid transparent;
+    display: flex;
     align-content: center;
+    background:  white;
+
+    .swiper {
+        width: 100%;
+
+    }
+
+    .swiper-slide {
+        width: 300px;
+    }
 
     &:before {
         display: flex;
@@ -24,11 +33,6 @@
         margin: 0;
         border-color: #ffcc00;
 
-        &:before {
-            content: 'Top 1';
-            background: #b8860b;
-        }
-
     }
 
 
@@ -37,20 +41,33 @@
         margin: 10px 10px 0;
         border-color: #c0c0c0;
 
-        &:before {
-            content: 'Top 2';
-            background: #c0c0c0;
         }
-    }
 
     &:nth-child(3) {
         background: white/*linear-gradient(45deg, #cd7f32, #8b4513, #8b0000)*/;
         margin: 10px 20px 30px;
         border-color: #8b4513;
 
-        &:before {
-            content: 'Top 3';
-            background: #cd7f32;
+    }
+
+
+}
+
+.hovered {
+    transition: all 0.5s ease;
+
+    > div {
+        transform: translateX(100%);
+        transition: all 0.5s ease;
+    }
+    &:hover {
+        > div {
+            transform: translateX(0);
         }
     }
+}
+
+.disabledClass {
+    pointer-events: none;
+    opacity: 0;
 }

@@ -1,10 +1,11 @@
 import React from "react";
 import { Bradcrmbs } from "@/components/bradcrumbs/Bradcrmbs";
 import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
-import { AddPostButton } from "@/app/[locale]/[categoryId]/_modules/components/AddPost/AddPostButton";
+import { AddPostButton } from "@/app/_modules/Posts/AddPost/AddPostButton";
 import { getSubCategoryPage } from "@/app/[locale]/[categoryId]/subCategory/[subCategoryId]/_modules/hooks/useSubCategory";
 import { getAllSubCategories } from "@/server/actions/subCategory/getAllSubCategories";
 import { PostListLayout } from "@/components/postListLayout";
+import { PageTitle } from "@/components/pageTitle";
 
 export default async function SubCategory({
   params,
@@ -22,8 +23,8 @@ export default async function SubCategory({
   return (
     <DefaultPageLayout>
       <Bradcrmbs bradcrumbs={breadcrumbsData} />
-      <h1>{sub_category.name}</h1>
-      <article className={"h-full w-full max-w-full"}>
+      <PageTitle title={sub_category.name} />
+      <article className={"h-full w-full max-w-full pt-4"}>
         <AddPostButton subCategoryId={subCategoryId} categoryId={categoryId} />
         <PostListLayout
           posts={posts}

@@ -1,7 +1,7 @@
-import { AddPostButton } from "@/app/[locale]/[categoryId]/_modules/components/AddPost/AddPostButton";
+import { AddPostButton } from "@/app/_modules/Posts/AddPost/AddPostButton";
 import IntlWrapper from "@/testMockUps/intlMoskUpProvider";
 import { render, screen } from "@testing-library/react";
-import { ReactNode } from "react";
+import { act, ReactNode } from "react";
 import QueryWrapper from "@/testMockUps/queryMockUpProvider";
 import AuthMockProvider from "@/testMockUps/sessionMockProvider";
 import { getSession, useSession } from "next-auth/react"; // Import getSession and useSession
@@ -40,7 +40,7 @@ describe("AddPostButton component", () => {
     );
   }
 
-  it("should have text", () => {
+  it("should have text", async () => {
     // Typecast getSession to a mocked function
     const mockedGetSession = getSession as jest.MockedFunction<
       typeof getSession
@@ -67,10 +67,11 @@ describe("AddPostButton component", () => {
       },
       status: "authenticated",
     });
-
-    render(<AddPostButton categoryId={1} subCategoryId={1} />, {
-      wrapper: Wrapper,
-    }); // ARRANGE
+    await act(async () => {
+      render(<AddPostButton categoryId={1} subCategoryId={1} />, {
+        wrapper: Wrapper,
+      }); // ARRANGE
+    });
 
     const elem = screen.getByRole("button", {
       name: "Create new post",
