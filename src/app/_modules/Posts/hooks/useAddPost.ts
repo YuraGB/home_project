@@ -1,12 +1,12 @@
 import {
   NewPost,
   useNewPostValidationSchema,
-} from "@/app/[locale]/[categoryId]/_modules/hooks/schema/validationSchemaAddPost";
+} from "@/app/_modules/Posts/hooks/schema/validationSchemaAddPost";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { useAddPostApi } from "@/app/[locale]/[categoryId]/_modules/apiCalls/useAddPostApi";
+import { useAddPostApi } from "@/app/_modules/Posts/apiCalls/useAddPostApi";
 import { TPropsAddForm } from "@/app/[locale]/[categoryId]/_modules/components/types";
 import { useRouter } from "next/navigation";
 
@@ -50,7 +50,6 @@ export const useAddPost = ({
   }, [onClose, newPost]);
 
   const onSubmit = (values: NewPost) => {
-    console.log("subMit", categoryId, subCategoryId);
     if (userId) {
       createPost({
         userId,

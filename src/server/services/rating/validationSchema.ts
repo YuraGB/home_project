@@ -11,5 +11,5 @@ export const updateValidationSchema = z.object({
 export const createValidationSchema = z.object({
   postId: z.number(),
   votes: z.number(),
-  amountRating: z.number().min(1),
+  amountRating: z.number(),
 });

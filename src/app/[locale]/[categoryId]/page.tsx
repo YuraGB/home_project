@@ -4,7 +4,7 @@ import {
   TParams,
 } from "@/app/[locale]/[categoryId]/_modules/hooks/useCategoryPage";
 import { SubCategoryList } from "@/app/[locale]/[categoryId]/_modules/components/SubCategoryList/SubCategoryList";
-import { AddPostButton } from "@/app/[locale]/[categoryId]/_modules/components/AddPost/AddPostButton";
+import { AddPostButton } from "@/app/_modules/Posts/AddPost/AddPostButton";
 import { AddSubCategoryButton } from "@/app/[locale]/[categoryId]/_modules/components/AddSubCategory/AddSubCategoryButton";
 import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
 import { Bradcrmbs } from "@/components/bradcrumbs/Bradcrmbs";

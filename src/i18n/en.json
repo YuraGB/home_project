@@ -39,5 +39,10 @@
   "layoutSchema": "The layout of the post",
   "layoutSchemaDescription": "The layout will be shown with the post",
   "defaultPostLayout": "Default layout",
-  "topRatePostLayout": "Top rate layout"
+  "topRatePostLayout": "Top rate layout",
+  "deleteButton": "delete the {variable}",
+  "updateButton": "update the {variable}",
+  "closeSettings": "Close settings",
+  "cancel": "Cancel",
+  "delete": "Delete"
 }

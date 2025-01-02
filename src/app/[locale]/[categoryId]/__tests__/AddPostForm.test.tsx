@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { AddPostForm } from "@/app/[locale]/[categoryId]/_modules/components/AddPost/AddPostForm";
+import { AddPostForm } from "@/app/_modules/Posts/AddPost/AddPostForm";
 import IntlWrapper from "@/testMockUps/intlMoskUpProvider";
 import { screen } from "@testing-library/dom";
 import { ReactNode } from "react";

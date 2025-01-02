@@ -1,3 +1,5 @@
+import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
+
 export type TFindPost = {
   [key in "categoryId" | "subCategoryId"]: number;
 };
@@ -10,3 +12,5 @@ export type TCreatePostData = {
   subCategoryId?: number;
   userId: number;
 };
+
+export type TUpdatePostData = TDBPost & { rating: boolean };

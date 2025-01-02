@@ -1,4 +1,4 @@
-import { PostsList } from "@/app/[locale]/[categoryId]/_modules/components/PostsList/PostsList";
+import { PostsList } from "@/app/_modules/Posts/PostsList";
 import { render, waitFor } from "@testing-library/react";
 import Wrapper from "@/testMockUps/intlMoskUpProvider";
 import { screen } from "@testing-library/dom";
