@@ -5,7 +5,7 @@ import { ActionWrapper } from "@/app/[locale]/_modules/components/ActionWrapper"
 
 export type TLocaleParams = { params: Promise<{ locale: string }> };
 
-export const experimental_ppr = true;
+// export const experimental_ppr = true;
 
 export default function Home({ params }: Readonly<TLocaleParams>): ReactNode {
   return (

@@ -3,8 +3,9 @@ import { TParams } from "@/app/[locale]/[categoryId]/_modules/hooks/useCategoryP
 import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
 import { BreadcrmbsConteiner } from "@/components/bradcrumbs/BradcrmbsConteiner";
 import { CategoryPageContent } from "@/app/[locale]/[categoryId]/_modules/components/CategoryPageContent";
+import { getAllCategories } from "@/server/actions/catalog/getAllCategories";
 
-export const experimental_ppr = true;
+// export const experimental_ppr = true;
 
 export default async function CategoryPage(props: TParams) {
   return (
@@ -21,10 +22,10 @@ export default async function CategoryPage(props: TParams) {
 }
 
 //SSG
-// export async function generateStaticParams(): Promise<
-//   { categoryId: string }[] | []
-// > {
-//   const categories = await getAllCategories();
-//
-//   return categories.map(({ id }) => ({ categoryId: String(id) }));
-// }
+export async function generateStaticParams(): Promise<
+  { categoryId: string }[] | []
+> {
+  const categories = await getAllCategories();
+
+  return categories.map(({ id }) => ({ categoryId: String(id) }));
+}
