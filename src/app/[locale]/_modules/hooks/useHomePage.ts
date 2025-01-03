@@ -5,7 +5,6 @@ import { getCatalogByUserId } from "@/server/actions/catalog/getCatalogByUserId"
 import { TCategory } from "@/db/drizzle/schemas/categorySchema";
 
 type TUseHomePage = {
-  id: number;
   categories: TCategory[] | null;
 };
 
@@ -14,7 +13,6 @@ export const getHomePage = async (): Promise<TUseHomePage | null> => {
   if (session?.user?.id) {
     const categories = await getCatalogByUserId(session.user.id);
     return {
-      id: session.user.id,
       categories,
     };
   }

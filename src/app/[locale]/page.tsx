@@ -1,20 +1,21 @@
-import { getHomePage } from "@/app/[locale]/_modules/hooks/useHomePage";
 import { ListOfCategories } from "@/app/[locale]/_modules/components/ListOfCategories";
-import React from "react";
-import { AddCategoryBtn } from "@/app/[locale]/_modules/components/AddCategoryBtn";
+import React, { ReactNode, Suspense } from "react";
 import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
+import { ActionWrapper } from "@/app/[locale]/_modules/components/ActionWrapper";
 
-type TParams = { params: Promise<{ locale: string }> };
-export default async function Home({ params }: Readonly<TParams>) {
-  const pageData = await getHomePage();
-  const categories = pageData?.categories ?? [];
-  const userId = pageData?.id ?? null;
-  const { locale } = await params;
+export type TLocaleParams = { params: Promise<{ locale: string }> };
 
+export const experimental_ppr = true;
+
+export default function Home({ params }: Readonly<TLocaleParams>): ReactNode {
   return (
     <DefaultPageLayout>
-      <AddCategoryBtn userId={userId} />
-      <ListOfCategories categories={categories} locale={locale} />
+      <Suspense fallback={"Loading"}>
+        <ActionWrapper />
+      </Suspense>
+      <Suspense fallback={"Loading"}>
+        <ListOfCategories params={params} />
+      </Suspense>
     </DefaultPageLayout>
   );
 }
