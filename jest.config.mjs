@@ -12,6 +12,16 @@ const config = {
     "!**/*.d.ts",
     "!**/node_modules/**",
   ],
+  transform: {
+    "^.+\\.tsx?$": "babel-jest", // Для TypeScript
+    "^.+\\.jsx?$": "babel-jest", // Для JavaScript
+  },
+  moduleNameMapper: {
+    "\\.(css|scss|sass)$": "identity-obj-proxy", // Для стилів
+  },
+  transformIgnorePatterns: [
+    "/node_modules/(?!jose)/", // Дозволяє Jest трансформувати ESM-залежності
+  ],
   coverageReporters: ["json", "lcov", "text", "clover"],
   testEnvironment: "jsdom",
   setupFiles: ["dotenv/config"],
