@@ -17,7 +17,13 @@ export const PostInfo = ({ post, children }: TPostInfo): ReactNode => {
         rel={"noreferrer"}
         className={"z-[1] mt-auto"}
       >
-        <h4 className={"text-left text-gold text-2xl mt-auto"}>{post.name}</h4>
+        <h4
+          className={
+            "text-left text-gold text-2xl mt-auto truncate w-40 text-left"
+          }
+        >
+          {post.name}
+        </h4>
         <p>{post.description}</p>
       </Link>
 
