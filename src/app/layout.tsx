@@ -14,7 +14,7 @@ export default async function Layout({
 }>) {
   return (
     <html lang={"en"} suppressHydrationWarning>
-      <body className={"relative"}>{children}</body>
+      <body className={"relative min-h-[100dvh]"}>{children}</body>
     </html>
   );
 }

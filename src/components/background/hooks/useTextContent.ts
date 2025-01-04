@@ -2,10 +2,10 @@ import { useViewPort } from "@/hooks/useWindowSize";
 
 export const useTextContent = () => {
   const viewPort = useViewPort();
-  let positionTitleLogin = [15, 40, 10];
-  let positionTextLogin = [15, 30, 10];
-  let positionTitleRegistration = [-70, 40, 10];
-  let positionTextRegistration = [-70, 30, 10];
+  let positionTitleLogin = [15, 25, 10];
+  let positionTextLogin = [15, 15, 10];
+  let positionTitleRegistration = [-70, 25, 10];
+  let positionTextRegistration = [-70, 15, 10];
   let sizeTitle = 5;
   let sizeText = 3;
 

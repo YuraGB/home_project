@@ -2,7 +2,6 @@
 import React, { ReactNode, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import dynamic from "next/dynamic";
-import { OrbitControls } from "@react-three/drei";
 import { Ocean } from "@/components/background/Ocean";
 
 const Model = dynamic(() =>
@@ -15,8 +14,8 @@ export const Background = (): ReactNode => {
       <Canvas
         camera={{ fov: 75, near: 0.1, far: 1000, position: [0, 10, 300] }}
         shadows={true}
+        className={"z-[-1]"}
       >
-        <OrbitControls />
         <Suspense fallback={null}>
           <Ocean />
           <Model />

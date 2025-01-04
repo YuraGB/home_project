@@ -10,7 +10,7 @@ export const Footer = ({
   userId: number;
 }) => {
   return (
-    <footer className={"flex gap-2 justify-center items-center w-full"}>
+    <footer className={"flex gap-2 justify-center items-center w-full py-4"}>
       <AddPostButton categoryId={catId} />
       <AddSubCategoryButton userId={userId} categoryId={catId} />
     </footer>

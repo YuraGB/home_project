@@ -4,7 +4,7 @@ import AuthProvider from "@/context/AuthProvider";
 import ServerIntlProvider from "@/context/i18nProvider";
 import getIntl from "@/lib/intl";
 import { FetchProvider } from "@/context/FetchProvider";
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Header } from "@/components/header/Header";
 import { Background } from "@/components/background";
@@ -32,9 +32,7 @@ export default async function RootLayout({
           <ProviderTheme>
             <Header />
             {children}
-            <Suspense fallback={null}>
-              <Background />
-            </Suspense>
+            <Background />
             <Toaster />
           </ProviderTheme>
         </AuthProvider>
