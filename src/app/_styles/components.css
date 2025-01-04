@@ -56,6 +56,18 @@
 .hovered {
     transition: all 0.5s ease;
 
+    > svg {
+        border-radius: 50%;
+    }
+
+    h4 {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 160px;
+        height: 1.2em;
+        white-space: nowrap;
+    }
+
     > div {
         transform: translateX(100%);
         transition: all 0.5s ease;
