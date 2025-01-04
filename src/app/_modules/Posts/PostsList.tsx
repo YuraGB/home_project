@@ -10,5 +10,9 @@ export const PostsList = ({
   if (!posts || posts.length === 0) return null;
   const list = posts.map((post) => <PostItem key={post.id} post={post} />);
 
-  return <section className={"flex gap-4 flex-wrap mt-4"}>{list}</section>;
+  return (
+    <section className={"mb-4 justify-center flex gap-4 flex-wrap mt-4"}>
+      {list}
+    </section>
+  );
 };

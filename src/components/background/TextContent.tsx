@@ -3,18 +3,27 @@ import React from "react";
 import { useLoader } from "@react-three/fiber";
 import { FontLoader } from "three-stdlib";
 import { usePathname } from "next/navigation";
+import { useTextContent } from "@/components/background/hooks/useTextContent";
 
 export const TextContent = () => {
   const font = useLoader(FontLoader, "/fonts/Agu.json");
   const pathName = usePathname();
+  const {
+    positionTextLogin,
+    positionTitleLogin,
+    positionTextRegistration,
+    positionTitleRegistration,
+    sizeText,
+    sizeTitle,
+  } = useTextContent();
 
   if (pathName.endsWith("login")) {
     return (
       <>
         <Text3D
           font={font.data}
-          position={[20, 30, 10]}
-          size={10}
+          position={positionTitleLogin}
+          size={sizeTitle}
           curveSegments={2}
           bevelEnabled={true}
           bevelThickness={0.5}
@@ -22,15 +31,15 @@ export const TextContent = () => {
           bevelOffset={0}
           bevelSegments={5}
           smooth={0.1}
-          castShadow={true} // Текст відкидає тіні
+          castShadow={true}
         >
           <meshStandardMaterial attach="material" color="white" />
           Login form
         </Text3D>
         <Text3D
           font={font.data}
-          position={[20, 15, 10]} // Налаштуйте позицію тексту
-          size={5}
+          position={positionTextLogin}
+          size={sizeText}
           curveSegments={2}
           bevelEnabled={true}
           bevelThickness={0.5}
@@ -52,8 +61,8 @@ interact with site infrastructure`}
       <>
         <Text3D
           font={font.data}
-          position={[-120, 30, 10]}
-          size={10}
+          position={positionTitleRegistration}
+          size={sizeTitle}
           curveSegments={2}
           bevelEnabled={true}
           bevelThickness={0.5}
@@ -61,15 +70,15 @@ interact with site infrastructure`}
           bevelOffset={0}
           bevelSegments={5}
           smooth={0.1}
-          castShadow={true} // Текст відкидає тіні
+          castShadow={true}
         >
           <meshStandardMaterial attach="material" color="white" />
           Registration form
         </Text3D>
         <Text3D
           font={font.data}
-          position={[-120, 15, 10]} // Налаштуйте позицію тексту
-          size={5}
+          position={positionTextRegistration}
+          size={sizeText}
           curveSegments={2}
           bevelEnabled={true}
           bevelThickness={0.5}
@@ -77,7 +86,7 @@ interact with site infrastructure`}
           bevelOffset={0}
           bevelSegments={5}
           smooth={0.1}
-          castShadow={true} // Текст відкидає тіні
+          castShadow={true}
         >
           <meshStandardMaterial attach="material" color="white" />
           {`Only authorized user can 

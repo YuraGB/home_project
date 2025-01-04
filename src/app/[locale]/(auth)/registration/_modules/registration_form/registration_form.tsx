@@ -19,9 +19,15 @@ import { LinkWithLocale } from "@/components/linkWithLocale/LinkWithLocale";
 const RegistrationForm = (): ReactNode => {
   const { form, onSubmit } = useRegistrationForm();
   return (
-    <article className={"grid grid-cols-2 w-full"}>
+    <article
+      className={
+        "grid grid-cols-1 lg:grid-cols-2 w-full grid-rows-[200px,1fr] lg:grid-rows-1"
+      }
+    >
       <motion.div
-        className={"w-full col-start-2 pl-14 relative"}
+        className={
+          "w-full row-start-2 justify-items-center lg:justify-items-start lg:col-start-2 lg:pl-14 relative"
+        }
         initial={{
           opacity: 0,
           x: 100,

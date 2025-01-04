@@ -20,9 +20,15 @@ export function LoginForm() {
   const { formState } = form;
 
   return (
-    <article className={"grid grid-cols-2 w-full "}>
+    <article
+      className={
+        "grid grid-cols-1 lg:grid-cols-2 w-full grid-rows-[200px,1fr] lg:grid-rows-1"
+      }
+    >
       <motion.div
-        className={"w-full relative justify-items-end pr-14"}
+        className={
+          "w-full row-start-2 relative justify-items-center lg:justify-items-end lg:pr-14"
+        }
         initial={{
           x: -100,
           opacity: 0,
