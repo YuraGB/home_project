@@ -12,8 +12,14 @@ export const SubCategoryItem = ({
   const pathName = usePathname();
   if (!item) return null;
   return (
-    <div>
-      <Link href={`${pathName}/subCategory/${item.id}`}>{item.name}</Link>
+    <div
+      className={
+        "border h-[100px] px-2 w-[200px] max-w-[200px] rounded items-center flex justify-center bg-gradient-to-r from-green from-80%  to-lightGreen to-95%"
+      }
+    >
+      <Link href={`${pathName}/subCategory/${item.id}`} className={"text-gold"}>
+        {item.name}
+      </Link>
     </div>
   );
 };

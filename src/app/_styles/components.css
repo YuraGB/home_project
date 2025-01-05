@@ -83,3 +83,9 @@
     pointer-events: none;
     opacity: 0;
 }
+
+.subCategory-slider {
+    .swiper-slide {
+        width: 200px
+    }
+}
