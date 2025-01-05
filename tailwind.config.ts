@@ -11,6 +11,7 @@ export default {
     extend: {
       colors: {
         green: "var(--green)",
+        lightGreen: "var(--lightGreen)",
         gold: "var(--gold)",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

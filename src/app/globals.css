@@ -36,7 +36,8 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
     --gold: rgb(236,174,18);
-    --green: rgb(48,80,80)
+    --green: rgb(48,80,80);
+    --lightGreen: rgb(83, 140, 140)
   }
   html {
     --color-primary: #4285f4;

@@ -1,6 +1,9 @@
+"use client";
 import { SubCategoryItem } from "@/app/[locale]/[categoryId]/_modules/components/SubCategoryList/SubCategoryItem";
 import { TSubCategory } from "@/db/drizzle/schemas/subCategoriesSchema";
 import { ReactNode } from "react";
+import { Slider } from "@/components/slider";
+import { SwiperSlide } from "swiper/react";
 
 export const SubCategoryList = ({
   sub_categories,
@@ -9,8 +12,14 @@ export const SubCategoryList = ({
 }): ReactNode => {
   if (!sub_categories?.length) return null;
   const listOfSubCategories = sub_categories.map((item) => (
-    <SubCategoryItem key={item.id} item={item} />
+    <SwiperSlide key={item.id}>
+      <SubCategoryItem item={item} />
+    </SwiperSlide>
   ));
 
-  return <section className={"border-b p-4"}>{listOfSubCategories}</section>;
+  return (
+    <section className={"border-b relative max-w-full py-4 subCategory-slider"}>
+      <Slider config={{ speed: 5000 }}>{listOfSubCategories}</Slider>
+    </section>
+  );
 };
