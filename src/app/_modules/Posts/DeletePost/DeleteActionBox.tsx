@@ -1,14 +1,13 @@
-import { Button } from "@/components/ui/button";
-import { FormattedMessage } from "react-intl";
 import { Dispatch, SetStateAction } from "react";
 import { useDeletePost } from "@/app/_modules/Posts/hooks/useDeletePost";
+import { DeleteAction } from "@/components/actionBox/DeleteAction";
 
 export type TDeleteActionBox = {
   postId: number;
   onCloseAction: Dispatch<SetStateAction<boolean>>;
 };
 
-export const DeleteActionBox = ({
+export const DeletePostActionBox = ({
   postId,
   onCloseAction,
 }: TDeleteActionBox) => {
@@ -17,22 +16,10 @@ export const DeleteActionBox = ({
     onCloseAction,
   });
   return (
-    <section className={"flex w-full p-4 justify-between gap-4"}>
-      <Button
-        variant={"default"}
-        onClick={() => onCloseAction(false)}
-        className={"w-full"}
-      >
-        <FormattedMessage id={"cancel"} defaultMessage={"Cancel"} />
-      </Button>
-      <Button
-        className={"w-full"}
-        variant={"destructive"}
-        disabled={loadingDeletePost}
-        onClick={onClickAction}
-      >
-        <FormattedMessage id={"delete"} defaultMessage={"Delete"} />
-      </Button>
-    </section>
+    <DeleteAction
+      disabled={loadingDeletePost}
+      onClickAction={onClickAction}
+      onCloseAction={onCloseAction}
+    />
   );
 };

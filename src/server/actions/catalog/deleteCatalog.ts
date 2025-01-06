@@ -1,3 +1,4 @@
+"use server";
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
 import logger from "@/lib/logger";

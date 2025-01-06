@@ -20,7 +20,7 @@ type TProps = {
   onSubmitAction: SubmitHandler<NewPost>;
 };
 
-export const CreateUpdateForm = ({
+export const CreateUpdatePostForm = ({
   children,
   form,
   onSubmitAction,

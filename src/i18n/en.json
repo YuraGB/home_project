@@ -44,5 +44,6 @@
   "updateButton": "update the {variable}",
   "closeSettings": "Close settings",
   "cancel": "Cancel",
-  "delete": "Delete"
+  "delete": "Delete",
+  "updateCategory": "Update category"
 }
