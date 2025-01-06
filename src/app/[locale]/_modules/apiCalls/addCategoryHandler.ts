@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { createNewCategory } from "@/server/services/category/createNewCategory";
+import { createNewCategory } from "@/server/services/category";
 import { useRouter } from "next/navigation";
 
 type TAddCategoryData = {

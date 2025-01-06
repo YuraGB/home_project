@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
-export const AddUpdateDialog = ({
+export const AddUpdateDeleteDialog = ({
   children,
   buttonTitle,
   dialogTitle,

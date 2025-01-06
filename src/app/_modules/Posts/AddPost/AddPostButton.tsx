@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 
 import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
-import { AddUpdateDialog } from "@/components/addUpdateDialog";
+import { AddUpdateDeleteDialog } from "@/components/addUpdateDialog";
 const AddPostForm = dynamic(() =>
   import("@/app/_modules/Posts/AddPost/AddPostForm").then(
     (mod) => mod.AddPostForm,
@@ -22,7 +22,7 @@ export const AddPostButton = ({
   const { data: session } = useSession();
 
   return (
-    <AddUpdateDialog
+    <AddUpdateDeleteDialog
       dialogTitle={"Create new post"}
       buttonTitle={
         <FormattedMessage
@@ -39,6 +39,6 @@ export const AddPostButton = ({
         subCategoryId={subCategoryId}
         onClose={() => setOpen(false)}
       />
-    </AddUpdateDialog>
+    </AddUpdateDeleteDialog>
   );
 };

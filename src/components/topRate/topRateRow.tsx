@@ -10,7 +10,7 @@ export const TopRateRow = ({
   posts: Array<TPostWithRating>;
 }): ReactNode => {
   return (
-    <section className={"rate-row h-[120px]"}>
+    <section className={"rate-row h-[130px]"}>
       <Slider>
         {posts.map((post) => (
           <SwiperSlide key={post.id}>
