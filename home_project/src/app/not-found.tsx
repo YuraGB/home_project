@@ -1,11 +1,12 @@
-import Link from 'next/link'
+import Link from "next/link";
+import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
 
 export default function NotFound() {
-    return (
-        <div>
-            <h2>Not Found</h2>
-            <p>Could not find requested resource</p>
-            <Link href="/public">Return Home</Link>
-        </div>
-    )
+  return (
+    <DefaultPageLayout>
+      <h2>Not Found</h2>
+      <p>Could not find requested resource</p>
+      <Link href="/">Return Home</Link>
+    </DefaultPageLayout>
+  );
 }

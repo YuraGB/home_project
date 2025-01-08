@@ -1,31 +1,40 @@
 // Ref: https://next-auth.js.org/getting-started/typescript#module-augmentation
 
-import { DefaultSession, DefaultUser } from 'next-auth'
-import { DefaultJWT } from 'next-auth/jwt'
+import { DefaultSession, DefaultUser } from "next-auth";
+import { DefaultJWT } from "next-auth/jwt";
+import { Water } from "three-stdlib";
 
-declare module 'next-auth' {
+declare module "next-auth" {
   interface Session {
     user: {
-      id: string
-      role: string
-    } & DefaultSession
+      id: number;
+      salt: string;
+      hash: string;
+      email: string;
+    } & DefaultSession;
   }
 
   interface User extends DefaultUser {
-    role: string
-    id: string
+    id: number;
+    salt: string;
+    hash: string;
   }
 }
 
-declare module '@auth/core/adapters' {
+declare module "@auth/core/adapters" {
   interface AdapterUser {
-    role: string
+    role: string;
+    password: string;
   }
 }
 
-declare module 'next-auth/jwt' {
+declare module "next-auth/jwt" {
   interface JWT extends DefaultJWT {
-    role: string
-    id: string
+    role: string;
+    id: number;
   }
+}
+
+declare module "three" {
+  export { Water };
 }
