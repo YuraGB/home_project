@@ -5,14 +5,20 @@ import {
   NewUser,
   useNewUserValidationSchema,
 } from "@/app/[locale]/(auth)/registration/_modules/registration_form/hooks/schema/validationSchema";
-import { useApiRegistration } from "@/app/[locale]/(auth)/registration/_modules/api";
 import { useEffect } from "react";
 import { signIn } from "next-auth/react";
+import { useMutationApi } from "@/hooks/apiCalls/mutation";
+import { createUser } from "@/server/services/user/userService";
+import { TUserSchema } from "@/db/drizzle/schemas/userSchema";
 
 export const useRegistrationForm = () => {
-  const formSchema = useNewUserValidationSchema();
-  const { addNewUser, newUser, errorCreateNewUser } = useApiRegistration();
+  const {
+    mutate: addNewUser,
+    data: newUser,
+    error: errorCreateNewUser,
+  } = useMutationApi<NewUser, TUserSchema | null>(createUser);
 
+  const formSchema = useNewUserValidationSchema();
   const form = useForm<NewUser>({
     resolver: zodResolver(formSchema),
     defaultValues: {

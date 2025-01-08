@@ -16,7 +16,7 @@ export const createNewCategory = async (data: {
   name: string;
   description: string;
   userId: number;
-}) => {
+}): Promise<TCategory | null> => {
   const newUserData = categoryValidationSchema.parse(data);
 
   return addNewCategory(newUserData);

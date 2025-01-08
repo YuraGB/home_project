@@ -1,5 +1,5 @@
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
-import { categorySchema } from "@/db/drizzle/schemas/categorySchema";
+import { categoryTable } from "@/db/drizzle/schemas/categorySchema";
 import { subCategoriesSchema } from "@/db/drizzle/schemas/subCategoriesSchema";
 import { relations } from "drizzle-orm/relations";
 import { InferSelectModel } from "drizzle-orm";
@@ -12,16 +12,16 @@ export const postsSchema = pgTable("posts", {
   description: varchar({ length: 255 }).notNull(),
   url: varchar().notNull(),
   image: varchar(),
-  categoryId: integer().references(() => categorySchema.id),
+  categoryId: integer().references(() => categoryTable.id),
   subCategoryId: integer().references(() => subCategoriesSchema.id),
   userId: integer().references(() => usersTable.id),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
 export const postsRelations = relations(postsSchema, ({ one, many }) => ({
-  categories: one(categorySchema, {
+  categories: one(categoryTable, {
     fields: [postsSchema.categoryId],
-    references: [categorySchema.id],
+    references: [categoryTable.id],
   }),
   subCategories: one(subCategoriesSchema, {
     fields: [postsSchema.subCategoryId],

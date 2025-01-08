@@ -16,7 +16,7 @@ const PostBackground = dynamic(() =>
   ),
 );
 const RatingComponent = dynamic(() =>
-  import("@/app/_modules/Posts/RatingComponent").then(
+  import("@/app/_modules/Rating/RatingComponent").then(
     (mod) => mod.RatingComponent,
   ),
 );

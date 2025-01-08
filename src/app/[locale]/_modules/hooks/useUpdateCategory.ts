@@ -3,19 +3,25 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { TCategory } from "@/db/drizzle/schemas/categorySchema";
-import { useUpdateCategoryApi } from "@/app/[locale]/_modules/apiCalls/useUpdateCategory";
 import {
   NewCategory,
   useAddNewCategoryValidation,
 } from "@/app/[locale]/_modules/hooks/schema/useAddCategorySchema";
+import { useMutationApi } from "@/hooks/apiCalls/mutation";
+import { updateExistingCategory } from "@/server/services/category";
+import { TUpdateCatalog } from "@/server/services/category/validationSchemas";
 
 export const useUpdateCategory = (
   category: TCategory,
   onCloseAction: Dispatch<SetStateAction<boolean>>,
 ) => {
   const { toast } = useToast();
-  const { updatedCategory, updateAction, onUpdating, errorOnUpdate } =
-    useUpdateCategoryApi();
+  const {
+    data: updatedCategory,
+    mutate: updateAction,
+    isPending: onUpdating,
+    error: errorOnUpdate,
+  } = useMutationApi<TUpdateCatalog, TCategory | null>(updateExistingCategory);
 
   const formSchema = useAddNewCategoryValidation();
   const form = useForm<NewCategory>({

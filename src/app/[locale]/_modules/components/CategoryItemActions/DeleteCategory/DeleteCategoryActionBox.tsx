@@ -1,6 +1,6 @@
 "use client";
 import { Dispatch, SetStateAction } from "react";
-import { DeleteAction } from "@/components/actionBox/DeleteAction";
+import { DeleteAction } from "../../../../../../components/DeleteAction";
 import { useDeleteCategoryActionBox } from "@/app/[locale]/_modules/hooks/useDeleteCategoryActionBox";
 import { TCategory } from "@/db/drizzle/schemas/categorySchema";
 

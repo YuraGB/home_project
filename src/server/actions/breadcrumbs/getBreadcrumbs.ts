@@ -5,7 +5,7 @@ import {
   TSubCategory,
 } from "@/db/drizzle/schemas/subCategoriesSchema";
 import { eq } from "drizzle-orm";
-import { categorySchema, TCategory } from "@/db/drizzle/schemas/categorySchema";
+import { categoryTable, TCategory } from "@/db/drizzle/schemas/categorySchema";
 
 export type TBreadcrumbs = {
   sub_categories: TSubCategory | null;
@@ -24,7 +24,7 @@ export const getBreadcrumbs = async ({
       const results = await db
         .select()
         .from(subCategoriesSchema)
-        .leftJoin(categorySchema, eq(categorySchema.id, catalogId))
+        .leftJoin(categoryTable, eq(categoryTable.id, catalogId))
         .where(eq(subCategoriesSchema.id, subCategoryId));
       // Transform results to match TBreadcrumbs
       const breadcrumbs: TBreadcrumbs = results.map((result) => ({

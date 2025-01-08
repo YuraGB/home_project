@@ -65,8 +65,7 @@ export const getPosts = async (data: TFindPost): Promise<TDBPost[] | null> => {
 };
 
 export const updatePostData = async (
-  data: TUpdatePostData & { rating: boolean },
-  locale: string = "en-US",
+  data: TUpdatePostData & { rating: boolean } & { locale: string },
 ) => {
   const { rating, ...rest } = data;
 
@@ -93,7 +92,7 @@ export const updatePostData = async (
 
     const post = await updatePost(validatedData);
     revalidatePath(
-      `/${locale}${data.categoryId ? "/" + data.categoryId : ""}/subCategory/${data.subCategoryId}`,
+      `/${data.locale}${data.categoryId ? "/" + data.categoryId : ""}/subCategory/${data.subCategoryId}`,
     );
     return post;
   }

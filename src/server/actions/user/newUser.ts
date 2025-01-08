@@ -1,6 +1,6 @@
 "use server";
 import { db } from "@/db";
-import { usersTable } from "@/db/drizzle/schemas/userSchema";
+import { TUserSchema, usersTable } from "@/db/drizzle/schemas/userSchema";
 import { z } from "zod";
 import logger from "@/lib/logger";
 
@@ -13,7 +13,9 @@ const userToCreateValidation = z.object({
 
 type TUserToSave = z.infer<typeof userToCreateValidation>;
 
-export const createNewUser = async (user: TUserToSave) => {
+export const createNewUser = async (
+  user: TUserToSave,
+): Promise<TUserSchema | null> => {
   try {
     const newUserData = userToCreateValidation.parse(user);
     const [createdUser] = await db

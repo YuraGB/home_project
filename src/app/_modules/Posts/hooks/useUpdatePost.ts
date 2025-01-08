@@ -7,13 +7,27 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { useUpdatePostApi } from "@/app/_modules/Posts/apiCalls/useUpdatePost";
 import { TPropsUpdateForm } from "@/app/_modules/Posts/UpdatePost/UpdatePostForm";
+import { useMutationApi } from "@/hooks/apiCalls/mutation";
+import { updatePostData } from "@/server/services/post/postService";
+import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
+import { TUpdatePostData } from "@/server/services/post/types";
+import { useIntl } from "react-intl";
 
 export const useUpdatePost = ({ post, onCloseAction }: TPropsUpdateForm) => {
   const { toast } = useToast();
-  const { loadingUpdatePost, errorUpdatePost, updatedPost, updatePost } =
-    useUpdatePostApi();
+  const { locale } = useIntl();
+
+  const {
+    isPending: loadingUpdatePost,
+    error: errorUpdatePost,
+    data: updatedPost,
+    mutate: updatePostAction,
+  } = useMutationApi<
+    TUpdatePostData & { locale: string },
+    TDBPost | null | undefined
+  >(updatePostData);
+
   const formSchema = useUpdatePostValidationSchema();
   const form = useForm<NewPost>({
     resolver: zodResolver(formSchema),
@@ -45,9 +59,10 @@ export const useUpdatePost = ({ post, onCloseAction }: TPropsUpdateForm) => {
 
   const onSubmit = (values: NewPost) => {
     if (post.id) {
-      updatePost({
+      updatePostAction({
         ...post,
         ...values,
+        locale,
       });
     }
   };

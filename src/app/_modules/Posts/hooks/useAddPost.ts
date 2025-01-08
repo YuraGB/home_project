@@ -6,9 +6,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { useAddPostApi } from "@/app/_modules/Posts/apiCalls/useAddPostApi";
 import { TPropsAddForm } from "@/app/[locale]/[categoryId]/_modules/components/types";
 import { useRouter } from "next/navigation";
+import { useMutationApi } from "@/hooks/apiCalls/mutation";
+import { TCreatePostData } from "@/server/services/post/types";
+import { createNewPost } from "@/server/services/post/postService";
+import { TPostWithRating } from "@/server/actions/post/addNewPostWithRating";
+import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
+import { useIntl } from "react-intl";
 
 export const useAddPost = ({
   categoryId,
@@ -18,8 +23,18 @@ export const useAddPost = ({
 }: TPropsAddForm) => {
   const { toast } = useToast();
   const router = useRouter();
-  const { newPost, loadingNewPost, createPost, errorCreateNewPost } =
-    useAddPostApi();
+  const { locale } = useIntl();
+
+  const {
+    data: newPost,
+    isPending: loadingNewPost,
+    mutate: createPost,
+    error: errorCreateNewPost,
+  } = useMutationApi<
+    TCreatePostData & { rating: boolean } & { locale: string },
+    TPostWithRating | TDBPost | undefined
+  >(createNewPost);
+
   const formSchema = useNewPostValidationSchema();
   const form = useForm<NewPost>({
     resolver: zodResolver(formSchema),
@@ -55,6 +70,7 @@ export const useAddPost = ({
         userId,
         categoryId,
         subCategoryId,
+        locale,
         ...values,
       });
     } else {

@@ -1,12 +1,18 @@
 "use client";
-import { useDeleteCategoryApi } from "@/app/[locale]/_modules/apiCalls/useDeleteCategory";
 import { useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { TCategory } from "@/db/drizzle/schemas/categorySchema";
+import { useMutationApi } from "@/hooks/apiCalls/mutation";
+import { deleteCategoryById } from "@/server/services/category";
 
 export const useDeleteCategoryActionBox = (category: TCategory) => {
-  const { deleteAction, onDeleting, deletedCategoryId } =
-    useDeleteCategoryApi();
+  const {
+    mutate: deleteAction,
+    isPending: onDeleting,
+    data: deletedCategoryId,
+  } = useMutationApi<{ id: number; userId: number }, number | null>(
+    ({ id, userId }) => deleteCategoryById(id, userId),
+  );
 
   const onDeleteAction = () => {
     if (!category.userId) return;

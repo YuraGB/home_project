@@ -17,7 +17,6 @@ export const addNewPostWithRating = async (
     return await db.transaction(async (trx) => {
       const [post] = await trx.insert(postsSchema).values(postData).returning();
 
-      // Step 2: Create the rating for the post (using the postId)
       const [rating] = await trx
         .insert(ratingTable)
         .values({
@@ -26,7 +25,6 @@ export const addNewPostWithRating = async (
         })
         .returning();
 
-      // Step 3: Return the created post and rating as a response
       return {
         post: post,
         rating: rating,
@@ -34,7 +32,6 @@ export const addNewPostWithRating = async (
     });
   } catch (error) {
     logger.error((error as Error).stack);
-    console.error("Post not created", error);
     return null;
   }
 };

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { useDeletePost } from "@/app/_modules/Posts/hooks/useDeletePost";
-import { DeleteAction } from "@/components/actionBox/DeleteAction";
+import { DeleteAction } from "@/components/DeleteAction";
 
 export type TDeleteActionBox = {
   postId: number;

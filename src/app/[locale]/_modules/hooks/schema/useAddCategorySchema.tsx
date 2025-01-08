@@ -7,6 +7,7 @@ export const validationNewCategory = z.object({
 });
 
 export type NewCategory = z.infer<typeof validationNewCategory>;
+export type TNewCategorySave = NewCategory & { userId: number };
 
 export const useAddNewCategoryValidation = () => {
   const { formatMessage } = useIntl();

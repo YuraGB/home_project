@@ -1,4 +1,3 @@
-import { useAddSubCategoryApi } from "@/app/[locale]/[categoryId]/_modules/apiCalls/useAddSubCategoryApi";
 import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,6 +7,10 @@ import {
   NewSubCategory,
   useNewSubCategoryValidationSchema,
 } from "@/app/[locale]/[categoryId]/_modules/hooks/schema/validationSchemaAddSubCategoryt";
+import { useMutationApi } from "@/hooks/apiCalls/mutation";
+import { TCreateSubCategoryData } from "@/server/services/subCategory/types";
+import { TSubCategory } from "@/db/drizzle/schemas/subCategoriesSchema";
+import { createNewSubCategory } from "@/server/services/subCategory/subCategoryService";
 
 export const useAddSubCategory = ({
   onClose,
@@ -16,11 +19,14 @@ export const useAddSubCategory = ({
 }: TPropsAddForm) => {
   const { toast } = useToast();
   const {
-    loadingNewSubCategory,
-    errorCreateNewSubCategory,
-    createSubCategory,
-    newSubCategory,
-  } = useAddSubCategoryApi();
+    isPending: loadingNewSubCategory,
+    error: errorCreateNewSubCategory,
+    mutate: createSubCategory,
+    data: newSubCategory,
+  } = useMutationApi<TCreateSubCategoryData, TSubCategory | null>(
+    createNewSubCategory,
+  );
+
   const formSchema = useNewSubCategoryValidationSchema();
   const form = useForm<NewSubCategory>({
     resolver: zodResolver(formSchema),
@@ -50,7 +56,6 @@ export const useAddSubCategory = ({
   }, [onClose, newSubCategory]);
 
   const onSubmit = (values: NewSubCategory) => {
-    console.log("submit", values);
     if (categoryId && userId) {
       createSubCategory({
         userId,

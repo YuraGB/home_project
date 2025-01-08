@@ -5,9 +5,10 @@ import {
   TSubCategory,
 } from "@/db/drizzle/schemas/subCategoriesSchema";
 import { eq } from "drizzle-orm";
+import { TUpdateSubCat } from "@/server/services/subCategory/validationSchemas";
 
 export const updateSubCategory = async (
-  data: TSubCategory,
+  data: TUpdateSubCat,
 ): Promise<TSubCategory | null> => {
   try {
     const [result] = await db

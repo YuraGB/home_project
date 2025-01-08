@@ -1,4 +1,4 @@
-import { categorySchema, TCategory } from "@/db/drizzle/schemas/categorySchema";
+import { categoryTable, TCategory } from "@/db/drizzle/schemas/categorySchema";
 import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import logger from "@/lib/logger";
@@ -9,9 +9,9 @@ export const updateCatalog = async (
 ): Promise<TCategory | null> => {
   try {
     const [result] = await db
-      .update(categorySchema)
+      .update(categoryTable)
       .set(data)
-      .where(eq(categorySchema.id, data.id))
+      .where(eq(categoryTable.id, data.id))
       .returning();
     return result;
   } catch (e) {

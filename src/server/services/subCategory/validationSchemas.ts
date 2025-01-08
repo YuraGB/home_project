@@ -11,6 +11,14 @@ export const validationNewSubCategory = z.object({
   image: z.string().url("Must be a valid URL").optional().or(z.literal("")),
   layoutSchema: z.string(),
 });
+
 export const creatingSubCategoryValidationData = validationNewSubCategory.merge(
   subCategoryValidationSchema,
 );
+
+export const updateSubCatValidationData =
+  creatingSubCategoryValidationData.extend({
+    id: z.number(),
+  });
+
+export type TUpdateSubCat = z.infer<typeof updateSubCatValidationData>;

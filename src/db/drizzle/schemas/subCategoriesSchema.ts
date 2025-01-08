@@ -1,5 +1,5 @@
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
-import { categorySchema } from "@/db/drizzle/schemas/categorySchema";
+import { categoryTable } from "@/db/drizzle/schemas/categorySchema";
 import { relations } from "drizzle-orm/relations";
 import { postsSchema } from "@/db/drizzle/schemas/postsSchema";
 import { usersTable } from "@/db/drizzle/schemas/userSchema";
@@ -10,7 +10,7 @@ export const subCategoriesSchema = pgTable("sub_categories", {
   description: varchar({ length: 512 }).notNull(),
   image: varchar(),
   userId: integer().references(() => usersTable.id),
-  categoryId: integer().references(() => categorySchema.id),
+  categoryId: integer().references(() => categoryTable.id),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   layoutSchema: varchar().default("default"),
 });
@@ -18,9 +18,9 @@ export const subCategoriesSchema = pgTable("sub_categories", {
 export const subCategoryRelations = relations(
   subCategoriesSchema,
   ({ one, many }) => ({
-    category: one(categorySchema, {
+    category: one(categoryTable, {
       fields: [subCategoriesSchema.categoryId],
-      references: [categorySchema.id],
+      references: [categoryTable.id],
     }),
     user: one(usersTable, {
       fields: [subCategoriesSchema.userId],

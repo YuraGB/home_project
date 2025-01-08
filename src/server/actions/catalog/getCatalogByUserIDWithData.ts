@@ -1,7 +1,7 @@
 "use server";
 import { db } from "@/db";
 import { and, eq } from "drizzle-orm";
-import { categorySchema, TCategory } from "@/db/drizzle/schemas/categorySchema";
+import { categoryTable, TCategory } from "@/db/drizzle/schemas/categorySchema";
 import logger from "@/lib/logger";
 import { postsSchema, TDBPost } from "@/db/drizzle/schemas/postsSchema";
 import {
@@ -32,14 +32,14 @@ export const getCatalogByUserIdWithData = async (
   try {
     const catalogWithRelationData = await db
       .select()
-      .from(categorySchema)
+      .from(categoryTable)
       .leftJoin(
         subCategoriesSchema,
-        eq(subCategoriesSchema.categoryId, categorySchema.id),
+        eq(subCategoriesSchema.categoryId, categoryTable.id),
       )
-      .leftJoin(postsSchema, eq(postsSchema.categoryId, categorySchema.id))
+      .leftJoin(postsSchema, eq(postsSchema.categoryId, categoryTable.id))
       .leftJoin(ratingTable, eq(ratingTable.postId, postsSchema.id))
-      .where(and(eq(categorySchema.userId, id), eq(categorySchema.id, catId)));
+      .where(and(eq(categoryTable.userId, id), eq(categoryTable.id, catId)));
     return helper(catalogWithRelationData);
   } catch (error) {
     logger.error((error as Error).stack);

@@ -16,18 +16,24 @@ export const ActionBox = ({ children }: ActionBoxProps): ReactNode => {
   const { isOpen, triggerHandler } = useActionBox();
 
   return (
-    <section className={"absolute left-0 top-0 z-[1] flex flex-col"}>
+    <section
+      className={
+        "absolute left-0 top-0 z-[1] flex flex-col opacity-[0] hover:opacity-[1]"
+      }
+    >
       <Popover open={isOpen}>
-        <PopoverTrigger className={"text-[0]"} onClick={triggerHandler}>
+        <PopoverTrigger className={"text-[0] p-1"} onClick={triggerHandler}>
           {isOpen ? (
             <X
-              className={"p-1 rounded-[50%] hover:bg-accent active:bg-accent"}
+              className={"p-1 rounded-[50%] hover:bg-accent active:bg-accent "}
               size={30}
               strokeWidth={1}
             />
           ) : (
             <Settings
-              className={"p-1 rounded-[50%] hover:bg-accent"}
+              className={
+                "p-1 rounded-[50%] shadow-inner hover:shadow-sm hover:shadow-black"
+              }
               size={30}
               strokeWidth={1}
             />

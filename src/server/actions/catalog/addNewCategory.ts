@@ -1,6 +1,6 @@
 "use server";
 import { db } from "@/db";
-import { categorySchema, TCategory } from "@/db/drizzle/schemas/categorySchema";
+import { categoryTable, TCategory } from "@/db/drizzle/schemas/categorySchema";
 import logger from "@/lib/logger";
 
 export const addNewCategory = async (data: {
@@ -10,7 +10,7 @@ export const addNewCategory = async (data: {
 }): Promise<TCategory | null> => {
   try {
     const [categoryCreated] = await db
-      .insert(categorySchema)
+      .insert(categoryTable)
       .values(data)
       .returning(); // Specify columns
 
