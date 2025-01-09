@@ -19,7 +19,10 @@ export const UpdatePostForm = (props: TPropsUpdateForm): ReactNode => {
         {loadingUpdatePost ? (
           <FormattedMessage id={"savingPost"} defaultMessage={"Saving"} />
         ) : (
-          <FormattedMessage id={"savePost"} defaultMessage={"Save new post"} />
+          <FormattedMessage
+            id={"updatePost"}
+            defaultMessage={"Update the post"}
+          />
         )}
       </Button>
     </CreateUpdatePostForm>

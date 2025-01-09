@@ -1,8 +1,8 @@
 "use client";
 import { Ratings } from "@/components/rating/Rating";
 import { ReactNode } from "react";
-import { useRating } from "@/app/[locale]/[categoryId]/_modules/hooks/useRating";
 import { TRatingSchema } from "@/db/drizzle/schemas/ratingSchema";
+import { useRating } from "@/app/_modules/Rating/hooks/useRating";
 
 export const RatingComponent = ({
   rate,

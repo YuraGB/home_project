@@ -41,5 +41,6 @@
   "closeSettings": "Close settings",
   "cancel": "Cancel",
   "delete": "Delete",
-  "updateCategory": "Update category"
+  "updateCategory": "Update category",
+  "updatePost": "Update the post"
 }

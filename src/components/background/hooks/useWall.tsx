@@ -26,7 +26,5 @@ export const useWall = () => {
     size = [100, 120, 10];
   }
 
-  console.log(viewPort, size);
-
   return { material, position, rotation, size };
 };

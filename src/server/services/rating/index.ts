@@ -10,6 +10,8 @@ import {
 import { updateRate } from "@/server/actions/rating/updateRate";
 import { createNewRating } from "@/server/actions/rating/createNewRating";
 import { getRatingDataByPostId } from "@/server/actions/rating/getRatingByPostId";
+import { revalidatePath } from "next/cache";
+import { getPostById } from "@/server/actions/post/getPostById";
 
 const validationPostId = z.number().min(1);
 
@@ -54,7 +56,8 @@ export const updateRating = async ({
   amountRating,
   createdAt,
   votes,
-}: TUpdateRateData) => {
+  locale,
+}: TUpdateRateData & { locale: string }) => {
   const amountVotes = votes ? votes + 1 : 1;
   const calculateAmountRating = amountRating ? amountRating + vote : vote;
 
@@ -68,5 +71,25 @@ export const updateRating = async ({
   };
 
   const validatedData = updateValidationSchema.parse(formData);
-  return await updateRate(validatedData);
+
+  const updRate = await updateRate(validatedData);
+
+  if (!updRate) return null;
+
+  // get catalogId or subCatID
+  const post = await getPostById(postId);
+
+  // revalidate the cache
+  if (post) {
+    const { categoryId, subCategoryId } = post;
+    if (subCategoryId) {
+      revalidatePath(
+        `/${locale}${categoryId ? "/" + categoryId : ""}/subCategory/${subCategoryId}`,
+      );
+    } else {
+      // do we need revalidate the category page?!
+      //  revalidatePath(`/${locale}/${categoryId}`);
+    }
+  }
+  return updRate;
 };

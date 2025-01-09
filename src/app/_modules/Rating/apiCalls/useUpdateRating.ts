@@ -1,9 +1,10 @@
 "use client";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { updateRating } from "@/server/services/rating";
+import { useRouter } from "next/navigation";
 
-export const useUpdateRating = (id: number) => {
-  const queryClient = useQueryClient();
+export const useUpdateRating = () => {
+  const { refresh } = useRouter();
   const {
     mutate: updateRatingData,
     data: updatedRating,
@@ -11,9 +12,7 @@ export const useUpdateRating = (id: number) => {
     error: errorUpdating,
   } = useMutation({
     mutationFn: updateRating,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [`rating/${id}`] });
-    },
+    onSuccess: () => refresh(),
   });
 
   return {

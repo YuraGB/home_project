@@ -12,6 +12,7 @@ describe("CategoryItem component", () => {
     createdAt: new Date(),
     userId: 1,
     image: null,
+    layoutSchema: null,
   };
   it("should heading be in the document", async () => {
     render(<CategoryItem category={categoryDummyData} locale={"en-US"} />, {

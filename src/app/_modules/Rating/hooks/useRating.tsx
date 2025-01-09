@@ -3,20 +3,20 @@ import { useUpdateRating } from "@/app/_modules/Rating/apiCalls/useUpdateRating"
 import { toast } from "@/hooks/use-toast";
 import { useCallback, useEffect } from "react";
 import { TRatingSchema } from "@/db/drizzle/schemas/ratingSchema";
+import { useIntl } from "react-intl";
 
 export const useRating = (rate: TRatingSchema) => {
   const { ratingData, errorRatingData, loadingRatingData } = useGetRating(rate);
-  const { updateRatingData, loadingUpdate, errorUpdating } = useUpdateRating(
-    rate.id,
-  );
+  const { locale } = useIntl();
+  const { updateRatingData, loadingUpdate, errorUpdating } = useUpdateRating();
 
   const onUpdate = useCallback(
     (vote: number) => {
       if (ratingData) {
-        updateRatingData({ ...ratingData, vote });
+        updateRatingData({ ...ratingData, vote, locale });
       }
     },
-    [updateRatingData, ratingData],
+    [ratingData, updateRatingData, locale],
   );
 
   useEffect(() => {
