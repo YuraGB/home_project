@@ -21,7 +21,7 @@ const RegistrationForm = (): ReactNode => {
   return (
     <article
       className={
-        "grid grid-cols-1 lg:grid-cols-2 w-full grid-rows-[200px,1fr] lg:grid-rows-1"
+        "grid grid-cols-1 lg:grid-cols-2 w-full grid-rows-[100px,1fr] lg:grid-rows-1"
       }
     >
       <motion.div
@@ -144,7 +144,7 @@ const RegistrationForm = (): ReactNode => {
         <LinkWithLocale
           href={"login"}
           className={
-            "absolute top-1/2 left-[-60px] transform -translate-y-1/2 p-4 pr-5 pb-5 border rounded-[50%]"
+            "absolute top-[-100px] left-0 lg:top-1/2 lg:left-[-60px] lg:transform lg:-translate-y-1/2 p-4 pr-5 pb-5 border rounded-[50%]"
           }
         >
           <LogInIcon />
