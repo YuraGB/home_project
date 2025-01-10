@@ -16,10 +16,10 @@ export const useTextContent = () => {
     positionTitleRegistration = [-30, 40, 10];
   }
   if (viewPort === "mobile") {
-    positionTitleLogin = [-17, 40, 10];
-    positionTextLogin = [-17, 30, 10];
-    positionTextRegistration = [-17, 30, 10];
-    positionTitleRegistration = [-17, 40, 10];
+    positionTitleLogin = [-17, 30, 10];
+    positionTextLogin = [-17, 20, 10];
+    positionTextRegistration = [-17, 20, 10];
+    positionTitleRegistration = [-17, 30, 10];
     sizeText = 2;
     sizeTitle = 4;
   }
