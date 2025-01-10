@@ -123,7 +123,7 @@ export function LoginForm() {
         <LinkWithLocale
           href={"registration"}
           className={
-            "absolute top-[-100px] left-0 lg:top-1/2 lg:right-[-60px] lg:transform lg:-translate-y-1/2 p-4 pl-5 pb-5 border rounded-[50%]"
+            "absolute top-[-100px] right-[100%] lg:top-1/2 lg:right-[-60px] lg:transform lg:-translate-y-1/2 p-4 pl-5 pb-5 border rounded-[50%]"
           }
         >
           <UserPlus />
