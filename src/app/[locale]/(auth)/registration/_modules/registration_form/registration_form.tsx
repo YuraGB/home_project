@@ -13,11 +13,11 @@ import {
 import { FormattedMessage } from "react-intl";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { LogInIcon } from "lucide-react";
+import { LoaderCircle, LogInIcon } from "lucide-react";
 import { LinkWithLocale } from "@/components/linkWithLocale/LinkWithLocale";
 
 const RegistrationForm = (): ReactNode => {
-  const { form, onSubmit } = useRegistrationForm();
+  const { form, onSubmit, loading } = useRegistrationForm();
   return (
     <article
       className={
@@ -137,7 +137,11 @@ const RegistrationForm = (): ReactNode => {
               )}
             />
             <Button type="submit" className={"w-full"}>
-              Registration
+              {loading.current ? (
+                <LoaderCircle className={"animate-spin"} />
+              ) : (
+                "Create new user"
+              )}
             </Button>
           </form>
         </Form>

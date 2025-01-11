@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { UserPlus } from "lucide-react";
+import { LoaderCircle, UserPlus } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -16,7 +16,7 @@ import { FormattedMessage } from "react-intl";
 import { LinkWithLocale } from "@/components/linkWithLocale/LinkWithLocale";
 
 export function LoginForm() {
-  const { form, onSubmit } = useLoginFormHook();
+  const { form, onSubmit, loading } = useLoginFormHook();
   const { formState } = form;
 
   return (
@@ -115,8 +115,16 @@ export function LoginForm() {
                 {formState.errors.root.serverError.message}
               </FormMessage>
             )}
-            <Button type="submit" className={"w-full"}>
-              Login in
+            <Button
+              type="submit"
+              className={"w-full"}
+              disabled={loading.current}
+            >
+              {loading.current ? (
+                <LoaderCircle className={"animate-spin"} />
+              ) : (
+                "Login in"
+              )}
             </Button>
           </form>
         </Form>

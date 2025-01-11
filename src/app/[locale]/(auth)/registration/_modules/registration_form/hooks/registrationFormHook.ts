@@ -5,13 +5,14 @@ import {
   NewUser,
   useNewUserValidationSchema,
 } from "@/app/[locale]/(auth)/registration/_modules/registration_form/hooks/schema/validationSchema";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { signIn } from "next-auth/react";
 import { useMutationApi } from "@/hooks/apiCalls/mutation";
 import { createUser } from "@/server/services/user/userService";
 import { TUserSchema } from "@/db/drizzle/schemas/userSchema";
 
 export const useRegistrationForm = () => {
+  const isLoading = useRef<boolean>(false);
   const {
     mutate: addNewUser,
     data: newUser,
@@ -31,6 +32,7 @@ export const useRegistrationForm = () => {
   // catch error during creating new user
   useEffect(() => {
     if (errorCreateNewUser) {
+      isLoading.current = false;
       form.setError(
         "email",
         {
@@ -46,6 +48,7 @@ export const useRegistrationForm = () => {
   // sign in and redirect to the home page
   useEffect(() => {
     if (newUser) {
+      isLoading.current = false;
       signIn("credentials", {
         redirect: false,
         id: newUser.id,
@@ -55,11 +58,13 @@ export const useRegistrationForm = () => {
   }, [newUser]);
 
   const onSubmit = async (values: NewUser) => {
+    isLoading.current = true;
     addNewUser(values);
   };
 
   return {
     form,
     onSubmit,
+    loading: isLoading,
   };
 };

@@ -3,15 +3,17 @@ import { FieldValues, useForm, UseFormReturn } from "react-hook-form";
 import { useValidationSchema } from "@/app/[locale]/(auth)/login/_modules/login_form/hooks/schema/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSession, signIn } from "next-auth/react";
-import { useEffect } from "react";
+import { RefObject, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "@/hooks/use-toast";
 
 export const useLoginFormHook = (): {
   form: UseFormReturn;
   onSubmit: (values: FieldValues) => void;
+  loading: RefObject<boolean>;
 } => {
   const router = useRouter();
+  const isLoading = useRef<boolean>(false);
   const formSchema = useValidationSchema();
   const { data: session, status } = useSession();
   const form = useForm<FieldValues>({
@@ -29,6 +31,7 @@ export const useLoginFormHook = (): {
   }, [router, session, status]);
 
   const onSubmit = async (values: FieldValues) => {
+    isLoading.current = true;
     const resp = await signIn("credentials", {
       email: values.email,
       password: values.password,
@@ -36,6 +39,7 @@ export const useLoginFormHook = (): {
     });
 
     if (resp?.error) {
+      isLoading.current = false;
       toast({
         title: "Error",
         variant: "destructive",
@@ -48,5 +52,6 @@ export const useLoginFormHook = (): {
   return {
     form,
     onSubmit,
+    loading: isLoading,
   };
 };
