@@ -16,4 +16,4 @@ It's because in "development" mode postgres comes from docker
     POSTGRES_LOCAL_URL=postgresql://postgres:password@localhost:5432/hp?schema=public
 
 POSTGRES_URL -> production
-POSTGRES_LOCAL_URL -> from the local env. will be coming from docker
+POSTGRES_LOCAL_URL -> development -> from the local env. will be coming from docker
