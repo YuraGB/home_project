@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     reactCompiler: true,
     // ppr: "incremental",
   },
+  compress: true,
   trailingSlash: false,
   transpilePackages: ["three"],
 };
