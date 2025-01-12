@@ -1,6 +1,6 @@
 import NextAuth, { type NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { getUserByEmail } from "@/server/actions/user/getUserByEmail";
+import { getUserByEmail } from "@/server/services/user/getUserByEmail";
 import { validPassword } from "@/lib/crypto";
 import logger from "@/lib/logger";
 

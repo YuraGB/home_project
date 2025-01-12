@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { addNewRating } from "@/server/services/rating";
+import { addNewRating } from "@/server/controllers/rating";
 
 export const useAddRating = (id: number) => {
   const queryClient = useQueryClient();

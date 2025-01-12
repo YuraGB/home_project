@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import { updateExistingCategory } from "@/server/services/category";
-import { TUpdateCatalog } from "@/server/services/category/validationSchemas";
+import { updateExistingCategory } from "@/server/controllers/category";
+import { TUpdateCatalog } from "@/server/controllers/category/validationSchemas";
 import { toast } from "@/hooks/use-toast";
 
 export const useUpdateCategoryApi = () => {

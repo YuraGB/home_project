@@ -9,9 +9,9 @@ import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { TPropsUpdateForm } from "@/app/_modules/Posts/UpdatePost/UpdatePostForm";
 import { useMutationApi } from "@/hooks/apiCalls/mutation";
-import { updatePostData } from "@/server/services/post/postService";
+import { updatePostData } from "@/server/controllers/post/postService";
 import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
-import { TUpdatePostData } from "@/server/services/post/types";
+import { TUpdatePostData } from "@/server/controllers/post/types";
 import { useIntl } from "react-intl";
 
 export const useUpdatePost = ({ post, onCloseAction }: TPropsUpdateForm) => {

@@ -8,7 +8,7 @@ import {
 import { useEffect, useRef } from "react";
 import { signIn } from "next-auth/react";
 import { useMutationApi } from "@/hooks/apiCalls/mutation";
-import { createUser } from "@/server/services/user/userService";
+import { createUser } from "@/server/controllers/user/userService";
 import { TUserSchema } from "@/db/drizzle/schemas/userSchema";
 
 export const useRegistrationForm = () => {

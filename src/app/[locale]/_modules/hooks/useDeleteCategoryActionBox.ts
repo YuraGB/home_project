@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { TCategory } from "@/db/drizzle/schemas/categorySchema";
 import { useMutationApi } from "@/hooks/apiCalls/mutation";
-import { deleteCategoryById } from "@/server/services/category";
+import { deleteCategoryById } from "@/server/controllers/category";
 
 export const useDeleteCategoryActionBox = (category: TCategory) => {
   const {

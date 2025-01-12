@@ -1,6 +1,6 @@
 "use client";
 import { useMutation } from "@tanstack/react-query";
-import { updateRating } from "@/server/services/rating";
+import { updateRating } from "@/server/controllers/rating";
 import { useRouter } from "next/navigation";
 
 export const useUpdateRating = () => {

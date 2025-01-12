@@ -1,7 +1,7 @@
 import { useToast } from "@/hooks/use-toast";
 import { useEffect } from "react";
 import { TDeleteActionBox } from "@/app/_modules/Posts/DeletePost/DeleteActionBox";
-import { deletePostData } from "@/server/services/post/postService";
+import { deletePostData } from "@/server/controllers/post/postService";
 import { useMutationApi } from "@/hooks/apiCalls/mutation";
 
 export const useDeletePost = ({ postId, onCloseAction }: TDeleteActionBox) => {

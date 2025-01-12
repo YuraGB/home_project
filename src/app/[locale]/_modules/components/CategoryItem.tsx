@@ -22,7 +22,7 @@ export const CategoryItem = ({
 
       <Link
         href={{
-          pathname: `/${locale}/${category.id}`,
+          pathname: `/${locale}/categories/${category.id}`,
         }}
         prefetch={true}
         className={

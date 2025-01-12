@@ -1,6 +1,6 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-import { getRatingById } from "@/server/services/rating";
+import { getRatingById } from "@/server/controllers/rating";
 import { TRatingSchema } from "@/db/drizzle/schemas/ratingSchema";
 
 export const useGetRating = (initObj: TRatingSchema) => {

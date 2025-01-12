@@ -8,8 +8,8 @@ import {
   useAddNewCategoryValidation,
 } from "@/app/[locale]/_modules/hooks/schema/useAddCategorySchema";
 import { useMutationApi } from "@/hooks/apiCalls/mutation";
-import { updateExistingCategory } from "@/server/services/category";
-import { TUpdateCatalog } from "@/server/services/category/validationSchemas";
+import { updateExistingCategory } from "@/server/controllers/category";
+import { TUpdateCatalog } from "@/server/controllers/category/validationSchemas";
 
 export const useUpdateCategory = (
   category: TCategory,

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import { deleteCategoryById } from "@/server/services/category";
+import { deleteCategoryById } from "@/server/controllers/category";
 import { toast } from "@/hooks/use-toast";
 
 export const useDeleteCategoryApi = () => {

@@ -9,9 +9,9 @@ import { useToast } from "@/hooks/use-toast";
 import { TPropsAddForm } from "@/app/[locale]/[categoryId]/_modules/components/types";
 import { useRouter } from "next/navigation";
 import { useMutationApi } from "@/hooks/apiCalls/mutation";
-import { TCreatePostData } from "@/server/services/post/types";
-import { createNewPost } from "@/server/services/post/postService";
-import { TPostWithRating } from "@/server/actions/post/addNewPostWithRating";
+import { TCreatePostData } from "@/server/controllers/post/types";
+import { createNewPost } from "@/server/controllers/post/postService";
+import { TPostWithRating } from "@/server/services/post/addNewPostWithRating";
 import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
 import { useIntl } from "react-intl";
 

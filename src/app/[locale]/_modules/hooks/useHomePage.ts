@@ -1,7 +1,7 @@
 "use server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]";
-import { getCatalogByUserId } from "@/server/actions/catalog/getCatalogByUserId";
+import { getCatalogByUserId } from "@/server/services/catalog/getCatalogByUserId";
 import { TCategory } from "@/db/drizzle/schemas/categorySchema";
 
 type TUseHomePage = {
