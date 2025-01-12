@@ -90,12 +90,12 @@ export const updatePostData = async (
       }
     }
 
-    const post = await updatePost(validatedData);
-    revalidatePath(
-      `/${data.locale}${data.categoryId ? "/" + data.categoryId : ""}/subCategory/${data.subCategoryId}`,
-    );
-    return post;
+    //update post and revalidate cache
+    return updateRevalidate(validatedData, data.locale);
   }
+
+  //update post and revalidate cache
+  return updateRevalidate(validatedData, data.locale);
 };
 
 export const deletePostData = async (postId: number) => {
@@ -104,11 +104,29 @@ export const deletePostData = async (postId: number) => {
     throw new Error("No post id provided");
   }
 
+  // Get rate of the post if it exists
   const rate = await getRatingDataByPostId(postId);
 
   if (rate) {
+    // delete the rate
     await deleteRating(rate.id);
   }
 
   return await deletePost(postId);
 };
+
+//update post and revalidate cache
+async function updateRevalidate(
+  data: TUpdatePostData & { rating: boolean },
+  locale: string,
+) {
+  const post = await updatePost(data);
+
+  if (post) {
+    revalidatePath(
+      `/${locale}${data.categoryId ? "/" + data.categoryId : ""}/subCategory/${data.subCategoryId}`,
+    );
+  }
+
+  return post;
+}
