@@ -6,10 +6,11 @@ import {
   useNewUserValidationSchema,
 } from "@/app/[locale]/(auth)/registration/_modules/registration_form/hooks/schema/validationSchema";
 import { useEffect, useRef } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useMutationApi } from "@/hooks/apiCalls/mutation";
 import { createUser } from "@/server/controllers/user/userService";
 import { TUserSchema } from "@/db/drizzle/schemas/userSchema";
+import { useRouter } from "next/navigation";
 
 export const useRegistrationForm = () => {
   const isLoading = useRef<boolean>(false);
@@ -18,6 +19,9 @@ export const useRegistrationForm = () => {
     data: newUser,
     error: errorCreateNewUser,
   } = useMutationApi<NewUser, TUserSchema | null>(createUser);
+
+  const router = useRouter();
+  const { data: session, status } = useSession();
 
   const formSchema = useNewUserValidationSchema();
   const form = useForm<NewUser>({
@@ -56,6 +60,12 @@ export const useRegistrationForm = () => {
       });
     }
   }, [newUser]);
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/");
+    }
+  }, [router, session, status]);
 
   const onSubmit = async (values: NewUser) => {
     isLoading.current = true;

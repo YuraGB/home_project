@@ -45,8 +45,8 @@ export const useUpdatePost = ({ post, onCloseAction }: TPropsUpdateForm) => {
       //todo translation
       toast({
         variant: "destructive",
-        title: "New post not created",
-        description: "There was a problem with creating new post.",
+        title: "Post not updated",
+        description: "There was a problem with updating the post.",
       });
     }
   }, [errorUpdatePost, toast]);

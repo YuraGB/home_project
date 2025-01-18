@@ -65,7 +65,7 @@
 #ENV HOSTNAME="0.0.0.0"
 #CMD ["node", "server.js"]
 
-FROM node:18-alpine AS base
+FROM node:22-alpine AS base
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
@@ -78,9 +78,12 @@ RUN chown -R nextjs:nodejs /app
 
 USER root
 
-
 COPY package*.json ./
+
 RUN  npm install -f
+
 COPY . .
+
 EXPOSE 3000
+
 CMD ["npm", "run", "dev"]

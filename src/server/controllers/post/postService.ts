@@ -14,12 +14,12 @@ import {
 import { addNewPost } from "@/server/services/post/addNewPost";
 import { addNewPostWithRating } from "@/server/services/post/addNewPostWithRating";
 import { revalidatePath } from "next/cache";
-import { updatePost } from "@/server/services/post/updatePost";
 import { addNewRating, getRatingByPostId } from "@/server/controllers/rating";
 import logger from "@/lib/logger";
 import { getRatingDataByPostId } from "@/server/services/rating/getRatingByPostId";
 import { deleteRating } from "@/server/services/rating/deleteRating";
 import { deletePost } from "@/server/services/post/deletePost";
+import { canUpdate, updateRevalidate } from "@/server/controllers/post/helper";
 
 export const createNewPost = async (
   data: TCreatePostData & { rating: boolean } & { locale: string },
@@ -74,6 +74,17 @@ export const updatePostData = async (
     throw new Error("No post id provided");
   }
 
+  if (!rest.userId) {
+    logger.error(`Update post data: No user id provided`);
+    throw new Error("No all data was provided");
+  }
+
+  const ableToUpdate = await canUpdate(rest.userId, rest.id);
+
+  if (!ableToUpdate) {
+    throw new Error("You can't update this post");
+  }
+
   const validatedData = updatePostValidationData.parse(data);
 
   // if rating is true, we need to check if the post already has a rating
@@ -114,19 +125,3 @@ export const deletePostData = async (postId: number) => {
 
   return await deletePost(postId);
 };
-
-//update post and revalidate cache
-async function updateRevalidate(
-  data: TUpdatePostData & { rating: boolean },
-  locale: string,
-) {
-  const post = await updatePost(data);
-
-  if (post) {
-    revalidatePath(
-      `/${locale}${data.categoryId ? "/categories/" + data.categoryId : ""}/subCategory/${data.subCategoryId}`,
-    );
-  }
-
-  return post;
-}

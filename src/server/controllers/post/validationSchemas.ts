@@ -23,7 +23,7 @@ export const updatePostValidationData = z.object({
   url: z.string().url().min(1),
   image: z.string(),
   categoryId: z.number().nullable(),
-  subCategoryId: z.number(),
+  subCategoryId: z.number().nullable(),
   userId: z.number().min(1),
   rating: z.boolean(),
   createdAt: z.date(),

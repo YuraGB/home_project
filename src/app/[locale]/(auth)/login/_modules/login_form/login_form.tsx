@@ -62,6 +62,28 @@ export function LoginForm() {
             <FormField
               defaultValue={""}
               control={form.control}
+              name="botCheck"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className={"leading-5 hidden"}>botCheck</FormLabel>
+                  <FormControl>
+                    <Input
+                      name={field.name}
+                      ref={field.ref}
+                      value={field.value}
+                      onBlur={field.onBlur}
+                      onChange={field.onChange}
+                      disabled={field.disabled}
+                      className={"hidden"}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              defaultValue={""}
+              control={form.control}
               name="email"
               render={({ field }) => (
                 <FormItem>

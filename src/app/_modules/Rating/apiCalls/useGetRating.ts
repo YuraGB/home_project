@@ -11,7 +11,7 @@ export const useGetRating = (initObj: TRatingSchema) => {
   } = useQuery({
     queryKey: [`rating/${initObj.id}`],
     queryFn: async () => await getRatingById(initObj.id),
-    initialData: initObj,
+    initialData: initObj, // we receive data during SSR/SSG
     staleTime: 0,
   });
 
