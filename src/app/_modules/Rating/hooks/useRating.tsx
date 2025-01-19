@@ -4,14 +4,12 @@ import { toast } from "@/hooks/use-toast";
 import { useCallback, useEffect } from "react";
 import { TRatingSchema } from "@/db/drizzle/schemas/ratingSchema";
 import { useIntl } from "react-intl";
-import { useQueryClient } from "@tanstack/react-query";
 
 export const useRating = (rate: TRatingSchema) => {
   const { ratingData, errorRatingData, loadingRatingData } = useGetRating(rate);
-  const queryClient = useQueryClient();
+
   const { locale } = useIntl();
-  const { updateRatingData, loadingUpdate, errorUpdating, updatedRating } =
-    useUpdateRating();
+  const { updateRatingData, loadingUpdate, errorUpdating } = useUpdateRating();
 
   const onUpdate = useCallback(
     (vote: number) => {
@@ -32,14 +30,6 @@ export const useRating = (rate: TRatingSchema) => {
       });
     }
   }, [errorRatingData, errorUpdating]);
-
-  useEffect(() => {
-    if (updatedRating) {
-      queryClient.invalidateQueries({
-        queryKey: [`rating/${updatedRating.id}`],
-      });
-    }
-  }, [updatedRating]);
 
   return {
     loading: loadingRatingData || loadingUpdate,
