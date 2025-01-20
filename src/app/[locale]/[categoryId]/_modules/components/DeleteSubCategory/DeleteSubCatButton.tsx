@@ -1,6 +1,6 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
-import { DeleteAction } from "../../../../../../components/DeleteAction";
 import { useDeleteSubCategory } from "@/app/[locale]/[categoryId]/_modules/hooks/useDeleteSubCategory";
+import { DeleteAction } from "@/components/DeleteAction";
 
 export const DeleteSubCategory = ({
   onCloseAction,
