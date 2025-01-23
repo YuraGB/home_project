@@ -1,3 +1,8 @@
+describe.only("This test suite will run", () => {
+  test("Test 1", () => {
+    expect(true).toBe(true);
+  });
+});
 // import { render } from "@testing-library/react";
 // import { AddPostForm } from "@/app/_modules/Posts/AddPost/AddPostForm";
 // import IntlWrapper from "@/testMockUps/intlMoskUpProvider";
