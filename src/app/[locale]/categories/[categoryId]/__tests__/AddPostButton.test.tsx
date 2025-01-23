@@ -9,7 +9,10 @@ import { getSession, useSession } from "next-auth/react"; // Import getSession a
 jest.mock("next-auth/react", () => ({
   ...jest.requireActual("next-auth/react"),
   getSession: jest.fn(),
-  useSession: jest.fn(),
+  useSession: jest.fn(() => ({
+    data: { user: { name: "Test User", email: "test@example.com" } },
+    status: "authenticated",
+  })),
 }));
 
 describe("AddPostButton component", () => {
