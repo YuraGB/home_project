@@ -53,7 +53,7 @@ export const CreateUpdatePostForm = ({
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel isRequired={true}>
                 <FormattedMessage
                   defaultMessage={"Name of the post"}
                   id={"namePost"}
@@ -79,7 +79,7 @@ export const CreateUpdatePostForm = ({
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel isRequired={true}>
                 <FormattedMessage
                   defaultMessage={"The description of the post"}
                   id={"postDescription"}
@@ -105,7 +105,7 @@ export const CreateUpdatePostForm = ({
           name="url"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel isRequired={true}>
                 <FormattedMessage
                   defaultMessage={"The url of the post"}
                   id={"postUrl"}
@@ -131,7 +131,7 @@ export const CreateUpdatePostForm = ({
           name="image"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel isRequired={true}>
                 <FormattedMessage
                   defaultMessage={"The image of the post"}
                   id={"postImage"}

@@ -1,5 +1,5 @@
 import { AddPostButton } from "@/app/_modules/Posts/AddPost/AddPostButton";
-import { AddSubCategoryButton } from "@/app/[locale]/[categoryId]/_modules/components/AddSubCategory/AddSubCategoryButton";
+import { AddSubCategoryButton } from "@/app/[locale]/categories/[categoryId]/_modules/components/AddSubCategory/AddSubCategoryButton";
 import React from "react";
 
 export const Footer = ({

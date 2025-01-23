@@ -51,7 +51,7 @@ export const CreateUpdateCategoryForm = ({
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel isRequired={true}>
                 <FormattedMessage
                   defaultMessage={"Name of the category"}
                   id={"name"}
@@ -77,7 +77,7 @@ export const CreateUpdateCategoryForm = ({
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel isRequired={true}>
                 <FormattedMessage
                   defaultMessage={"Description"}
                   id={"description"}

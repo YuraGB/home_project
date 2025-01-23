@@ -2,7 +2,7 @@ import React from "react";
 import { Bradcrmbs } from "@/components/bradcrumbs/Bradcrmbs";
 import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
 import { AddPostButton } from "@/app/_modules/Posts/AddPost/AddPostButton";
-import { getSubCategoryPage } from "@/app/[locale]/[categoryId]/subCategory/[subCategoryId]/_modules/hooks/useSubCategory";
+import { getSubCategoryPage } from "@/app/[locale]/categories/[categoryId]/subCategory/[subCategoryId]/_modules/hooks/useSubCategory";
 import { getAllSubCategories } from "@/server/services/subCategory/getAllSubCategories";
 import { PostListLayout } from "@/components/postListLayout";
 import { PageTitle } from "@/components/pageTitle";

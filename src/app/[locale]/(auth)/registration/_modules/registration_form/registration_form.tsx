@@ -64,7 +64,7 @@ const RegistrationForm = (): ReactNode => {
               name="username"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
+                  <FormLabel isRequired={true}>
                     <FormattedMessage
                       defaultMessage={"User name"}
                       id={"username"}
@@ -91,7 +91,7 @@ const RegistrationForm = (): ReactNode => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
+                  <FormLabel isRequired={true}>
                     <FormattedMessage defaultMessage={"E-mail"} id={"email"} />
                   </FormLabel>
                   <FormControl>
@@ -115,7 +115,7 @@ const RegistrationForm = (): ReactNode => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
+                  <FormLabel isRequired={true}>
                     <FormattedMessage
                       defaultMessage={"Password"}
                       id={"password"}

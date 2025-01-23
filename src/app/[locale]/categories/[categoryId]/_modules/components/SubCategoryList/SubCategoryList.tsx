@@ -1,5 +1,5 @@
 "use client";
-import { SubCategoryItem } from "@/app/[locale]/[categoryId]/_modules/components/SubCategoryList/SubCategoryItem";
+import { SubCategoryItem } from "@/app/[locale]/categories/[categoryId]/_modules/components/SubCategoryList/SubCategoryItem";
 import { TSubCategory } from "@/db/drizzle/schemas/subCategoriesSchema";
 import { ReactNode } from "react";
 import { Slider } from "@/components/slider";

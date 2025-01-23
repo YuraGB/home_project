@@ -1,7 +1,7 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
-import { SubCategoryForm } from "@/app/[locale]/[categoryId]/_modules/components/subCategoryForm";
+import { SubCategoryForm } from "@/app/[locale]/categories/[categoryId]/_modules/components/subCategoryForm";
 import { Button } from "@/components/ui/button";
-import { useUpdateSubCat } from "@/app/[locale]/[categoryId]/_modules/hooks/useUpdateSubCat";
+import { useUpdateSubCat } from "@/app/[locale]/categories/[categoryId]/_modules/hooks/useUpdateSubCat";
 import { TSubCategory } from "@/db/drizzle/schemas/subCategoriesSchema";
 
 type TProps = {

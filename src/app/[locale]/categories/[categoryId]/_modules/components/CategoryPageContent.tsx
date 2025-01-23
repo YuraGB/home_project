@@ -1,13 +1,13 @@
-import { TParams } from "@/app/[locale]/[categoryId]/_modules/hooks/useCategoryPage";
+import { TParams } from "@/app/[locale]/categories/[categoryId]/_modules/hooks/useCategoryPage";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]";
 import { getCatalogByUserIdWithData } from "@/server/services/catalog/getCatalogByUserIDWithData";
 import { formatPostData } from "@/lib/formatPostData";
 import { PageTitle } from "@/components/pageTitle";
-import { SubCategoryList } from "@/app/[locale]/[categoryId]/_modules/components/SubCategoryList/SubCategoryList";
+import { SubCategoryList } from "@/app/[locale]/categories/[categoryId]/_modules/components/SubCategoryList/SubCategoryList";
 import { PostListLayout } from "@/components/postListLayout";
 import React from "react";
-import { Footer } from "@/app/[locale]/[categoryId]/_modules/components/Footer";
+import { Footer } from "@/app/[locale]/categories/[categoryId]/_modules/components/Footer";
 
 export const CategoryPageContent = async ({ params }: TParams) => {
   const { categoryId } = await params;

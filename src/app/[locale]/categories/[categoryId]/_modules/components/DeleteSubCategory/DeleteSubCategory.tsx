@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react";
 import { AddUpdateDeleteDialog } from "@/components/addUpdateDialog";
 import { Trash2 } from "lucide-react";
 import { TSubCategory } from "@/db/drizzle/schemas/subCategoriesSchema";
-import { DeleteSubCategory } from "@/app/[locale]/[categoryId]/_modules/components/DeleteSubCategory/DeleteSubCatButton";
+import { DeleteSubCategory } from "@/app/[locale]/categories/[categoryId]/_modules/components/DeleteSubCategory/DeleteSubCatButton";
 
 export const DeleteSubCategoryButton = ({
   subCategory,
