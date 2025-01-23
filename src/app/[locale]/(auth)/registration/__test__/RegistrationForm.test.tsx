@@ -22,7 +22,7 @@ jest.mock("next-auth/react", () => ({
   })),
   SessionProvider: ({ children }: { children: React.ReactNode }) => (
     <>{children}</>
-  ), // Простий мок для провайдера
+  ),
 }));
 
 describe("RegistrationForm component", () => {
@@ -39,7 +39,7 @@ describe("RegistrationForm component", () => {
       wrapper: Wrapper,
     }); //ARRANGE
 
-    const elem = screen.getByLabelText("User name"); //ACT
+    const elem = screen.getByLabelText("User name*"); //ACT
     expect(elem).toBeInTheDocument(); //ASSERT
   });
 
@@ -48,7 +48,7 @@ describe("RegistrationForm component", () => {
       wrapper: Wrapper,
     }); //ARRANGE
 
-    const elem = screen.getByLabelText("E-email"); //ACT
+    const elem = screen.getByLabelText("E-email*"); //ACT
     expect(elem).toBeInTheDocument(); //ASSERT
   });
 
@@ -57,7 +57,7 @@ describe("RegistrationForm component", () => {
       wrapper: Wrapper,
     }); //ARRANGE
 
-    const elem = screen.getByLabelText("Password"); //ACT
+    const elem = screen.getByLabelText("Password*"); //ACT
     expect(elem).toBeInTheDocument(); //ASSERT
   });
 });

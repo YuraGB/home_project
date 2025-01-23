@@ -38,7 +38,7 @@ describe("loginForm component", () => {
       wrapper: Wrapper,
     }); //ARRANGE
 
-    const elem = screen.getByLabelText("E-email"); //ACT
+    const elem = screen.getByLabelText("E-email*"); //ACT
     expect(elem).toBeInTheDocument(); //ASSERT
   });
 
@@ -47,7 +47,7 @@ describe("loginForm component", () => {
       wrapper: Wrapper,
     }); //ARRANGE
 
-    const elem = screen.getByLabelText("Password"); //ACT
+    const elem = screen.getByLabelText("Password*"); //ACT
     expect(elem).toBeInTheDocument(); //ASSERT
   });
 });
