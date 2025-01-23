@@ -64,7 +64,6 @@ export const SubCategoryForm = ({
                   defaultMessage={"The name of the sub category"}
                   id={"nameSubCategory"}
                 />
-                <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
                 <Input
@@ -92,7 +91,6 @@ export const SubCategoryForm = ({
                   defaultMessage={"The description of the subCategory"}
                   id={"subCategoryDescription"}
                 />
-                <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
                 <Input
