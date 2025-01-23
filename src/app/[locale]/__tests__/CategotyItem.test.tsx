@@ -5,7 +5,7 @@ import { CategoryItem } from "@/app/[locale]/_modules/components/CategoryItem";
 import { TCategory } from "@/db/drizzle/schemas/categorySchema";
 import { act } from "react";
 
-describe("CategoryItem component", async () => {
+describe("CategoryItem component", () => {
   const categoryDummyData: TCategory = {
     id: 1,
     name: "Category 1",
