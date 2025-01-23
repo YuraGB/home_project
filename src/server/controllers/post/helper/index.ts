@@ -1,4 +1,6 @@
+"use server";
 //update post and revalidate cache
+
 import { TUpdatePostData } from "@/server/controllers/post/types";
 import { updatePost } from "@/server/services/post/updatePost";
 import { revalidatePath } from "next/cache";
@@ -7,10 +9,10 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]";
 import logger from "@/lib/logger";
 
-async function updateRevalidate(
+export const updateRevalidate = async (
   data: TUpdatePostData & { rating: boolean },
   locale: string,
-) {
+) => {
   const post = await updatePost(data);
 
   if (post) {
@@ -20,10 +22,13 @@ async function updateRevalidate(
   }
 
   return post;
-}
+};
 
 // does this user able to do updates
-async function canUpdate(userId: number, postId: number): Promise<boolean> {
+export const canUpdate = async (
+  userId: number,
+  postId: number,
+): Promise<boolean> => {
   const session = await getServerSession(authOptions);
   if (!session) return false;
   if (session.user.id !== userId) {
@@ -38,6 +43,4 @@ async function canUpdate(userId: number, postId: number): Promise<boolean> {
   const post = await getPostsByUserIdAndId(userId, postId);
 
   return !!post;
-}
-
-export { canUpdate, updateRevalidate };
+};

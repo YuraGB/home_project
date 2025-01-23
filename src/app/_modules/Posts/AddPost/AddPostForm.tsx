@@ -1,3 +1,4 @@
+"use client";
 import { useAddPost } from "@/app/_modules/Posts/hooks/useAddPost";
 import { ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
