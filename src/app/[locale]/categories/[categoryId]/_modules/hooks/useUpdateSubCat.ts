@@ -2,7 +2,7 @@ import { TSubCategory } from "@/db/drizzle/schemas/subCategoriesSchema";
 import {
   NewSubCategory,
   useNewSubCategoryValidationSchema,
-} from "@/app/[locale]/[categoryId]/_modules/hooks/schema/validationSchemaAddSubCategoryt";
+} from "@/app/[locale]/categories/[categoryId]/_modules/hooks/schema/validationSchemaAddSubCategoryt";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Dispatch, SetStateAction, useEffect } from "react";

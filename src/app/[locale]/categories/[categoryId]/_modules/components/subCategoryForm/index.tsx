@@ -18,7 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SubmitHandler, UseFormReturn } from "react-hook-form";
-import { NewSubCategory } from "@/app/[locale]/[categoryId]/_modules/hooks/schema/validationSchemaAddSubCategoryt";
+import { NewSubCategory } from "@/app/[locale]/categories/[categoryId]/_modules/hooks/schema/validationSchemaAddSubCategoryt";
 
 type TProps = {
   children: ReactNode;
@@ -59,7 +59,7 @@ export const SubCategoryForm = ({
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel aria-required={true}>
+              <FormLabel isRequired={true} aria-required={true}>
                 <FormattedMessage
                   defaultMessage={"The name of the sub category"}
                   id={"nameSubCategory"}
@@ -87,7 +87,7 @@ export const SubCategoryForm = ({
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel isRequired={true}>
                 <FormattedMessage
                   defaultMessage={"The description of the subCategory"}
                   id={"subCategoryDescription"}
@@ -140,7 +140,7 @@ export const SubCategoryForm = ({
           name="layoutSchema"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel isRequired={true}>
                 <FormattedMessage
                   defaultMessage={"Layout schema"}
                   id={"layoutSchema"}

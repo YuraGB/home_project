@@ -62,32 +62,10 @@ export function LoginForm() {
             <FormField
               defaultValue={""}
               control={form.control}
-              name="botCheck"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className={"leading-5 hidden"}>botCheck</FormLabel>
-                  <FormControl>
-                    <Input
-                      name={field.name}
-                      ref={field.ref}
-                      value={field.value}
-                      onBlur={field.onBlur}
-                      onChange={field.onChange}
-                      disabled={field.disabled}
-                      className={"hidden"}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              defaultValue={""}
-              control={form.control}
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className={"leading-5"}>
+                  <FormLabel isRequired={true} className={"leading-5"}>
                     <FormattedMessage defaultMessage={"E-mail"} id={"email"} />
                   </FormLabel>
                   <FormControl>
@@ -111,7 +89,7 @@ export function LoginForm() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
+                  <FormLabel isRequired={true}>
                     <FormattedMessage
                       defaultMessage={"Password"}
                       id={"password"}

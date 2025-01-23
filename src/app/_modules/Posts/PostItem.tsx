@@ -2,14 +2,19 @@ import { ReactNode, Suspense } from "react";
 
 import dynamic from "next/dynamic";
 import { TPostWithRating } from "@/lib/formatPostData";
-import { UpdatePost } from "@/app/_modules/Posts/UpdatePost/UpdatePost";
 import { PostInfo } from "@/app/_modules/Posts/PostInfo";
-import { DeletePost } from "@/app/_modules/Posts/DeletePost";
 
+const DeletePost = dynamic(() =>
+  import("@/app/_modules/Posts/DeletePost").then((mod) => mod.DeletePost),
+);
+const UpdatePost = dynamic(() =>
+  import("@/app/_modules/Posts/UpdatePost/UpdatePost").then(
+    (mod) => mod.UpdatePost,
+  ),
+);
 const ActionBox = dynamic(() =>
   import("@/components/actionBox").then((mod) => mod.ActionBox),
 );
-
 const PostBackground = dynamic(() =>
   import("@/app/_modules/Posts/PostBackground").then(
     (mod) => mod.PostBackground,

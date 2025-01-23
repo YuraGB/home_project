@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import { Button } from "@/components/ui/button";
-import { TPropsAddForm } from "@/app/[locale]/[categoryId]/_modules/components/types";
-import { useAddSubCategory } from "@/app/[locale]/[categoryId]/_modules/hooks/useAddSubCategory";
+import { TPropsAddForm } from "@/app/[locale]/categories/[categoryId]/_modules/components/types";
+import { useAddSubCategory } from "@/app/[locale]/categories/[categoryId]/_modules/hooks/useAddSubCategory";
 
-import { SubCategoryForm } from "@/app/[locale]/[categoryId]/_modules/components/subCategoryForm";
+import { SubCategoryForm } from "@/app/[locale]/categories/[categoryId]/_modules/components/subCategoryForm";
 
 export const AddSubCategoryForm = (props: TPropsAddForm): ReactNode => {
   const { onSubmit, form, loadingNewSubCategory } = useAddSubCategory(props);

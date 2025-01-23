@@ -2,8 +2,8 @@
 import React, { ReactNode, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import dynamic from "next/dynamic";
-import { Ocean } from "@/components/background/Ocean";
 import { Sky } from "@react-three/drei";
+import { Ocean } from "@/components/background/Ocean";
 
 const Model = dynamic(() =>
   import("@/components/background/Model").then((mod) => mod.Model),
@@ -33,9 +33,9 @@ export const Background = (): ReactNode => {
         </directionalLight>
         <ambientLight intensity={0.8} />
         <Suspense fallback={null}>
-          <Ocean />
           <Model />
         </Suspense>
+        <Ocean />
         <Sky distance={10000} rayleigh={0.5} turbidity={5} />
         <fog attach="fog" args={["#aabbcc", 200, 400]} />
       </Canvas>

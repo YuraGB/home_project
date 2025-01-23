@@ -1,8 +1,8 @@
 import React, { Suspense } from "react";
-import { TParams } from "@/app/[locale]/[categoryId]/_modules/hooks/useCategoryPage";
+import { TParams } from "@/app/[locale]/categories/[categoryId]/_modules/hooks/useCategoryPage";
 import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
 import { BreadcrmbsConteiner } from "@/components/bradcrumbs/BradcrmbsConteiner";
-import { CategoryPageContent } from "@/app/[locale]/[categoryId]/_modules/components/CategoryPageContent";
+import { CategoryPageContent } from "@/app/[locale]/categories/[categoryId]/_modules/components/CategoryPageContent";
 import { getAllCategories } from "@/server/services/catalog/getAllCategories";
 
 // export const experimental_ppr = true;

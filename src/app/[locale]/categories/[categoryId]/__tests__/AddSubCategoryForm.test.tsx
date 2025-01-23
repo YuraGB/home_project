@@ -3,7 +3,7 @@ import IntlWrapper from "@/testMockUps/intlMoskUpProvider";
 import QueryWrapper from "@/testMockUps/queryMockUpProvider";
 import { render } from "@testing-library/react";
 import { screen } from "@testing-library/dom";
-import { AddSubCategoryForm } from "@/app/[locale]/[categoryId]/_modules/components/AddSubCategory/AddSubCategoryForm";
+import { AddSubCategoryForm } from "@/app/[locale]/categories/[categoryId]/_modules/components/AddSubCategory/AddSubCategoryForm";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(() => ({

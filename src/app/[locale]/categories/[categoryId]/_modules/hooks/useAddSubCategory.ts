@@ -2,11 +2,11 @@ import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
-import { TPropsAddForm } from "@/app/[locale]/[categoryId]/_modules/components/types";
+import { TPropsAddForm } from "@/app/[locale]/categories/[categoryId]/_modules/components/types";
 import {
   NewSubCategory,
   useNewSubCategoryValidationSchema,
-} from "@/app/[locale]/[categoryId]/_modules/hooks/schema/validationSchemaAddSubCategoryt";
+} from "@/app/[locale]/categories/[categoryId]/_modules/hooks/schema/validationSchemaAddSubCategoryt";
 import { useMutationApi } from "@/hooks/apiCalls/mutation";
 import { TCreateSubCategoryData } from "@/server/controllers/subCategory/types";
 import { TSubCategory } from "@/db/drizzle/schemas/subCategoriesSchema";

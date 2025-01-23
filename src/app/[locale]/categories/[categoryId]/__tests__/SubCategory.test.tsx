@@ -1,4 +1,4 @@
-import { SubCategoryItem } from "@/app/[locale]/[categoryId]/_modules/components/SubCategoryList/SubCategoryItem";
+import { SubCategoryItem } from "@/app/[locale]/categories/[categoryId]/_modules/components/SubCategoryList/SubCategoryItem";
 import Wrapper from "@/testMockUps/intlMoskUpProvider";
 import { render } from "@testing-library/react";
 import { screen } from "@testing-library/dom";

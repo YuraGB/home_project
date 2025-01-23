@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import Wrapper from "@/testMockUps/intlMoskUpProvider";
 import { screen } from "@testing-library/dom";
-import { AddSubCategoryButton } from "@/app/[locale]/[categoryId]/_modules/components/AddSubCategory/AddSubCategoryButton";
+import { AddSubCategoryButton } from "@/app/[locale]/categories/[categoryId]/_modules/components/AddSubCategory/AddSubCategoryButton";
 
 describe("AddSubCategoryButton component", () => {
   it("should have text", async () => {

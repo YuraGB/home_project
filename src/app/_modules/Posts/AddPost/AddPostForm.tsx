@@ -2,7 +2,7 @@ import { useAddPost } from "@/app/_modules/Posts/hooks/useAddPost";
 import { ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import { Button } from "@/components/ui/button";
-import { TPropsAddForm } from "@/app/[locale]/[categoryId]/_modules/components/types";
+import { TPropsAddForm } from "@/app/[locale]/categories/[categoryId]//_modules/components/types";
 import { CreateUpdatePostForm } from "@/app/_modules/Posts/CreateUpdateForm";
 
 export const AddPostForm = (props: TPropsAddForm): ReactNode => {

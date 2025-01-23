@@ -1,9 +1,21 @@
 import React, { ReactNode } from "react";
 import { TCategory } from "@/db/drizzle/schemas/categorySchema";
 import Link from "next/link";
-import { ActionBox } from "@/components/actionBox";
-import { DeleteCategoryButton } from "@/app/[locale]/_modules/components/CategoryItemActions/DeleteCategory/DeleteCategoryButton";
-import { UpdateCategoryButton } from "@/app/[locale]/_modules/components/CategoryItemActions/UpdateCategory/UpdateCategoryButton";
+import dynamic from "next/dynamic";
+
+const ActionBox = dynamic(() =>
+  import("@/components/actionBox").then((mod) => mod.ActionBox),
+);
+const DeleteCategoryButton = dynamic(() =>
+  import(
+    "@/app/[locale]/_modules/components/CategoryItemActions/DeleteCategory/DeleteCategoryButton"
+  ).then((mod) => mod.DeleteCategoryButton),
+);
+const UpdateCategoryButton = dynamic(() =>
+  import(
+    "@/app/[locale]/_modules/components/CategoryItemActions/UpdateCategory/UpdateCategoryButton"
+  ).then((mod) => mod.UpdateCategoryButton),
+);
 
 export const CategoryItem = ({
   category,

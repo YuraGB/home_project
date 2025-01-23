@@ -1,6 +1,6 @@
 import { Bradcrmbs } from "@/components/bradcrumbs/Bradcrmbs";
 import React from "react";
-import { TParams } from "@/app/[locale]/[categoryId]/_modules/hooks/useCategoryPage";
+import { TParams } from "@/app/[locale]/categories/[categoryId]//_modules/hooks/useCategoryPage";
 import { breadcrumbsService } from "@/server/controllers/breadcrumbs";
 
 export const BreadcrmbsConteiner = async ({ params }: TParams) => {

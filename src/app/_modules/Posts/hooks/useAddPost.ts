@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { TPropsAddForm } from "@/app/[locale]/[categoryId]/_modules/components/types";
+import { TPropsAddForm } from "@/app/[locale]/categories/[categoryId]//_modules/components/types";
 import { useRouter } from "next/navigation";
 import { useMutationApi } from "@/hooks/apiCalls/mutation";
 import { TCreatePostData } from "@/server/controllers/post/types";

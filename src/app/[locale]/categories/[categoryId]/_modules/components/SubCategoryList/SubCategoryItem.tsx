@@ -3,9 +3,21 @@ import { TSubCategory } from "@/db/drizzle/schemas/subCategoriesSchema";
 import { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ActionBox } from "@/components/actionBox";
-import { UpdateSubCategoryButton } from "@/app/[locale]/[categoryId]/_modules/components/UpdateSubCategory/UpdateSubCategoryButton";
-import { DeleteSubCategoryButton } from "@/app/[locale]/[categoryId]/_modules/components/DeleteSubCategory/DeleteSubCategory";
+import dynamic from "next/dynamic";
+
+const ActionBox = dynamic(() =>
+  import("@/components/actionBox").then((mod) => mod.ActionBox),
+);
+const UpdateSubCategoryButton = dynamic(() =>
+  import(
+    "@/app/[locale]/categories/[categoryId]/_modules/components/UpdateSubCategory/UpdateSubCategoryButton"
+  ).then((mod) => mod.UpdateSubCategoryButton),
+);
+const DeleteSubCategoryButton = dynamic(() =>
+  import(
+    "@/app/[locale]/categories/[categoryId]/_modules/components/DeleteSubCategory/DeleteSubCategory"
+  ).then((mod) => mod.DeleteSubCategoryButton),
+);
 
 export const SubCategoryItem = ({
   item,

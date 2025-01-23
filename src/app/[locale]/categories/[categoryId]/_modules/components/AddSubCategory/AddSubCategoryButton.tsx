@@ -14,7 +14,7 @@ import { FormattedMessage } from "react-intl";
 import dynamic from "next/dynamic";
 const AddPostForm = dynamic(() =>
   import(
-    "@/app/[locale]/[categoryId]/_modules/components/AddSubCategory/AddSubCategoryForm"
+    "@/app/[locale]/categories/[categoryId]/_modules/components/AddSubCategory/AddSubCategoryForm"
   ).then((mod) => mod.AddSubCategoryForm),
 );
 
