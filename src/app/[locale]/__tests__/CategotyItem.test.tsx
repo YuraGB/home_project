@@ -3,8 +3,9 @@ import Wrapper from "@/testMockUps/intlMoskUpProvider";
 import { screen } from "@testing-library/dom";
 import { CategoryItem } from "@/app/[locale]/_modules/components/CategoryItem";
 import { TCategory } from "@/db/drizzle/schemas/categorySchema";
+import { act } from "react";
 
-describe("CategoryItem component", () => {
+describe("CategoryItem component", async () => {
   const categoryDummyData: TCategory = {
     id: 1,
     name: "Category 1",
@@ -15,8 +16,10 @@ describe("CategoryItem component", () => {
     layoutSchema: null,
   };
   it("should heading be in the document", async () => {
-    render(<CategoryItem category={categoryDummyData} locale={"en-US"} />, {
-      wrapper: Wrapper,
+    await act(async () => {
+      render(<CategoryItem category={categoryDummyData} locale={"en-US"} />, {
+        wrapper: Wrapper,
+      });
     }); //ARRANGE
 
     const elem = screen.getByRole("heading", {
@@ -25,14 +28,16 @@ describe("CategoryItem component", () => {
     expect(elem).toBeInTheDocument(); //ASSERT
   });
 
-  it("should not heading be in the DOM", () => {
+  it("should not heading be in the DOM", async () => {
     const data = {
       ...categoryDummyData,
-      id: null,
+      id: 0,
     };
-    // @ts-expect-error for testing purposes
-    render(<CategoryItem category={data} locale={"en-US"} />, {
-      wrapper: Wrapper,
+
+    await act(async () => {
+      render(<CategoryItem category={data} locale={"en-US"} />, {
+        wrapper: Wrapper,
+      });
     }); //ARRANGE
 
     const elem = screen.queryByRole("heading"); //ACT

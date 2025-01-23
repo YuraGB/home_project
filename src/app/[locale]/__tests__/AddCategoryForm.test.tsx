@@ -25,7 +25,7 @@ describe("AddCategoryForm component", () => {
       wrapper: Wrapper,
     }); //ARRANGE
 
-    const inputNode = screen.getByLabelText("Name of the category"); //ACT
+    const inputNode = screen.getByLabelText("Name of the category*"); //ACT
 
     expect(inputNode).toBeInTheDocument(); //ASSERT
   });
@@ -35,7 +35,7 @@ describe("AddCategoryForm component", () => {
       wrapper: Wrapper,
     }); //ARRANGE
 
-    const inputNode = screen.getByLabelText("Description"); //ACT
+    const inputNode = screen.getByLabelText("Description*"); //ACT
 
     expect(inputNode).toBeInTheDocument(); //ASSERT
   });
