@@ -19,21 +19,21 @@ export const breadcrumbsService = async ({
       (acc, currentValue) => {
         if (currentValue.categories) {
           acc.unshift({
-            name: `categories/${currentValue.categories.name}`,
-            url: currentValue.categories.id,
+            name: currentValue.categories.name,
+            url: `categories/${currentValue.categories.id}`,
           });
         }
 
         if (currentValue.sub_categories) {
           acc.push({
-            name: `subCategories/${currentValue.sub_categories.name}`,
-            url: currentValue.sub_categories.id,
+            name: currentValue.sub_categories.name,
+            url: `subCategories/${currentValue.sub_categories.id}`,
           });
         }
 
         return acc;
       },
-      [] as { name: string; url: number }[],
+      [] as { name: string; url: string }[],
     );
   }
 };
