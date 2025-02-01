@@ -1,4 +1,4 @@
-import { TPostWithRating } from "@/lib/formatPostData";
+import { TPostWithRating } from "@/server/lib/formatPostData";
 
 export type TRatingRowPosts = {
   [key: number | string]: Array<TPostWithRating>;

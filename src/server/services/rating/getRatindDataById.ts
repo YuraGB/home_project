@@ -2,7 +2,7 @@
 import { ratingTable, TRatingSchema } from "@/db/drizzle/schemas/ratingSchema";
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 
 export const getRatingDataById = async (
   id: number,

@@ -1,4 +1,4 @@
-import { randomBytes, pbkdf2Sync } from "crypto";
+import { randomBytes, pbkdf2Sync } from "@/server/lib/crypto";
 
 export function generatePassword(password: string) {
   const salt = randomBytes(32).toString("hex");

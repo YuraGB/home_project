@@ -2,7 +2,7 @@
 import { db } from "@/db";
 import { TUserSchema, usersTable } from "@/db/drizzle/schemas/userSchema";
 import { z } from "zod";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 
 const userToCreateValidation = z.object({
   salt: z.string(),

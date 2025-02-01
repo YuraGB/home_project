@@ -2,7 +2,7 @@ import {
   subCategoriesSchema,
   TSubCategory,
 } from "@/db/drizzle/schemas/subCategoriesSchema";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 import { db } from "@/db";
 
 export const getAllSubCategories = async (): Promise<TSubCategory[]> => {

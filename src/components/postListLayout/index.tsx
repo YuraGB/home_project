@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { TPostWithRating } from "@/lib/formatPostData";
+import { TPostWithRating } from "@/server/lib/formatPostData";
 import { TopRateLayout } from "@/components/topRateLayout";
 import { TopRateList } from "@/components/topRate/topRateList";
 import { PostsList } from "@/app/_modules/Posts/PostsList";

@@ -3,7 +3,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]";
 import { redirect } from "next/navigation";
 import { getCatalogByUserIdWithData } from "@/server/services/catalog/getCatalogByUserIDWithData";
 import { breadcrumbsService } from "@/server/controllers/breadcrumbs";
-import { formatPostData } from "@/lib/formatPostData";
+import { formatPostData } from "@/server/lib/formatPostData";
 
 export type TParams = { params: Promise<{ categoryId: string }> };
 

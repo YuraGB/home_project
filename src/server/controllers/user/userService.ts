@@ -1,9 +1,9 @@
 "use server";
 import { NewUser } from "@/app/[locale]/(auth)/registration/_modules/registration_form/hooks/schema/validationSchema";
 import { getUserByEmail } from "@/server/services/user/getUserByEmail";
-import { generatePassword } from "@/lib/crypto";
+import { generatePassword } from "@/server/lib/crypto";
 import { createNewUser } from "@/server/services/user/newUser";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 
 export const createUser = async (data: NewUser) => {
   const { email, password, username } = data;

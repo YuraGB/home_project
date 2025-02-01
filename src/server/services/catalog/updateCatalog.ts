@@ -1,7 +1,7 @@
 import { categoryTable, TCategory } from "@/db/drizzle/schemas/categorySchema";
 import { eq } from "drizzle-orm";
 import { db } from "@/db";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 import { TUpdateCatalog } from "@/server/controllers/category/validationSchemas";
 
 export const updateCatalog = async (

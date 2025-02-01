@@ -1,7 +1,7 @@
 "use server";
 import { ratingTable, TRatingSchema } from "@/db/drizzle/schemas/ratingSchema";
 import { db } from "@/db";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 import { eq } from "drizzle-orm";
 
 export const updateRate = async (

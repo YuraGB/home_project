@@ -2,7 +2,7 @@ import { PostsList } from "@/app/_modules/Posts/PostsList";
 import { render, waitFor } from "@testing-library/react";
 import Wrapper from "@/testMockUps/intlMoskUpProvider";
 import { screen } from "@testing-library/dom";
-import { TPostWithRating } from "@/lib/formatPostData";
+import { TPostWithRating } from "@/server/lib/formatPostData";
 
 describe("PostList component", () => {
   const posts: TPostWithRating[] = [

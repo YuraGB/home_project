@@ -15,11 +15,15 @@ import { addNewPost } from "@/server/services/post/addNewPost";
 import { addNewPostWithRating } from "@/server/services/post/addNewPostWithRating";
 import { revalidatePath } from "next/cache";
 import { addNewRating, getRatingByPostId } from "@/server/controllers/rating";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 import { getRatingDataByPostId } from "@/server/services/rating/getRatingByPostId";
 import { deleteRating } from "@/server/services/rating/deleteRating";
 import { deletePost } from "@/server/services/post/deletePost";
-import { canUpdate, updateRevalidate } from "@/server/controllers/post/helper";
+import {
+  canDelete,
+  canUpdate,
+  updateRevalidate,
+} from "@/server/controllers/post/helper";
 
 export const createNewPost = async (
   data: TCreatePostData & { rating: boolean } & { locale: string },
@@ -32,7 +36,9 @@ export const createNewPost = async (
       votes: 0,
       amountRating: 0,
     };
+
     const createdPost = await addNewPostWithRating(validatedData, ratingData);
+
     if (createdPost?.post) {
       revalidatePath(
         `/${locale}${data.categoryId ? "/categories/" + data.categoryId : ""}/subCategory/${data.subCategoryId}`,
@@ -113,6 +119,12 @@ export const deletePostData = async (postId: number) => {
   if (!postId) {
     logger.error(`Delete post data: No post id provided`);
     throw new Error("No post id provided");
+  }
+
+  const permitted = await canDelete(postId);
+
+  if (!permitted) {
+    throw new Error("You can't delete this post");
   }
 
   // Get rate of the post if it exists

@@ -1,4 +1,4 @@
-import { TPostWithRating } from "@/lib/formatPostData";
+import { TPostWithRating } from "@/server/lib/formatPostData";
 import { ReactNode } from "react";
 import Link from "next/link";
 

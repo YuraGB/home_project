@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 import { TCreatePostData } from "@/server/controllers/post/types";
 import { postsSchema, TDBPost } from "@/db/drizzle/schemas/postsSchema";
 

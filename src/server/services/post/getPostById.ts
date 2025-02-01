@@ -1,7 +1,7 @@
 import { postsSchema, TDBPost } from "@/db/drizzle/schemas/postsSchema";
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 
 export const getPostById = async (id: number): Promise<TDBPost | null> => {
   try {

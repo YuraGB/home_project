@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "../globals.css";
 import AuthProvider from "@/context/AuthProvider";
 import ServerIntlProvider from "@/context/i18nProvider";
-import getIntl from "@/lib/intl";
+import getIntl from "@/server/lib/intl";
 import { FetchProvider } from "@/context/FetchProvider";
 import { ReactNode } from "react";
 import { Toaster } from "@/components/ui/toaster";

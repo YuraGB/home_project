@@ -1,5 +1,5 @@
 import { postsSchema, TDBPost } from "@/db/drizzle/schemas/postsSchema";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 import { db } from "@/db";
 import { and, eq } from "drizzle-orm";
 

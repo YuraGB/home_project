@@ -1,6 +1,6 @@
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 import { postsSchema } from "@/db/drizzle/schemas/postsSchema";
 
 export const deletePost = async (id: number): Promise<number | null> => {

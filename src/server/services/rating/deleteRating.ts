@@ -1,7 +1,7 @@
 import { db } from "@/db";
 import { ratingTable } from "@/db/drizzle/schemas/ratingSchema";
 import { eq } from "drizzle-orm";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 
 export const deleteRating = async (id: number) => {
   try {

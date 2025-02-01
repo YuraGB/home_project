@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { TPostWithRating } from "@/lib/formatPostData";
+import { TPostWithRating } from "@/server/lib/formatPostData";
 import { PostItem } from "@/app/_modules/Posts/PostItem";
 import { Slider } from "@/components/slider";
 import { SwiperSlide } from "swiper/react";

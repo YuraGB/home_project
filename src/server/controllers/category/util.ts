@@ -2,7 +2,7 @@ import { deleteRating } from "@/server/services/rating/deleteRating";
 import { deleteSubCategory } from "@/server/services/subCategory/deleteSubCategory";
 import { TCategoryReturnType } from "@/server/services/catalog/getCatalogByUserIDWithData";
 import { deletePost } from "@/server/services/post/deletePost";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 
 export const deleteAllRelations = (relatObj: TCategoryReturnType): void => {
   const { rating = [], sub_categories = [], posts = [], categories } = relatObj;

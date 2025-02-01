@@ -3,7 +3,7 @@ import {
   TPostResources,
 } from "@/db/drizzle/schemas/postResourses";
 import { db } from "@/db";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 
 export const addPostResources = async (
   postId: number,

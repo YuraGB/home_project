@@ -19,14 +19,14 @@ export const breadcrumbsService = async ({
       (acc, currentValue) => {
         if (currentValue.categories) {
           acc.unshift({
-            name: currentValue.categories.name,
+            name: `categories/${currentValue.categories.name}`,
             url: currentValue.categories.id,
           });
         }
 
         if (currentValue.sub_categories) {
           acc.push({
-            name: currentValue.sub_categories.name,
+            name: `subCategories/${currentValue.sub_categories.name}`,
             url: currentValue.sub_categories.id,
           });
         }

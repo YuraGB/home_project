@@ -1,7 +1,7 @@
 import { ReactNode, Suspense } from "react";
 
 import dynamic from "next/dynamic";
-import { TPostWithRating } from "@/lib/formatPostData";
+import { TPostWithRating } from "@/server/lib/formatPostData";
 import { PostInfo } from "@/app/_modules/Posts/PostInfo";
 
 const DeletePost = dynamic(() =>

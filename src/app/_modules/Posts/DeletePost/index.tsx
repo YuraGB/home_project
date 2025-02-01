@@ -1,5 +1,5 @@
 "use client";
-import { TPostWithRating } from "@/lib/formatPostData";
+import { TPostWithRating } from "@/server/lib/formatPostData";
 import { useState } from "react";
 import { AddUpdateDeleteDialog } from "@/components/addUpdateDialog";
 import { Trash2 } from "lucide-react";

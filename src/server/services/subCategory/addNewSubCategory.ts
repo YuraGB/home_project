@@ -4,7 +4,7 @@ import {
   TSubCategory,
 } from "@/db/drizzle/schemas/subCategoriesSchema";
 import { db } from "@/db";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 
 export const addNewSubCategory = async (
   data: TCreateSubCategoryData,

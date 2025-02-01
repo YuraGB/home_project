@@ -1,6 +1,6 @@
 "use server";
 import { db } from "@/db";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 import { postsSchema, TDBPost } from "@/db/drizzle/schemas/postsSchema";
 import { eq } from "drizzle-orm";
 

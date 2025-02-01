@@ -1,6 +1,6 @@
 import { breadcrumbsService } from "@/server/controllers/breadcrumbs";
 import { getSubCategoryById } from "@/server/services/subCategory/getSubCategoryByCategoryId";
-import { formatPostData } from "@/lib/formatPostData";
+import { formatPostData } from "@/server/lib/formatPostData";
 import { redirect } from "next/navigation";
 
 export type TParams = {

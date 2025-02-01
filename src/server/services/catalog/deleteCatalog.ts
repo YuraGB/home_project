@@ -1,7 +1,7 @@
 "use server";
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 import { categoryTable } from "@/db/drizzle/schemas/categorySchema";
 
 export const deleteCatalog = async (id: number): Promise<number | null> => {

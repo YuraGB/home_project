@@ -2,7 +2,7 @@
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
 import { categoryTable, TCategory } from "@/db/drizzle/schemas/categorySchema";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 
 export const getCatalogById = async (
   id: number,

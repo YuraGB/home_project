@@ -2,7 +2,7 @@ import { db } from "@/db";
 import { subCategoriesSchema } from "@/db/drizzle/schemas/subCategoriesSchema";
 import { eq } from "drizzle-orm";
 import { postsSchema } from "@/db/drizzle/schemas/postsSchema";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 import { ratingTable } from "@/db/drizzle/schemas/ratingSchema";
 import { TSubReturnType } from "@/server/services/subCategory/types";
 import { formatDataHelper } from "@/server/services/subCategory/formatHelper";

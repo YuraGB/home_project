@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode } from "react";
-import { TPostWithRating } from "@/lib/formatPostData";
-import { formatRows } from "@/lib/topRateformatRow";
+import { TPostWithRating } from "@/server/lib/formatPostData";
+import { formatRows } from "@/server/lib/topRateformatRow";
 import { TopRateRow } from "@/components/topRate/topRateRow";
 import { PostsList } from "@/app/_modules/Posts/PostsList";
 

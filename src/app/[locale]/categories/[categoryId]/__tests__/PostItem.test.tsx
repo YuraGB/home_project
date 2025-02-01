@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import { PostItem } from "@/app/_modules/Posts/PostItem";
 import Wrapper from "@/testMockUps/intlMoskUpProvider";
 import { screen } from "@testing-library/dom";
-import { TPostWithRating } from "@/lib/formatPostData";
+import { TPostWithRating } from "@/server/lib/formatPostData";
 import { act } from "react";
 
 describe("PostItem component", () => {

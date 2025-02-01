@@ -1,6 +1,6 @@
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 import { subCategoriesSchema } from "@/db/drizzle/schemas/subCategoriesSchema";
 
 export const deleteSubCategory = async (id: number): Promise<number | null> => {

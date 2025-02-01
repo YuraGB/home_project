@@ -1,6 +1,6 @@
 "use server";
 import { addNewCategory } from "@/server/services/catalog/addNewCategory";
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 import { TCategory } from "@/db/drizzle/schemas/categorySchema";
 import {
   categoryValidationSchema,

@@ -2,7 +2,7 @@ import { TParams } from "@/app/[locale]/categories/[categoryId]/_modules/hooks/u
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]";
 import { getCatalogByUserIdWithData } from "@/server/services/catalog/getCatalogByUserIDWithData";
-import { formatPostData } from "@/lib/formatPostData";
+import { formatPostData } from "@/server/lib/formatPostData";
 import { PageTitle } from "@/components/pageTitle";
 import { SubCategoryList } from "@/app/[locale]/categories/[categoryId]/_modules/components/SubCategoryList/SubCategoryList";
 import { PostListLayout } from "@/components/postListLayout";

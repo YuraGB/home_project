@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { PostItem } from "@/app/_modules/Posts/PostItem";
-import { TPostWithRating } from "@/lib/formatPostData";
+import { TPostWithRating } from "@/server/lib/formatPostData";
 
 export const PostsList = ({
   posts,

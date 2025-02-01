@@ -1,4 +1,4 @@
-import logger from "@/lib/logger";
+import logger from "@/server/lib/logger";
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
 import { postsSchema, TDBPost } from "@/db/drizzle/schemas/postsSchema";

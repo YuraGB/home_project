@@ -34,9 +34,19 @@ export const Background = (): ReactNode => {
         <ambientLight intensity={0.8} />
         <Suspense fallback={null}>
           <Model />
+
+          <Sky
+            distance={450000}
+            sunPosition={[5, 1, 8]}
+            mieCoefficient={0.005}
+            mieDirectionalG={1}
+            rayleigh={0.31}
+            turbidity={8}
+            inclination={0}
+            azimuth={0.25}
+          />
         </Suspense>
         <Ocean />
-        <Sky distance={10000} rayleigh={0.5} turbidity={5} />
         <fog attach="fog" args={["#aabbcc", 200, 400]} />
       </Canvas>
     </article>

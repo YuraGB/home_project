@@ -1,7 +1,7 @@
 "use client";
 import { AddUpdateDeleteDialog } from "@/components/addUpdateDialog";
 import { UpdatePostForm } from "@/app/_modules/Posts/UpdatePost/UpdatePostForm";
-import { TPostWithRating } from "@/lib/formatPostData";
+import { TPostWithRating } from "@/server/lib/formatPostData";
 import { Pencil } from "lucide-react";
 import { useState } from "react";
 
