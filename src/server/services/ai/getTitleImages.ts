@@ -19,11 +19,7 @@ export const getTitleImages = async (titleName: string): Promise<string[]> => {
     location: "Austin, Texas",
   });
   if (response?.images_results?.length) {
-    const imagesBase64Array = await imagesUrlToBase64(
-      response.images_results.map(
-        ({ original }: { original: string }) => original,
-      ),
-    );
+    const imagesBase64Array = await imagesUrlToBase64(response.images_results);
 
     return imagesBase64Array.filter((image) => image !== null);
   } else {
