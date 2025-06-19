@@ -13,7 +13,7 @@ export const getTitleImages = async (titleName: string): Promise<string[]> => {
   console.log("getTitleImages", titleName);
   const response = await getJson({
     engine: "google_images",
-    api_key: "b31b29c1ec1b64f2b9bc6d198479799283635bbadc66dce37e3009711b814247", // Get your API_KEY from https://serpapi.com/manage-api-key
+    api_key: process.env.SERP_API_KEY, // Get your API_KEY from https://serpapi.com/manage-api-key
     q: titleName,
     ijn: "0",
     location: "Austin, Texas",
