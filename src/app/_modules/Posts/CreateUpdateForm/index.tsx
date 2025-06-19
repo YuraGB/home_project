@@ -10,7 +10,7 @@ import {
 import { FormattedMessage } from "react-intl";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { SubmitHandler, UseFormReturn } from "react-hook-form";
 import { NewPost } from "@/app/_modules/Posts/hooks/schema/validationSchemaAddPost";
 
@@ -18,12 +18,14 @@ type TProps = {
   children: ReactNode;
   form: UseFormReturn<NewPost>;
   onSubmitAction: SubmitHandler<NewPost>;
+  onBlurTitleAction?: (e: React.FocusEvent<HTMLInputElement>) => void;
 };
 
 export const CreateUpdatePostForm = ({
   children,
   form,
   onSubmitAction,
+  onBlurTitleAction,
 }: TProps): ReactNode => {
   return (
     <Form
@@ -64,7 +66,11 @@ export const CreateUpdatePostForm = ({
                   name={field.name}
                   ref={field.ref}
                   value={field.value}
-                  onBlur={field.onBlur}
+                  onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
+                    field.onBlur();
+                    if (!onBlurTitleAction) return;
+                    onBlurTitleAction(e);
+                  }}
                   onChange={field.onChange}
                   disabled={field.disabled}
                 />

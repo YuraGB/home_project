@@ -24,12 +24,24 @@ import {
   canUpdate,
   updateRevalidate,
 } from "@/server/controllers/post/helper";
+import { uploadBase64Image } from "@/server/lib/uploadImageToHost";
 
 export const createNewPost = async (
   data: TCreatePostData & { rating: boolean } & { locale: string },
 ) => {
   const { rating, locale = "en-US", ...rest } = data;
   const validatedData = creatingPostValidationData.parse(data);
+
+  // Validate image if it exists
+  // If the image is a base64 string, we need to upload it to the host
+  if (validatedData.image) {
+    const uploadImageToTheHost = await uploadBase64Image(validatedData.image);
+    if (!uploadImageToTheHost) {
+      logger.error(`Create new post: Error uploading image to the host`);
+      throw new Error("Error uploading image to the host");
+    }
+    rest.image = uploadImageToTheHost;
+  }
 
   if (rating) {
     const ratingData = {

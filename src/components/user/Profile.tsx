@@ -18,7 +18,7 @@ export const Profile = () => {
   const { userData, logOut } = useProfile();
 
   if (!userData) {
-    return <Link href={"/login"}>Login!!</Link>;
+    return <Link href={"/login"}>Login</Link>;
   }
 
   return (

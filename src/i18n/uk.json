@@ -42,5 +42,6 @@
   "cancel": "Cancel",
   "delete": "Delete",
   "updateCategory": "Update category",
-  "updatePost": "Update the post"
+  "updatePost": "Update the post",
+  "loadingImages": "Loading images"
 }

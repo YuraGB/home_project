@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CameraControls, useGLTF } from "@react-three/drei";
 import { useCityAnimation } from "@/components/background/hooks/useCityAnimation";
 import { motion } from "framer-motion-3d";
@@ -7,6 +7,7 @@ import * as THREE from "three";
 export function City2() {
   const { nodes, materials } = useGLTF("/models/mirrors_age/scene.gltf");
   const { cameraControlRef, position, cityRef } = useCityAnimation();
+  useEffect(() => console.log("city"), []);
   return (
     <>
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
