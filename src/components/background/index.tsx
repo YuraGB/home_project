@@ -1,15 +1,26 @@
 "use client";
-import React, { ReactNode, Suspense } from "react";
+import React, { ReactNode, Suspense, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
-import dynamic from "next/dynamic";
-import { Sky } from "@react-three/drei";
-import { Ocean } from "@/components/background/Ocean";
+import dynamic, { DynamicOptions } from "next/dynamic";
 
-const Model = dynamic(() =>
-  import("@/components/background/Model").then((mod) => mod.Model),
+const Model = dynamic(
+  () => import("@/components/background/Model").then((mod) => mod.Model),
+  {
+    suspense: true,
+    ssr: false,
+  } as unknown as DynamicOptions<unknown>,
+);
+const Sky = dynamic(() => import("@react-three/drei").then((mod) => mod.Sky), {
+  suspense: true,
+  ssr: false,
+} as unknown as DynamicOptions<unknown>);
+const Ocean = dynamic(
+  () => import("@/components/background/Ocean").then((mod) => mod.Ocean),
+  { suspense: true } as unknown as DynamicOptions<unknown>,
 );
 
 export const Background = (): ReactNode => {
+  useEffect(() => console.log("load"), []);
   return (
     <article className={"z-[-1] min-h-[700px] fixed w-full h-dvh top-0 left-0"}>
       <Canvas
@@ -33,8 +44,6 @@ export const Background = (): ReactNode => {
         </directionalLight>
         <ambientLight intensity={0.8} />
         <Suspense fallback={null}>
-          <Model />
-
           <Sky
             distance={450000}
             sunPosition={[5, 1, 8]}
@@ -44,9 +53,12 @@ export const Background = (): ReactNode => {
             turbidity={8}
             inclination={0}
             azimuth={0.25}
+            ref={() => console.log("sky")}
           />
+          <Ocean />
+          <Model />
         </Suspense>
-        <Ocean />
+
         <fog attach="fog" args={["#aabbcc", 200, 400]} />
       </Canvas>
     </article>

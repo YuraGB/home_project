@@ -14,6 +14,7 @@ import { createNewPost } from "@/server/controllers/post/postService";
 import { TPostWithRating } from "@/server/services/post/addNewPostWithRating";
 import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
 import { useIntl } from "react-intl";
+import { useGetTitleImages } from "./useGetTitleImages";
 
 export const useAddPost = ({
   categoryId,
@@ -24,6 +25,8 @@ export const useAddPost = ({
   const { toast } = useToast();
   const router = useRouter();
   const { locale } = useIntl();
+  const { getTitleImagesAction, imagesArray, loadingImages } =
+    useGetTitleImages();
 
   const {
     data: newPost,
@@ -46,6 +49,9 @@ export const useAddPost = ({
       rating: false,
     },
   });
+
+  const setImage = (imgUrl: string) => form.setValue("image", imgUrl);
+  const imageExist = form.watch("image");
 
   useEffect(() => {
     if (errorCreateNewPost) {
@@ -78,9 +84,22 @@ export const useAddPost = ({
     }
   };
 
+  const onBlurTitleAction = (e: React.FocusEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement;
+
+    if (!target.value || imageExist) return;
+
+    getTitleImagesAction(target.value);
+  };
+
   return {
     loadingNewPost,
     onSubmit,
     form,
+    onBlurTitleAction,
+    imagesArray,
+    setImage,
+    imageExist,
+    loadingImages,
   };
 };
