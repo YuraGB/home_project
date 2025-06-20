@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactNode, Suspense, useEffect } from "react";
+import React, { ReactNode, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import dynamic, { DynamicOptions } from "next/dynamic";
 
@@ -20,7 +20,6 @@ const Ocean = dynamic(
 );
 
 export const Background = (): ReactNode => {
-  useEffect(() => console.log("load"), []);
   return (
     <article className={"z-[-1] min-h-[700px] fixed w-full h-dvh top-0 left-0"}>
       <Canvas

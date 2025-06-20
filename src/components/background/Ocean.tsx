@@ -9,7 +9,7 @@ export const Ocean = () => {
   const waterRef = useRef<Mesh>(null);
   const meshRef = useRef<Mesh>(null);
   const gl = useThree((state) => state.gl); // Get WebGLRenderer instance
-  useEffect(() => console.log("Ocean is loaded"), []);
+
   // Water normals for simulating waves
   const waterNormals = useLoader(THREE.TextureLoader, "/water.jpeg");
   waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;

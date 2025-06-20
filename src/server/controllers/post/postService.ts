@@ -105,6 +105,17 @@ export const updatePostData = async (
 
   const validatedData = updatePostValidationData.parse(data);
 
+  // Validate image if it exists
+  // If the image is a base64 string, we need to upload it to the host
+  if (validatedData.image) {
+    const uploadImageToTheHost = await uploadBase64Image(validatedData.image);
+    if (!uploadImageToTheHost) {
+      logger.error(`Create new post: Error uploading image to the host`);
+      throw new Error("Error uploading image to the host");
+    }
+    rest.image = uploadImageToTheHost;
+  }
+
   // if rating is true, we need to check if the post already has a rating
   // if it doesn't, we need to create a new rating for the post
   if (rating) {
