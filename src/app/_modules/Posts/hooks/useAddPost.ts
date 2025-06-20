@@ -14,7 +14,7 @@ import { createNewPost } from "@/server/controllers/post/postService";
 import { TPostWithRating } from "@/server/services/post/addNewPostWithRating";
 import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
 import { useIntl } from "react-intl";
-import { useGetTitleImages } from "./useGetTitleImages";
+import { useAddImage } from "./useAddImage";
 
 export const useAddPost = ({
   categoryId,
@@ -25,18 +25,6 @@ export const useAddPost = ({
   const { toast } = useToast();
   const router = useRouter();
   const { locale } = useIntl();
-  const { getTitleImagesAction, imagesArray, loadingImages } =
-    useGetTitleImages();
-
-  const {
-    data: newPost,
-    isPending: loadingNewPost,
-    mutate: createPost,
-    error: errorCreateNewPost,
-  } = useMutationApi<
-    TCreatePostData & { rating: boolean } & { locale: string },
-    TPostWithRating | TDBPost | undefined
-  >(createNewPost);
 
   const formSchema = useNewPostValidationSchema();
   const form = useForm<NewPost>({
@@ -52,6 +40,19 @@ export const useAddPost = ({
 
   const setImage = (imgUrl: string) => form.setValue("image", imgUrl);
   const imageExist = form.watch("image");
+
+  const { imagesArray, loadingImages, onBlurTitleAction } =
+    useAddImage(imageExist);
+
+  const {
+    data: newPost,
+    isPending: loadingNewPost,
+    mutate: createPost,
+    error: errorCreateNewPost,
+  } = useMutationApi<
+    TCreatePostData & { rating: boolean } & { locale: string },
+    TPostWithRating | TDBPost | undefined
+  >(createNewPost);
 
   useEffect(() => {
     if (errorCreateNewPost) {
@@ -82,14 +83,6 @@ export const useAddPost = ({
     } else {
       router.push("/login");
     }
-  };
-
-  const onBlurTitleAction = (e: React.FocusEvent<HTMLInputElement>) => {
-    const target = e.target as HTMLInputElement;
-
-    if (!target.value || imageExist) return;
-
-    getTitleImagesAction(target.value);
   };
 
   return {

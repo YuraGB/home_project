@@ -1,16 +1,38 @@
 "use client";
+import { LoaderCircle } from "lucide-react";
 import Image from "next/image";
 import { ReactNode } from "react";
+import { FormattedMessage } from "react-intl";
 
 export const AddImage = ({
   listImages,
   setImage,
+  loadingImages = false,
   imageExist,
 }: {
-  listImages: string[];
+  listImages?: string[] | null;
   setImage: (imgUrl: string) => void;
   imageExist?: string;
+  loadingImages?: boolean;
 }): ReactNode => {
+  if (loadingImages) {
+    return (
+      <section className="absolute w-[calc(50%-30px)] h-[calc(100%-50px)] overflow-hidden bg-gray-100 left-0 top-10 flex flex-col mx-[15px] items-center">
+        <h3 className="font-bold w-full pt-6 px-2">
+          <FormattedMessage
+            id={"loadingImages"}
+            defaultMessage={"Loading images..."}
+          />
+        </h3>
+        <LoaderCircle className={"animate-spin"} />
+      </section>
+    );
+  }
+
+  if (!listImages || listImages.length === 0) {
+    return null;
+  }
+
   return (
     <section className="absolute w-[calc(50%-30px)] h-[calc(100%-50px)] overflow-hidden bg-gray-100 left-0 top-10 flex flex-col mx-[15px]">
       <h3 className="font-bold w-full pt-6 px-2">Choose image</h3>

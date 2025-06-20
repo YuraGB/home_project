@@ -10,7 +10,6 @@ import { getJson } from "serpapi";
  * @returns Масив URL зображень "data:image/webp;base64...".
  */
 export const getTitleImages = async (titleName: string): Promise<string[]> => {
-  console.log("getTitleImages", titleName);
   const response = await getJson({
     engine: "google_images",
     api_key: process.env.SERP_API_KEY, // Get your API_KEY from https://serpapi.com/manage-api-key

@@ -13,6 +13,7 @@ import { updatePostData } from "@/server/controllers/post/postService";
 import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
 import { TUpdatePostData } from "@/server/controllers/post/types";
 import { useIntl } from "react-intl";
+import { useAddImage } from "./useAddImage";
 
 export const useUpdatePost = ({ post, onCloseAction }: TPropsUpdateForm) => {
   const { toast } = useToast();
@@ -39,6 +40,12 @@ export const useUpdatePost = ({ post, onCloseAction }: TPropsUpdateForm) => {
       rating: !!post.rate,
     },
   });
+
+  const setImage = (imgUrl: string) => form.setValue("image", imgUrl);
+  const imageExist = form.watch("image");
+
+  const { imagesArray, loadingImages, onBlurTitleAction } =
+    useAddImage(imageExist);
 
   useEffect(() => {
     if (errorUpdatePost) {
@@ -71,5 +78,10 @@ export const useUpdatePost = ({ post, onCloseAction }: TPropsUpdateForm) => {
     loadingUpdatePost,
     onSubmit,
     form,
+    onBlurTitleAction,
+    imagesArray,
+    imageExist,
+    loadingImages,
+    setImage,
   };
 };
