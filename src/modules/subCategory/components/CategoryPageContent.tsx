@@ -14,8 +14,7 @@ export const CategoryPageContent = async ({ params }: TParams) => {
   }
 
   const pageData = await getCategoryData(categoryId);
-  console.log("pageData", pageData);
-  console.log("categoryId", categoryId);
+
   if (pageData === null) {
     return null;
   }

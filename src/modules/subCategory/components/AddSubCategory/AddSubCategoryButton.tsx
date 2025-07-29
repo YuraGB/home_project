@@ -15,7 +15,7 @@ import dynamic from "next/dynamic";
 const AddPostForm = dynamic(() =>
   import(
     "@/modules/subCategory/components/AddSubCategory/AddSubCategoryForm"
-  ).then((mod) => mod.AddSubCategoryForm)
+  ).then((mod) => mod.AddSubCategoryForm),
 );
 
 export const AddSubCategoryButton = ({
@@ -31,23 +31,23 @@ export const AddSubCategoryButton = ({
     <section>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button variant='outline'>
+          <Button variant="outline">
             <FormattedMessage
               id={"addNewSubCategoryBtn"}
               defaultMessage={"Create new sub category"}
             />
           </Button>
         </DialogTrigger>
-        <DialogContent className='sm:max-w-[725px]'>
+        <DialogContent className="sm:max-w-[725px]">
           <DialogHeader>
             <DialogTitle>
               <FormattedMessage
                 id={"newPostDialogTitle"}
-                defaultMessage={"The new post"}
+                defaultMessage={"The new sub category"}
               />
             </DialogTitle>
           </DialogHeader>
-          <div className='grid gap-4 py-4 justify-items-end'>
+          <div className="grid gap-4 py-4 justify-items-end">
             <AddPostForm
               userId={userId}
               categoryId={categoryId}
