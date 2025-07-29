@@ -6,17 +6,17 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 
 const ActionBox = dynamic(() =>
-  import("@/components/actionBox").then((mod) => mod.ActionBox)
+  import("@/components/actionBox").then((mod) => mod.ActionBox),
 );
 const UpdateSubCategoryButton = dynamic(() =>
   import(
     "@/modules/subCategory/components/UpdateSubCategory/UpdateSubCategoryButton"
-  ).then((mod) => mod.UpdateSubCategoryButton)
+  ).then((mod) => mod.UpdateSubCategoryButton),
 );
 const DeleteSubCategoryButton = dynamic(() =>
   import(
     "@/modules/subCategory/components/DeleteSubCategory/DeleteSubCategory"
-  ).then((mod) => mod.DeleteSubCategoryButton)
+  ).then((mod) => mod.DeleteSubCategoryButton),
 );
 
 export const SubCategoryItem = ({
@@ -38,7 +38,7 @@ export const SubCategoryItem = ({
       </ActionBox>
 
       <Link href={`${pathName}/subCategory/${item.id}`} className={"text-gold"}>
-        {item.name}
+        <span className="inline-block font-bold text-gold">{item.name}</span>
       </Link>
     </div>
   );

@@ -28,31 +28,15 @@ export const CreateUpdatePostForm = ({
   onBlurTitleAction,
 }: TProps): ReactNode => {
   return (
-    <Form
-      control={form.control}
-      formState={form.formState}
-      reset={form.reset}
-      handleSubmit={form.handleSubmit}
-      getFieldState={form.getFieldState}
-      resetField={form.resetField}
-      clearErrors={form.clearErrors}
-      setError={form.setError}
-      getValues={form.getValues}
-      setValue={form.setValue}
-      register={form.register}
-      setFocus={form.setFocus}
-      trigger={form.trigger}
-      watch={form.watch}
-      unregister={form.unregister}
-    >
+    <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmitAction)}
-        className='w-1/2 space-y-2'
+        className="w-1/2 space-y-2"
       >
         <FormField
           defaultValue={""}
           control={form.control}
-          name='name'
+          name="name"
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired={true}>
@@ -82,7 +66,7 @@ export const CreateUpdatePostForm = ({
         <FormField
           defaultValue={""}
           control={form.control}
-          name='description'
+          name="description"
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired={true}>
@@ -108,7 +92,7 @@ export const CreateUpdatePostForm = ({
         <FormField
           defaultValue={""}
           control={form.control}
-          name='url'
+          name="url"
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired={true}>
@@ -134,7 +118,7 @@ export const CreateUpdatePostForm = ({
         <FormField
           defaultValue={""}
           control={form.control}
-          name='image'
+          name="image"
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired={true}>
@@ -161,7 +145,7 @@ export const CreateUpdatePostForm = ({
         <FormField
           defaultValue={false}
           control={form.control}
-          name='rating'
+          name="rating"
           render={({ field }) => (
             <FormItem>
               <FormControl>
@@ -170,7 +154,7 @@ export const CreateUpdatePostForm = ({
                   onCheckedChange={field.onChange}
                 />
               </FormControl>
-              <div className='space-y-2 leading-none inline pl-2'>
+              <div className="space-y-2 leading-none inline pl-2">
                 <FormLabel>
                   <FormattedMessage
                     id={"titleRatingCheckbox"}

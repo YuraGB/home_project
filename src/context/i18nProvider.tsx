@@ -1,7 +1,7 @@
 "use client";
 
 import { IntlProvider } from "react-intl";
-import { type ReactNode } from "react";
+import * as React from "react";
 import { type MessageFormatElement } from "@formatjs/icu-messageformat-parser";
 
 export default function ServerIntlProvider({
@@ -9,7 +9,7 @@ export default function ServerIntlProvider({
   messages,
   locale = "en-US",
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
   messages:
     | Record<string, string>
     | Record<string, MessageFormatElement[]>

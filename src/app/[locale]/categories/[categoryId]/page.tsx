@@ -3,9 +3,9 @@ import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
 import { BreadcrmbsConteiner } from "@/components/bradcrumbs/BradcrmbsConteiner";
 import { getAllCategories } from "@/server/services/catalog/getAllCategories";
 import { TParams } from "@/modules/subCategory/hooks/useCategoryPage";
-import { CategoryPageContent } from "@/modules/subCategory/components/CategoryPageContent";
 
-// export const experimental_ppr = true;
+import { CategoryPageContent } from "@/modules/subCategory/components/CategoryPageContent";
+import { PageTitle } from "@/components/pageTitle";
 
 export default async function CategoryPage(props: TParams) {
   return (
@@ -13,8 +13,11 @@ export default async function CategoryPage(props: TParams) {
       <Suspense fallback={"Loading"}>
         <BreadcrmbsConteiner params={props.params} />
       </Suspense>
-
-      <Suspense fallback={"Loading"}>
+      <Suspense
+        fallback={
+          <PageTitle title={"Loading..."} transitionname={`category-name`} />
+        }
+      >
         <CategoryPageContent params={props.params} />
       </Suspense>
     </DefaultPageLayout>

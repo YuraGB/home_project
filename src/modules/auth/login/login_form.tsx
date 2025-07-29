@@ -38,31 +38,15 @@ export function LoginForm() {
           x: 0,
         }}
       >
-        <Form
-          control={form.control}
-          formState={form.formState}
-          reset={form.reset}
-          handleSubmit={form.handleSubmit}
-          getFieldState={form.getFieldState}
-          resetField={form.resetField}
-          clearErrors={form.clearErrors}
-          setError={form.setError}
-          getValues={form.getValues}
-          setValue={form.setValue}
-          register={form.register}
-          setFocus={form.setFocus}
-          trigger={form.trigger}
-          watch={form.watch}
-          unregister={form.unregister}
-        >
+        <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className='w-2/3 space-y-6'
+            className="w-2/3 space-y-6"
           >
             <FormField
               defaultValue={""}
               control={form.control}
-              name='email'
+              name="email"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel isRequired={true} className={"leading-5"}>
@@ -86,7 +70,7 @@ export function LoginForm() {
             <FormField
               defaultValue={""}
               control={form.control}
-              name='password'
+              name="password"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel isRequired={true}>
@@ -116,7 +100,7 @@ export function LoginForm() {
               </FormMessage>
             )}
             <Button
-              type='submit'
+              type="submit"
               className={"w-full"}
               disabled={loading.current}
             >

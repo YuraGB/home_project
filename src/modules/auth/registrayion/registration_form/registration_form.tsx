@@ -16,6 +16,12 @@ import { LoaderCircle, LogInIcon } from "lucide-react";
 import { LinkWithLocale } from "@/components/linkWithLocale/LinkWithLocale";
 import { useRegistrationForm } from "./hooks/registrationFormHook";
 
+type RegistrationFormValues = {
+  email: string;
+  password: string;
+  username: string;
+};
+
 const RegistrationForm = (): ReactNode => {
   const { form, onSubmit, loading } = useRegistrationForm();
   return (
@@ -37,31 +43,15 @@ const RegistrationForm = (): ReactNode => {
           x: 0,
         }}
       >
-        <Form
-          control={form.control}
-          formState={form.formState}
-          reset={form.reset}
-          handleSubmit={form.handleSubmit}
-          getFieldState={form.getFieldState}
-          resetField={form.resetField}
-          clearErrors={form.clearErrors}
-          setError={form.setError}
-          getValues={form.getValues}
-          setValue={form.setValue}
-          register={form.register}
-          setFocus={form.setFocus}
-          trigger={form.trigger}
-          watch={form.watch}
-          unregister={form.unregister}
-        >
+        <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className='w-2/3 space-y-6'
+            className="w-2/3 space-y-6"
           >
             <FormField
               defaultValue={""}
               control={form.control}
-              name='username'
+              name="username"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel isRequired={true}>
@@ -88,7 +78,7 @@ const RegistrationForm = (): ReactNode => {
             <FormField
               defaultValue={""}
               control={form.control}
-              name='email'
+              name="email"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel isRequired={true}>
@@ -112,7 +102,7 @@ const RegistrationForm = (): ReactNode => {
             <FormField
               defaultValue={""}
               control={form.control}
-              name='password'
+              name="password"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel isRequired={true}>
@@ -136,7 +126,7 @@ const RegistrationForm = (): ReactNode => {
                 </FormItem>
               )}
             />
-            <Button type='submit' className={"w-full"}>
+            <Button type="submit" className={"w-full"}>
               {loading.current ? (
                 <LoaderCircle className={"animate-spin"} />
               ) : (
