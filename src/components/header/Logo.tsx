@@ -6,8 +6,8 @@ export const Logo = () => {
     <Image
       src={LogoImage}
       alt={"logo of the site"}
-      width={100}
-      height={50}
+      width={150}
+      height={100}
       loading={"eager"}
     />
   );
