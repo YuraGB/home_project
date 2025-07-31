@@ -1,19 +1,19 @@
-import { useToast } from "@/hooks/use-toast";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Dispatch, SetStateAction, useEffect } from "react";
-import { TCategory } from "@/db/drizzle/schemas/categorySchema";
+import { useToast } from '@/hooks/use-toast';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Dispatch, SetStateAction, useEffect } from 'react';
+import { TCategory } from '@/db/drizzle/schemas/categorySchema';
 import {
   NewCategory,
   useAddNewCategoryValidation,
-} from "@/modules/category/hooks/schema/useAddCategorySchema";
-import { useMutationApi } from "@/hooks/apiCalls/mutation";
-import { updateExistingCategory } from "@/server/controllers/category";
-import { TUpdateCatalog } from "@/server/controllers/category/validationSchemas";
+} from '@/modules/category/hooks/schema/useAddCategorySchema';
+import { useMutationApi } from '@/hooks/apiCalls/mutation';
+import { updateExistingCategory } from '@/server/controllers/category';
+import { TUpdateCatalog } from '@/server/controllers/category/validationSchemas';
 
 export const useUpdateCategory = (
   category: TCategory,
-  onCloseAction: Dispatch<SetStateAction<boolean>>
+  onCloseAction: Dispatch<SetStateAction<boolean>>,
 ) => {
   const { toast } = useToast();
   const {
@@ -27,8 +27,8 @@ export const useUpdateCategory = (
   const form = useForm<NewCategory>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: category.name ?? "",
-      description: category.description ?? "",
+      name: category.name ?? '',
+      description: category.description ?? '',
     },
   });
 
@@ -36,9 +36,9 @@ export const useUpdateCategory = (
     if (errorOnUpdate) {
       //todo translation
       toast({
-        variant: "destructive",
-        title: "Category not updated",
-        description: "There was a problem with creating new post.",
+        variant: 'destructive',
+        title: 'Category not updated',
+        description: 'There was a problem with creating new post.',
       });
     }
   }, [errorOnUpdate, toast]);
@@ -51,6 +51,7 @@ export const useUpdateCategory = (
 
   const onSubmit = (values: NewCategory) => {
     if (category.id && category.userId) {
+      console.log('Updating category', values);
       updateAction({
         ...values,
         userId: category.userId,

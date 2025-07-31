@@ -43,5 +43,6 @@
   "delete": "Delete",
   "updateCategory": "Update category",
   "updatePost": "Update the post",
-  "loadingImages": "Loading images"
+  "loadingImages": "Loading images",
+  "categoryIcon": "Category icon"
 }

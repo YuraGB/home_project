@@ -48,5 +48,6 @@
   "updateCategory": "Update category",
   "updatePost": "Update the post",
   "updateSubCategory": "Update the sub category",
-  "loadingImages": "Loading images"
+  "loadingImages": "Loading images",
+  "categoryIcon": "Category icon"
 }
