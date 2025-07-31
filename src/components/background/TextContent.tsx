@@ -1,12 +1,12 @@
-import { Text3D } from "@react-three/drei";
-import React from "react";
-import { useLoader } from "@react-three/fiber";
-import { FontLoader } from "three-stdlib";
-import { usePathname } from "next/navigation";
-import { useTextContent } from "@/components/background/hooks/useTextContent";
+import { Text3D } from '@react-three/drei';
+import React from 'react';
+import { useLoader } from '@react-three/fiber';
+import { FontLoader } from 'three-stdlib';
+import { usePathname } from 'next/navigation';
+import { useTextContent } from '@/components/background/hooks/useTextContent';
 
 export const TextContent = () => {
-  const font = useLoader(FontLoader, "/fonts/Agu.json");
+  const font = useLoader(FontLoader, '/fonts/Agu.json');
   const pathName = usePathname();
   const {
     positionTextLogin,
@@ -17,12 +17,12 @@ export const TextContent = () => {
     sizeTitle,
   } = useTextContent();
 
-  if (pathName.endsWith("login")) {
+  if (pathName.endsWith('login')) {
     return (
       <>
         <Text3D
           font={font.data}
-          position={positionTitleLogin}
+          position={positionTitleLogin as [number, number, number]}
           size={sizeTitle}
           curveSegments={2}
           bevelEnabled={true}
@@ -38,7 +38,7 @@ export const TextContent = () => {
         </Text3D>
         <Text3D
           font={font.data}
-          position={positionTextLogin}
+          position={positionTextLogin as [number, number, number]}
           size={sizeText}
           curveSegments={2}
           bevelEnabled={true}
@@ -56,12 +56,12 @@ interact with site infrastructure`}
       </>
     );
   }
-  if (pathName.includes("registration")) {
+  if (pathName.includes('registration')) {
     return (
       <>
         <Text3D
           font={font.data}
-          position={positionTitleRegistration}
+          position={positionTitleRegistration as [number, number, number]}
           size={sizeTitle}
           curveSegments={2}
           bevelEnabled={true}
@@ -77,7 +77,7 @@ interact with site infrastructure`}
         </Text3D>
         <Text3D
           font={font.data}
-          position={positionTextRegistration}
+          position={positionTextRegistration as [number, number, number]}
           size={sizeText}
           curveSegments={2}
           bevelEnabled={true}
