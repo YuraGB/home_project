@@ -18,14 +18,12 @@ type TProps = {
   children: ReactNode;
   form: UseFormReturn<NewPost>;
   onSubmitAction: SubmitHandler<NewPost>;
-  onBlurTitleAction?: (e: React.FocusEvent<HTMLInputElement>) => void;
 };
 
 export const CreateUpdatePostForm = ({
   children,
   form,
   onSubmitAction,
-  onBlurTitleAction,
 }: TProps): ReactNode => {
   return (
     <Form {...form}>
@@ -50,11 +48,7 @@ export const CreateUpdatePostForm = ({
                   name={field.name}
                   ref={field.ref}
                   value={field.value}
-                  onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
-                    field.onBlur();
-                    if (!onBlurTitleAction) return;
-                    onBlurTitleAction(e);
-                  }}
+                  onBlur={field.onBlur}
                   onChange={field.onChange}
                   disabled={field.disabled}
                 />
