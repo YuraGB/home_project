@@ -19,16 +19,11 @@ export const UpdatePostForm = (props: TPropsUpdateForm): ReactNode => {
     imageExist,
     imagesArray,
     loadingImages,
-    onBlurTitleAction,
     setImage,
   } = useUpdatePost(props);
 
   return (
-    <CreateUpdatePostForm
-      form={form}
-      onSubmitAction={onSubmit}
-      onBlurTitleAction={onBlurTitleAction}
-    >
+    <CreateUpdatePostForm form={form} onSubmitAction={onSubmit}>
       <AddImage
         listImages={imagesArray}
         loadingImages={loadingImages}
