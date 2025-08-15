@@ -1,9 +1,12 @@
-import logger from "@/server/lib/logger";
-import { db } from "@/db";
-import { eq } from "drizzle-orm";
-import { postsSchema, TDBPost } from "@/db/drizzle/schemas/postsSchema";
+import logger from '@/server/lib/logger';
+import { db } from '@/db';
+import { eq } from 'drizzle-orm';
+import { postsSchema, TDBPost } from '@/db/drizzle/schemas/postsSchema';
+import { TUpdatePostData } from '@/server/controllers/post/types';
 
-export const updatePost = async (data: TDBPost): Promise<TDBPost | null> => {
+export const updatePost = async (
+  data: TUpdatePostData & { rating: boolean },
+): Promise<TDBPost | null> => {
   try {
     const [result] = await db
       .update(postsSchema)

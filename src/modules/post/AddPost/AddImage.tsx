@@ -1,8 +1,8 @@
-"use client";
-import { LoaderCircle } from "lucide-react";
-import Image from "next/image";
-import { ReactNode } from "react";
-import { FormattedMessage } from "react-intl";
+'use client';
+import { LoaderCircle } from 'lucide-react';
+import Image from 'next/image';
+import { ReactNode } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 export const AddImage = ({
   listImages,
@@ -17,14 +17,14 @@ export const AddImage = ({
 }): ReactNode => {
   if (loadingImages) {
     return (
-      <section className="absolute w-[calc(50%-30px)] h-[calc(100%-50px)] overflow-hidden bg-gray-100 left-0 top-10 flex flex-col mx-[15px] items-center">
+      <section className="flex flex-col mx-[15px] items-center">
         <h3 className="font-bold w-full pt-6 px-2">
           <FormattedMessage
-            id={"loadingImages"}
-            defaultMessage={"Loading images..."}
+            id={'loadingImages'}
+            defaultMessage={'Loading images...'}
           />
         </h3>
-        <LoaderCircle className={"animate-spin"} />
+        <LoaderCircle className={'animate-spin'} />
       </section>
     );
   }
@@ -47,9 +47,9 @@ export const AddImage = ({
               width={300}
               height={100}
               style={{
-                objectFit: "cover",
-                cursor: "pointer",
-                height: "100px",
+                objectFit: 'cover',
+                cursor: 'pointer',
+                height: '100px',
               }}
               loading="lazy"
               onClick={() => {
@@ -57,8 +57,8 @@ export const AddImage = ({
               }}
               className={
                 imageExist === itemUrl
-                  ? "border border-solid border-emerald-600 border-2"
-                  : ""
+                  ? 'border border-solid border-emerald-600 border-2'
+                  : ''
               }
             />
           );

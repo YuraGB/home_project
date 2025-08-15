@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,15 +10,17 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useProfile } from "@/components/user/hooks/useProfile";
-import Link from "next/link";
+} from '@/components/ui/dropdown-menu';
+import { useProfile } from '@/components/user/hooks/useProfile';
+import Link from 'next/link';
+import { ApiKey } from './apiKey';
+import { LogOut } from './LogOut';
 
 export const Profile = () => {
   const { userData, logOut } = useProfile();
 
   if (!userData) {
-    return <Link href={"/login"}>Login</Link>;
+    return <Link href={'/login'}>Login</Link>;
   }
 
   return (
@@ -31,9 +33,10 @@ export const Profile = () => {
         <DropdownMenuSeparator />
 
         <DropdownMenuItem>
-          <Button variant="ghost" onClick={logOut}>
-            Log out
-          </Button>
+          <ApiKey apiKey={userData.apikey} email={userData.email} />
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <LogOut logOut={logOut} />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

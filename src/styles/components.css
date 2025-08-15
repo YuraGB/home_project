@@ -81,3 +81,18 @@
     width: 200px;
   }
 }
+
+.hasUpdates {
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 5;
+    background-color: aquamarine;
+  }
+}

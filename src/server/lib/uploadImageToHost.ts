@@ -1,57 +1,53 @@
-"use server";
-import axios from "axios";
+import sharp from 'sharp';
+import axios from 'axios';
 
-type UploadResult = string | null;
-
-const FREEIMAGE_API_URL = "https://freeimage.host/api/1/upload";
-const FORMAT = "json";
+const FREEIMAGE_API_URL = 'https://freeimage.host/api/1/upload';
+const FORMAT = 'json';
+const API_KEY = process.env.FREE_IMAGE_CLOUD_API_KEY!;
 
 /**
- * Отримує чистий base64 з рядка, який може містити префікс `data:image/...;base64,`
- * @param input рядок base64 з префіксом
- * @returns чистий base64 рядок
+ * Extracts the base64 payload from a data URL.
+ * @param input - The data URL string.
+ * @returns The base64 payload or the original input if it doesn't match the expected format.
  */
 const getBase64Payload = (input: string): string => {
   const matches = input.match(/^data:(image\/[a-zA-Z]+);base64,(.+)$/);
-  if (matches) return matches[2];
-  return input; // fallback: припускаємо, що це вже чистий base64
+  return matches ? matches[2] : input;
 };
 
 /**
- * Завантажує base64-зображення на freeimage.host
- * @param base64Image рядок base64 з префіксом `data:image/...;base64,`
- * @param apiKey твій API ключ
+ * Uploads a base64 image to the host and returns the image URL.
+ * @param base64String - The base64 encoded image string.
+ * @returns A promise that resolves to the uploaded image URL or null if the upload fails.
  */
-export const uploadBase64Image = async (
-  base64String: string,
-): Promise<UploadResult> => {
+export const uploadBase64Image = async (base64String: string) => {
   try {
     const imageData = getBase64Payload(base64String);
 
-    if (!imageData) {
-      throw new Error("Неправильний формат base64-зображення");
-    }
+    const buffer = Buffer.from(imageData, 'base64');
+
+    const webpBuffer = await sharp(buffer).webp({ quality: 80 }).toBuffer();
+
+    const webpBase64 = webpBuffer.toString('base64');
 
     const formData = new URLSearchParams();
-    formData.append("key", process.env.FREE_IMAGE_CLOUD_API_KEY!);
-    formData.append("action", "upload");
-    formData.append("source", imageData);
-    formData.append("format", FORMAT);
+    formData.append('key', API_KEY);
+    formData.append('action', 'upload');
+    formData.append('source', webpBase64);
+    formData.append('format', FORMAT);
 
     const response = await axios.post(FREEIMAGE_API_URL, formData.toString(), {
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     });
 
     if (response.data.status_code === 200) {
       return response.data.image.url;
     } else {
-      console.error("Upload error:", response.data);
+      console.error('Upload error:', response.data);
       return null;
     }
   } catch (error) {
-    console.error("Axios error:", error);
+    console.error('Axios error:', error);
     return null;
   }
 };

@@ -1,23 +1,23 @@
-import { ReactNode, Suspense } from "react";
+import { ReactNode, Suspense } from 'react';
 
-import dynamic from "next/dynamic";
-import { TPostWithRating } from "@/server/lib/formatPostData";
-import { PostInfo } from "@/modules/post/PostInfo";
+import dynamic from 'next/dynamic';
+import { TPostWithRating } from '@/server/lib/formatPostData';
+import { PostInfo } from '@/modules/post/PostInfo';
 
 const DeletePost = dynamic(() =>
-  import("@/modules/post/DeletePost").then((mod) => mod.DeletePost)
+  import('@/modules/post/DeletePost').then((mod) => mod.DeletePost),
 );
 const UpdatePost = dynamic(() =>
-  import("@/modules/post/UpdatePost/UpdatePost").then((mod) => mod.UpdatePost)
+  import('@/modules/post/UpdatePost/UpdatePost').then((mod) => mod.UpdatePost),
 );
 const ActionBox = dynamic(() =>
-  import("@/components/actionBox").then((mod) => mod.ActionBox)
+  import('@/components/actionBox').then((mod) => mod.ActionBox),
 );
 const PostBackground = dynamic(() =>
-  import("@/modules/post/PostBackground").then((mod) => mod.PostBackground)
+  import('@/modules/post/PostBackground').then((mod) => mod.PostBackground),
 );
 const RatingComponent = dynamic(() =>
-  import("@/modules/rating/RatingComponent").then((mod) => mod.RatingComponent)
+  import('@/modules/rating/RatingComponent').then((mod) => mod.RatingComponent),
 );
 
 export const PostItem = ({
@@ -30,11 +30,11 @@ export const PostItem = ({
   style?: { [key: string]: string | number };
 }): ReactNode => {
   const hasImage = !!post.image;
-  const wrapperClass: string = `${hasImage ? "hovered" : ""} max-w-[300px] min-w-[300px] h-[100px] relative items-center justify-items-end  bg-gradient-to-r from-transparent to-[#484848] bg-cover bg-left-top`;
+  const wrapperClass: string = `${hasImage ? 'hovered' : ''} max-w-[300px] min-w-[300px] h-[100px] relative items-center justify-items-end  bg-gradient-to-r from-transparent to-[#484848] bg-cover bg-left-top`;
 
   return (
     <div
-      className={`rounded border overflow-hidden  ${className ?? ""}`}
+      className={`relative rounded border overflow-hidden  ${className ?? ''} ${post.hasUpdates ? 'hasUpdates' : ''}`}
       style={style}
     >
       <div className={wrapperClass}>

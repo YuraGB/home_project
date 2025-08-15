@@ -1,7 +1,7 @@
-import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
+import { TDBPost } from '@/db/drizzle/schemas/postsSchema';
 
 export type TFindPost = {
-  [key in "categoryId" | "subCategoryId"]: number;
+  [key in 'categoryId' | 'subCategoryId']: number;
 };
 export type TCreatePostData = {
   name: string;
@@ -13,4 +13,6 @@ export type TCreatePostData = {
   userId: number;
 };
 
-export type TUpdatePostData = TDBPost & { rating: boolean };
+export type TUpdatePostData = Omit<TDBPost, 'createdAt' | 'lastVisited'> & {
+  rating: boolean;
+};
