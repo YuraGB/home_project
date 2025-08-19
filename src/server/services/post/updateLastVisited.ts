@@ -1,7 +1,7 @@
-import logger from '@/server/lib/logger';
-import { db } from '@/db';
-import { eq } from 'drizzle-orm';
-import { postsSchema } from '@/db/drizzle/schemas/postsSchema';
+import logger from "@/server/lib/logger";
+import { db } from "@/db";
+import { eq } from "drizzle-orm";
+import { postsSchema } from "@/db/drizzle/schemas/postsSchema";
 
 export const updateLastVisited = async (
   id: number,

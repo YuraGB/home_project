@@ -1,10 +1,10 @@
-import { Dispatch, ReactNode, SetStateAction } from 'react';
-import { CreateUpdatePostForm } from '@/modules/post/CreateUpdateForm';
-import { Button } from '@/components/ui/button';
-import { FormattedMessage } from 'react-intl';
-import { TPostWithRating } from '@/server/lib/formatPostData';
-import { useUpdatePost } from '@/modules/post/hooks/useUpdatePost';
-import { AddImage } from '../AddPost/AddImage';
+import { Dispatch, ReactNode, SetStateAction } from "react";
+import { CreateUpdatePostForm } from "@/modules/post/CreateUpdateForm";
+import { Button } from "@/components/ui/button";
+import { FormattedMessage } from "react-intl";
+import { TPostWithRating } from "@/server/lib/formatPostData";
+import { useUpdatePost } from "@/modules/post/hooks/useUpdatePost";
+import { AddImage } from "../AddPost/AddImage";
 
 export type TPropsUpdateForm = {
   post: TPostWithRating;
@@ -33,11 +33,11 @@ export const UpdatePostForm = (props: TPropsUpdateForm): ReactNode => {
 
       <Button type="submit" disabled={loadingUpdatePost}>
         {loadingUpdatePost ? (
-          <FormattedMessage id={'savingPost'} defaultMessage={'Saving'} />
+          <FormattedMessage id={"savingPost"} defaultMessage={"Saving"} />
         ) : (
           <FormattedMessage
-            id={'updatePost'}
-            defaultMessage={'Update the post'}
+            id={"updatePost"}
+            defaultMessage={"Update the post"}
           />
         )}
       </Button>

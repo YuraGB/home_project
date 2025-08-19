@@ -1,6 +1,6 @@
-import webpush from 'web-push';
-import { NextRequest, NextResponse } from 'next/server';
-import { getSubscription } from '@/server/controllers/subscribe/getSubscription';
+import webpush from "web-push";
+import { NextRequest, NextResponse } from "next/server";
+import { getSubscription } from "@/server/controllers/subscribe/getSubscription";
 
 webpush.setVapidDetails(
   `mailto:${process.env.VAPID_EMAIL!}`,
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
 
   if (!subscription) {
     return NextResponse.json(
-      { error: 'No subscription found' },
+      { error: "No subscription found" },
       { status: 404 },
     );
   }
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     await webpush.sendNotification(sub, JSON.stringify({ title, body }));
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error('Push error:', err);
-    return NextResponse.json({ error: 'Push failed' }, { status: 500 });
+    console.error("Push error:", err);
+    return NextResponse.json({ error: "Push failed" }, { status: 500 });
   }
 }

@@ -24,7 +24,7 @@ export const useAddSubCategory = ({
     mutate: createSubCategory,
     data: newSubCategory,
   } = useMutationApi<TCreateSubCategoryData, TSubCategory | null>(
-    createNewSubCategory
+    createNewSubCategory,
   );
 
   const formSchema = useNewSubCategoryValidationSchema();

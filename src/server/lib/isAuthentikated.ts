@@ -1,15 +1,15 @@
-import { NextRequest } from 'next/server';
+import { NextRequest } from "next/server";
 
 export const isAuthenticatedByApiKey = (req: NextRequest): false | string => {
-  const authHeader = req.headers.get('authorization');
+  const authHeader = req.headers.get("authorization");
 
   if (!authHeader) {
     return false;
   }
 
-  const [scheme, token] = authHeader.split(' ');
+  const [scheme, token] = authHeader.split(" ");
 
-  if (scheme !== 'Bearer' || !token) {
+  if (scheme !== "Bearer" || !token) {
     return false;
   }
 

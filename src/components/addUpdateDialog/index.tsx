@@ -1,13 +1,13 @@
-'use client';
-import { Dispatch, ReactNode, SetStateAction } from 'react';
-import { Description, Dialog } from '@radix-ui/react-dialog';
+"use client";
+import { Dispatch, ReactNode, SetStateAction } from "react";
+import { Description, Dialog } from "@radix-ui/react-dialog";
 import {
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 export const AddUpdateDeleteDialog = ({
   children,

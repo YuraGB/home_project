@@ -16,7 +16,8 @@
     "clasters-scale": "pm2 scale ./node_modules/next/dist/bin/next +3 -- -p 3000",
     "clusters-stop": "pm2 stop ./node_modules/next/dist/bin/next -i 3",
     "clusters-delete": "pm2 delete all",
-    "clusters-start": "pm2 start ./node_modules/next/dist/bin/next -i 3 -n home-project -p 3000 -- start"
+    "clusters-start": "pm2 start ./node_modules/next/dist/bin/next -i 3 -n home-project -p 3000 -- start",
+    "lint:fix": "eslint . --ext .js,.ts,.jsx,.tsx --fix"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 export const HeaderWrapper = ({
   children,
@@ -8,11 +8,11 @@ export const HeaderWrapper = ({
   return (
     <header
       className={
-        'container grid grid-cols-[1fr_minmax(320px,_900px)_1fr] items-center border-b-2 p-2 mb-2 w-full top-0 backdrop-blur left-0 m-auto z-50'
+        "container grid grid-cols-[1fr_minmax(320px,_900px)_1fr] items-center border-b-2 p-2 mb-2 w-full top-0 backdrop-blur left-0 m-auto z-50"
       }
     >
       <section
-        className={'col-start-2 grid grid-cols-2 justify-items-center w-full'}
+        className={"col-start-2 grid grid-cols-2 justify-items-center w-full"}
       >
         {children}
       </section>

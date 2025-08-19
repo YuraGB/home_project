@@ -1,8 +1,8 @@
-import { TUserSchema, usersTable } from '@/db/drizzle/schemas/userSchema';
-import logger from '@/server/lib/logger';
-import { getUserByEmail } from './getUserByEmail';
-import { eq } from 'drizzle-orm';
-import { db } from '@/db';
+import { TUserSchema, usersTable } from "@/db/drizzle/schemas/userSchema";
+import logger from "@/server/lib/logger";
+import { getUserByEmail } from "./getUserByEmail";
+import { eq } from "drizzle-orm";
+import { db } from "@/db";
 
 /**
  * Updates a user's information in the database.
@@ -19,7 +19,7 @@ export const updateUser = async (
 
   if (!user) {
     logger.error(`User with email: ${email} not found`);
-    throw new Error('User not found');
+    throw new Error("User not found");
   }
 
   try {
@@ -31,11 +31,11 @@ export const updateUser = async (
 
     if (!user) {
       logger.error(`Failed to update user with email: ${email}`);
-      throw new Error('User not found or update failed');
+      throw new Error("User not found or update failed");
     }
     return user;
   } catch (error) {
     logger.error(`Failed to update user with email: ${email}`, error);
-    throw new Error('Failed to update user, please try again later');
+    throw new Error("Failed to update user, please try again later");
   }
 };

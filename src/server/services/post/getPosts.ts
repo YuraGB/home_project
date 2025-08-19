@@ -1,8 +1,8 @@
-import { db } from '@/db';
-import { postsSchema, TDBPost } from '@/db/drizzle/schemas/postsSchema';
-import { usersTable } from '@/db/drizzle/schemas/userSchema';
-import logger from '@/server/lib/logger';
-import { eq } from 'drizzle-orm';
+import { db } from "@/db";
+import { postsSchema, TDBPost } from "@/db/drizzle/schemas/postsSchema";
+import { usersTable } from "@/db/drizzle/schemas/userSchema";
+import logger from "@/server/lib/logger";
+import { eq } from "drizzle-orm";
 
 /**
  * Retrieves all posts from the database based on the provided API key.
@@ -29,7 +29,7 @@ export const getAllPostsService = async (
 
     return result;
   } catch (error) {
-    logger.error('Error fetching all posts:', error);
+    logger.error("Error fetching all posts:", error);
     return null;
   }
 };

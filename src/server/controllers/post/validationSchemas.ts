@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const postValidationSchema = z.object({
   categoryId: z.number().optional(),
@@ -28,7 +28,7 @@ export const updatePostValidationData = z.object({
   rating: z.boolean(),
   hasUpdates: z.boolean(),
   lastVisited: z.date({
-    required_error: 'Last visited date is required',
-    message: 'Last visited date must be a valid date',
+    required_error: "Last visited date is required",
+    message: "Last visited date must be a valid date",
   }),
 });

@@ -1,8 +1,8 @@
-import logger from '@/server/lib/logger';
-import { db } from '@/db';
-import { and, eq } from 'drizzle-orm';
-import { postsSchema } from '@/db/drizzle/schemas/postsSchema';
-import { usersTable } from '@/db/drizzle/schemas/userSchema';
+import logger from "@/server/lib/logger";
+import { db } from "@/db";
+import { and, eq } from "drizzle-orm";
+import { postsSchema } from "@/db/drizzle/schemas/postsSchema";
+import { usersTable } from "@/db/drizzle/schemas/userSchema";
 
 export const updatePostResource = async ({
   postId,
@@ -29,8 +29,8 @@ export const updatePostResource = async ({
     .returning();
 
   if (updated.length === 0) {
-    logger.error('Post not found or API key invalid');
-    throw new Error('Post not found or API key invalid');
+    logger.error("Post not found or API key invalid");
+    throw new Error("Post not found or API key invalid");
   }
 
   return !!updated[0];

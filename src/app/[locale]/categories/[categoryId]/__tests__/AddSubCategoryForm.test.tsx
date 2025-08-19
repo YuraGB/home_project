@@ -33,7 +33,7 @@ describe("AddSubCategoryForm component", () => {
       />,
       {
         wrapper: Wrapper,
-      }
+      },
     ); //ARRANGE
 
     const inputNode = screen.getByLabelText("The name of the sub category*"); //ACT
@@ -51,11 +51,11 @@ describe("AddSubCategoryForm component", () => {
       />,
       {
         wrapper: Wrapper,
-      }
+      },
     ); //ARRANGE
 
     const inputNode = screen.getByLabelText(
-      "The description of the subCategory*"
+      "The description of the subCategory*",
     ); //ACT
 
     expect(inputNode).toBeInTheDocument(); //ASSERT
@@ -71,7 +71,7 @@ describe("AddSubCategoryForm component", () => {
       />,
       {
         wrapper: Wrapper,
-      }
+      },
     ); //ARRANGE
 
     const submitButton = screen.getByRole("button", {

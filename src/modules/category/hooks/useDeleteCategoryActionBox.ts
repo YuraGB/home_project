@@ -24,7 +24,7 @@ export const useDeleteCategoryActionBox = (category: TCategory) => {
       toast({
         variant: "default",
         title: "Success",
-        description: `The category was deleted`,
+        description: "The category was deleted",
       });
     }
   }, [deletedCategoryId]);

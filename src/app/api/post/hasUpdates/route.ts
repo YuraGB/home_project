@@ -1,7 +1,7 @@
-import { isAuthenticatedByApiKey } from '@/server/lib/isAuthentikated';
-import logger from '@/server/lib/logger';
-import { updatePostResource } from '@/server/services/post/updatePostResource';
-import { NextRequest, NextResponse } from 'next/server';
+import { isAuthenticatedByApiKey } from "@/server/lib/isAuthentikated";
+import logger from "@/server/lib/logger";
+import { updatePostResource } from "@/server/services/post/updatePostResource";
+import { NextRequest, NextResponse } from "next/server";
 
 type PatchBody = {
   postId: number;
@@ -12,7 +12,7 @@ export async function PATCH(req: NextRequest) {
 
   if (!canContinue) {
     return new Response(
-      JSON.stringify({ error: 'Invalid Authorization header' }),
+      JSON.stringify({ error: "Invalid Authorization header" }),
       {
         status: 401,
       },
@@ -24,7 +24,7 @@ export async function PATCH(req: NextRequest) {
 
     if (!body || !body.postId) {
       return new Response(
-        JSON.stringify({ error: 'There is no data to update' }),
+        JSON.stringify({ error: "There is no data to update" }),
         {
           status: 501,
         },

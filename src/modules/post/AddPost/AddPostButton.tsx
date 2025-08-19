@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
 import { AddUpdateDeleteDialog } from "@/components/addUpdateDialog";
 const AddPostForm = dynamic(() =>
-  import("@/modules/post/AddPost/AddPostForm").then((mod) => mod.AddPostForm)
+  import("@/modules/post/AddPost/AddPostForm").then((mod) => mod.AddPostForm),
 );
 
 export const AddPostButton = ({

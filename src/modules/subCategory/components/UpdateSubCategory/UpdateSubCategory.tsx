@@ -14,7 +14,7 @@ export const UpdateSubCategory = ({
 }: TProps): ReactNode => {
   const { form, loading, onSubmit } = useUpdateSubCat(
     subCategory,
-    onCloseAction
+    onCloseAction,
   );
   return (
     <SubCategoryForm form={form} onSubmitAction={onSubmit}>

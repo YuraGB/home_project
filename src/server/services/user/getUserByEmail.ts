@@ -1,8 +1,8 @@
-'use server';
-import { db } from '@/db';
-import { TUserSchema, usersTable } from '@/db/drizzle/schemas/userSchema';
-import { eq } from 'drizzle-orm';
-import logger from '@/server/lib/logger';
+"use server";
+import { db } from "@/db";
+import { TUserSchema, usersTable } from "@/db/drizzle/schemas/userSchema";
+import { eq } from "drizzle-orm";
+import logger from "@/server/lib/logger";
 
 export const getUserByEmail = async (
   email: string,
@@ -14,7 +14,7 @@ export const getUserByEmail = async (
       .where(eq(usersTable.email, email));
     return user;
   } catch (error) {
-    console.error('findUserByEmail', error);
+    console.error("findUserByEmail", error);
     logger.error((error as Error).stack);
     return null;
   }

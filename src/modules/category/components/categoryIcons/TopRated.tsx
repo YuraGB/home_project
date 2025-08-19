@@ -1,5 +1,5 @@
 // https://freeicons.io/
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
 export const TopRatedIcon = ({
   className,
@@ -13,10 +13,10 @@ export const TopRatedIcon = ({
       height="512px"
       viewBox="0 0 512 512"
       style={{
-        shapeRendering: 'geometricPrecision',
-        textRendering: 'geometricPrecision',
-        fillRule: 'evenodd',
-        clipRule: 'evenodd',
+        shapeRendering: "geometricPrecision",
+        textRendering: "geometricPrecision",
+        fillRule: "evenodd",
+        clipRule: "evenodd",
       }}
       className={className}
     >

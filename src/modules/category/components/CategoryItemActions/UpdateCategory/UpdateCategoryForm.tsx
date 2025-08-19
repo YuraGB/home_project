@@ -12,12 +12,12 @@ type TProps = {
 export const UpdateCategoryForm = ({ category, onCloseAction }: TProps) => {
   const { form, onSubmit, onUpdating } = useUpdateCategory(
     category,
-    onCloseAction
+    onCloseAction,
   );
 
   return (
     <CreateUpdateCategoryForm form={form} onSubmitAction={onSubmit}>
-      <Button type='submit' disabled={onUpdating} className={"w-full"}>
+      <Button type="submit" disabled={onUpdating} className={"w-full"}>
         {onUpdating ? (
           <FormattedMessage id={"savingCategory"} defaultMessage={"Saving"} />
         ) : (

@@ -5,20 +5,20 @@ import {
   jsonb,
   timestamp,
   uniqueIndex,
-} from 'drizzle-orm/pg-core';
-import { InferSelectModel, InferInsertModel, relations } from 'drizzle-orm';
-import { usersTable } from './userSchema';
+} from "drizzle-orm/pg-core";
+import { InferSelectModel, InferInsertModel, relations } from "drizzle-orm";
+import { usersTable } from "./userSchema";
 
 export const pushSubscriptions = pgTable(
-  'push_subscriptions',
+  "push_subscriptions",
   {
-    id: serial('id').primaryKey(),
+    id: serial("id").primaryKey(),
     userId: integer().references(() => usersTable.id),
-    subscription: jsonb('subscription').notNull(),
-    createdAt: timestamp('created_at').defaultNow(),
+    subscription: jsonb("subscription").notNull(),
+    createdAt: timestamp("created_at").defaultNow(),
   },
   (table) => ({
-    userUnique: uniqueIndex('push_subscriptions_user_id_unique').on(
+    userUnique: uniqueIndex("push_subscriptions_user_id_unique").on(
       table.userId,
     ),
   }),

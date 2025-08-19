@@ -1,21 +1,21 @@
-import NextAuth, { type NextAuthOptions, User } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import { getUserByEmail } from '@/server/services/user/getUserByEmail';
-import { validPassword } from '@/server/lib/crypto';
-import logger from '@/server/lib/logger';
+import NextAuth, { type NextAuthOptions, User } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { getUserByEmail } from "@/server/services/user/getUserByEmail";
+import { validPassword } from "@/server/lib/crypto";
+import logger from "@/server/lib/logger";
 
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
-      name: 'Credentials',
+      name: "Credentials",
       credentials: {
-        id: { type: 'text' },
-        username: { label: 'Username', type: 'text', placeholder: 'Full name' },
-        email: { label: 'E-mail', type: 'text', placeholder: 'email' },
+        id: { type: "text" },
+        username: { label: "Username", type: "text", placeholder: "Full name" },
+        email: { label: "E-mail", type: "text", placeholder: "email" },
         password: {
-          label: 'Password',
-          type: 'password',
-          placeholder: 'password',
+          label: "Password",
+          type: "password",
+          placeholder: "password",
         },
       },
 
@@ -32,7 +32,7 @@ export const authOptions: NextAuthOptions = {
             user = await getUserByEmail(email);
             if (!user) {
               logger.error(`User not found. Email: ${email}`);
-              throw new Error('The user is not found');
+              throw new Error("The user is not found");
             }
             return { ...user, id: user.id, apikey: user.apikey ?? null };
           } catch (e) {
@@ -57,14 +57,14 @@ export const authOptions: NextAuthOptions = {
 
         if (!user) {
           logger.error(`User not found. Email: ${email}`);
-          throw new Error('The user is not found');
+          throw new Error("The user is not found");
         }
 
         if (isValid) {
           return { ...user, id: user.id, apikey: user.apikey ?? null };
         }
 
-        throw new Error('The password is not correct');
+        throw new Error("The password is not correct");
       },
     }),
   ],
@@ -89,10 +89,10 @@ export const authOptions: NextAuthOptions = {
     },
   },
   pages: {
-    signIn: '/login',
+    signIn: "/login",
   },
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
     updateAge: 24 * 60 * 60, // 24 hours
   },

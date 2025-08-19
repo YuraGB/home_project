@@ -28,7 +28,7 @@ export const Bradcrmbs = ({
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <LinkWithLocale href={`/`}>
+          <LinkWithLocale href={"/"}>
             <House className="text-textBrdcrumbs" size={16} />
           </LinkWithLocale>
         </BreadcrumbItem>

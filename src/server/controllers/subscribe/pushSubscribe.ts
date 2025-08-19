@@ -1,5 +1,5 @@
-import { createOrUpdateSubscribe } from '@/server/services/subscribe/createUpdateSubscribe';
-import { getUserById } from '@/server/services/user/getUserById';
+import { createOrUpdateSubscribe } from "@/server/services/subscribe/createUpdateSubscribe";
+import { getUserById } from "@/server/services/user/getUserById";
 
 export const pushSubscribe = async ({
   userId,

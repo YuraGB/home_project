@@ -16,12 +16,6 @@ import { LoaderCircle, LogInIcon } from "lucide-react";
 import { LinkWithLocale } from "@/components/linkWithLocale/LinkWithLocale";
 import { useRegistrationForm } from "./hooks/registrationFormHook";
 
-type RegistrationFormValues = {
-  email: string;
-  password: string;
-  username: string;
-};
-
 const RegistrationForm = (): ReactNode => {
   const { form, onSubmit, loading } = useRegistrationForm();
   return (

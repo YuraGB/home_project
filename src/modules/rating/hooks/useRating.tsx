@@ -17,7 +17,7 @@ export const useRating = (rate: TRatingSchema) => {
         updateRatingData({ ...ratingData, vote, locale });
       }
     },
-    [ratingData, updateRatingData, locale]
+    [ratingData, updateRatingData, locale],
   );
 
   useEffect(() => {

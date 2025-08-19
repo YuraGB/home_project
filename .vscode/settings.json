@@ -8,5 +8,11 @@
       "database": "postgres",
       "connectString": "postgresql://postgres:password@localhost:5432/hp?schema=public"
     }
-  ]
+  ],
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

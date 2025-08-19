@@ -1,22 +1,22 @@
-import React, { ReactNode } from 'react';
-import { TCategory } from '@/db/drizzle/schemas/categorySchema';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import { CategoryIcon } from './CategoryIcon';
+import React, { ReactNode } from "react";
+import { TCategory } from "@/db/drizzle/schemas/categorySchema";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import { CategoryIcon } from "./CategoryIcon";
 
 const ActionBox = dynamic(() =>
-  import('@/components/actionBox').then((mod) => mod.ActionBox),
+  import("@/components/actionBox").then((mod) => mod.ActionBox),
 );
 
 const DeleteCategoryButton = dynamic(() =>
   import(
-    '@/modules/category/components/CategoryItemActions/DeleteCategory/DeleteCategoryButton'
+    "@/modules/category/components/CategoryItemActions/DeleteCategory/DeleteCategoryButton"
   ).then((mod) => mod.DeleteCategoryButton),
 );
 
 const UpdateCategoryButton = dynamic(() =>
   import(
-    '@/modules/category/components/CategoryItemActions/UpdateCategory/UpdateCategoryButton'
+    "@/modules/category/components/CategoryItemActions/UpdateCategory/UpdateCategoryButton"
   ).then((mod) => mod.UpdateCategoryButton),
 );
 

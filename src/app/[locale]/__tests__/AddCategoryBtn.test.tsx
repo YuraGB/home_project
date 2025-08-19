@@ -12,7 +12,7 @@ describe("AddCategoryBtn component", () => {
     const elem = screen.getByText("Create new category"); //ACT
 
     await waitFor(
-      () => expect(elem).toBeInTheDocument() //ASSERT
+      () => expect(elem).toBeInTheDocument(), //ASSERT
     );
   });
 

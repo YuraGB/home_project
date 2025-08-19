@@ -1,5 +1,5 @@
-import { useMutationApi } from '@/hooks/apiCalls/mutation';
-import { updateLastVisitedPost } from '@/server/controllers/post/postService';
+import { useMutationApi } from "@/hooks/apiCalls/mutation";
+import { updateLastVisitedPost } from "@/server/controllers/post/postService";
 
 export const useUpdateLastVisit = () => {
   const {

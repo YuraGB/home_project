@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import { TopRatedIcon } from './categoryIcons/TopRated';
-import { EducationIcon } from './categoryIcons/EducationIcon';
+import { ReactNode } from "react";
+import { TopRatedIcon } from "./categoryIcons/TopRated";
+import { EducationIcon } from "./categoryIcons/EducationIcon";
 
 export const CategoryIcon = ({
   categoryIconName,
@@ -8,9 +8,9 @@ export const CategoryIcon = ({
   categoryIconName?: string | null;
 }): ReactNode => {
   switch (categoryIconName) {
-    case 'topRated':
+    case "topRated":
       return <TopRatedIcon className="size-8 text-current" />;
-    case 'education':
+    case "education":
       return <EducationIcon className="size-8" />;
     default:
       return null;

@@ -1,5 +1,5 @@
-import { z } from 'zod';
-import { useIntl } from 'react-intl';
+import { z } from "zod";
+import { useIntl } from "react-intl";
 
 export const validationNewCategory = z.object({
   name: z.string().min(2),
@@ -14,12 +14,12 @@ export const useAddNewCategoryValidation = () => {
   const { formatMessage } = useIntl();
   // translations for error messages
   const nameErrorMessage = formatMessage({
-    defaultMessage: 'Name must be at least 2 characters',
-    id: 'nameErrorMessage',
+    defaultMessage: "Name must be at least 2 characters",
+    id: "nameErrorMessage",
   });
   const descriptionErrorMessage = formatMessage({
-    defaultMessage: 'Description should be at least 8 characters',
-    id: 'descriptionErrorMessage',
+    defaultMessage: "Description should be at least 8 characters",
+    id: "descriptionErrorMessage",
   });
 
   return validationNewCategory.merge(

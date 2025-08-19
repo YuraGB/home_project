@@ -1,8 +1,8 @@
 // src/lib/cache/getCategoryData.ts
-import { authOptions } from '@/app/api/auth/[...nextauth]';
-import { formatPostData } from '@/server/lib/formatPostData';
-import { getServerSession } from 'next-auth';
-import { baseUrl } from '@/lib/constants';
+import { authOptions } from "@/app/api/auth/[...nextauth]";
+import { formatPostData } from "@/server/lib/formatPostData";
+import { getServerSession } from "next-auth";
+import { baseUrl } from "@/lib/constants";
 
 export const getCategoryData = async (categoryId: string) => {
   const session = await getServerSession(authOptions);
@@ -11,7 +11,7 @@ export const getCategoryData = async (categoryId: string) => {
   const url = `${baseUrl}/api/category?userId=${session.user.id}&categoryId=${categoryId}`;
 
   const pageData = await fetch(url, {
-    next: { tags: ['categoryData'] },
+    next: { tags: ["categoryData"] },
   })
     .then((res) => res.json())
     .catch((e) => {

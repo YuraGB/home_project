@@ -6,13 +6,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { FormattedMessage } from 'react-intl';
-import { Input } from '@/components/ui/input';
-import { Checkbox } from '@/components/ui/checkbox';
-import React, { ReactNode } from 'react';
-import { SubmitHandler, UseFormReturn } from 'react-hook-form';
-import { NewPost } from '@/modules/post/hooks/schema/validationSchemaAddPost';
+} from "@/components/ui/form";
+import { FormattedMessage } from "react-intl";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
+import React, { ReactNode } from "react";
+import { SubmitHandler, UseFormReturn } from "react-hook-form";
+import { NewPost } from "@/modules/post/hooks/schema/validationSchemaAddPost";
 
 type TProps = {
   children: ReactNode;
@@ -32,15 +32,15 @@ export const CreateUpdatePostForm = ({
         className="w-full space-y-2"
       >
         <FormField
-          defaultValue={''}
+          defaultValue={""}
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired={true}>
                 <FormattedMessage
-                  defaultMessage={'Name of the post'}
-                  id={'namePost'}
+                  defaultMessage={"Name of the post"}
+                  id={"namePost"}
                 />
               </FormLabel>
               <FormControl>
@@ -58,15 +58,15 @@ export const CreateUpdatePostForm = ({
           )}
         />
         <FormField
-          defaultValue={''}
+          defaultValue={""}
           control={form.control}
           name="description"
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired={true}>
                 <FormattedMessage
-                  defaultMessage={'The description of the post'}
-                  id={'postDescription'}
+                  defaultMessage={"The description of the post"}
+                  id={"postDescription"}
                 />
               </FormLabel>
               <FormControl>
@@ -84,15 +84,15 @@ export const CreateUpdatePostForm = ({
           )}
         />
         <FormField
-          defaultValue={''}
+          defaultValue={""}
           control={form.control}
           name="url"
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired={true}>
                 <FormattedMessage
-                  defaultMessage={'The url of the post'}
-                  id={'postUrl'}
+                  defaultMessage={"The url of the post"}
+                  id={"postUrl"}
                 />
               </FormLabel>
               <FormControl>
@@ -110,15 +110,15 @@ export const CreateUpdatePostForm = ({
           )}
         />
         <FormField
-          defaultValue={''}
+          defaultValue={""}
           control={form.control}
           name="image"
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired={true}>
                 <FormattedMessage
-                  defaultMessage={'The image of the post'}
-                  id={'postImage'}
+                  defaultMessage={"The image of the post"}
+                  id={"postImage"}
                 />
               </FormLabel>
               <FormControl>
@@ -151,14 +151,14 @@ export const CreateUpdatePostForm = ({
               <div className="space-y-2 leading-none inline pl-2">
                 <FormLabel>
                   <FormattedMessage
-                    id={'titleRatingCheckbox'}
-                    defaultMessage={'Rating'}
+                    id={"titleRatingCheckbox"}
+                    defaultMessage={"Rating"}
                   />
                 </FormLabel>
                 <FormDescription>
                   <FormattedMessage
-                    id={'ratingDescription'}
-                    defaultMessage={'The rating will be shown with the post'}
+                    id={"ratingDescription"}
+                    defaultMessage={"The rating will be shown with the post"}
                   />
                 </FormDescription>
 

@@ -1,13 +1,13 @@
-'use client';
-import { useAddPost } from '@/modules/post/hooks/useAddPost';
-import { ReactNode } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { Button } from '@/components/ui/button';
+"use client";
+import { useAddPost } from "@/modules/post/hooks/useAddPost";
+import { ReactNode } from "react";
+import { FormattedMessage } from "react-intl";
+import { Button } from "@/components/ui/button";
 
-import { CreateUpdatePostForm } from '@/modules/post/CreateUpdateForm';
-import { AddImage } from './AddImage';
-import { TPropsAddForm } from '@/modules/subCategory/components/types';
-import { AddImageButton } from './AddImageButton';
+import { CreateUpdatePostForm } from "@/modules/post/CreateUpdateForm";
+import { AddImage } from "./AddImage";
+import { TPropsAddForm } from "@/modules/subCategory/components/types";
+import { AddImageButton } from "./AddImageButton";
 
 export const AddPostForm = (props: TPropsAddForm): ReactNode => {
   const {
@@ -39,11 +39,11 @@ export const AddPostForm = (props: TPropsAddForm): ReactNode => {
       <CreateUpdatePostForm form={form} onSubmitAction={onSubmit}>
         <Button type="submit" disabled={loadingNewPost}>
           {loadingNewPost ? (
-            <FormattedMessage id={'savingPost'} defaultMessage={'Saving'} />
+            <FormattedMessage id={"savingPost"} defaultMessage={"Saving"} />
           ) : (
             <FormattedMessage
-              id={'savePost'}
-              defaultMessage={'Save new post'}
+              id={"savePost"}
+              defaultMessage={"Save new post"}
             />
           )}
         </Button>

@@ -1,4 +1,4 @@
-import { useGetTitleImages } from './useGetTitleImages';
+import { useGetTitleImages } from "./useGetTitleImages";
 
 export const useAddImage = () => {
   const { getTitleImagesAction, imagesArray, loadingImages } =

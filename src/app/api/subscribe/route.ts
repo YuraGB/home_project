@@ -1,7 +1,5 @@
-import { pushSubscribe } from '@/server/controllers/subscribe/pushSubscribe';
-import { NextRequest, NextResponse } from 'next/server';
-
-const subscriptions: Record<number, unknown> = {}; // userId → subscription
+import { pushSubscribe } from "@/server/controllers/subscribe/pushSubscribe";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -10,14 +8,9 @@ export async function POST(req: NextRequest) {
   // Validate input
   if (!userId || !subscription) {
     return NextResponse.json(
-      { error: 'Missing userId or subscription' },
+      { error: "Missing userId or subscription" },
       { status: 400 },
     );
-  }
-
-  // Validate types
-  if (typeof userId !== 'number' || typeof subscription !== 'string') {
-    return NextResponse.json({ error: 'Invalid data types' }, { status: 400 });
   }
 
   const result = await pushSubscribe({ userId, subscription });
@@ -28,5 +21,3 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({ success: true });
 }
-
-export { subscriptions };

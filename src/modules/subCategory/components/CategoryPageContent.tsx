@@ -23,7 +23,7 @@ export const CategoryPageContent = async ({ params }: TParams) => {
 
   return (
     <>
-      <PageTitle title={categories.name} transitionname={`category-name`} />
+      <PageTitle title={categories.name} transitionname={"category-name"} />
       <article className={"h-full w-full"}>
         <SubCategoryList sub_categories={sub_categories} />
         <PostListLayout posts={posts} postListType={categories.layoutSchema} />

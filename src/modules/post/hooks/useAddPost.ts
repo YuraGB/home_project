@@ -1,20 +1,20 @@
 import {
   NewPost,
   useNewPostValidationSchema,
-} from '@/modules/post/hooks/schema/validationSchemaAddPost';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useCallback, useEffect } from 'react';
-import { useToast } from '@/hooks/use-toast';
-import { useRouter } from 'next/navigation';
-import { useMutationApi } from '@/hooks/apiCalls/mutation';
-import { TCreatePostData } from '@/server/controllers/post/types';
-import { createNewPost } from '@/server/controllers/post/postService';
-import { TPostWithRating } from '@/server/services/post/addNewPostWithRating';
-import { TDBPost } from '@/db/drizzle/schemas/postsSchema';
-import { useIntl } from 'react-intl';
-import { useAddImage } from './useAddImage';
-import { TPropsAddForm } from '@/modules/subCategory/components/types';
+} from "@/modules/post/hooks/schema/validationSchemaAddPost";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useCallback, useEffect } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
+import { useMutationApi } from "@/hooks/apiCalls/mutation";
+import { TCreatePostData } from "@/server/controllers/post/types";
+import { createNewPost } from "@/server/controllers/post/postService";
+import { TPostWithRating } from "@/server/services/post/addNewPostWithRating";
+import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
+import { useIntl } from "react-intl";
+import { useAddImage } from "./useAddImage";
+import { TPropsAddForm } from "@/modules/subCategory/components/types";
 
 export const useAddPost = ({
   categoryId,
@@ -30,16 +30,16 @@ export const useAddPost = ({
   const form = useForm<NewPost>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      description: '',
-      url: '',
-      image: '',
+      name: "",
+      description: "",
+      url: "",
+      image: "",
       rating: false,
     },
   });
-  const imageExist = form.watch('image');
+  const imageExist = form.watch("image");
 
-  const setImage = (imgUrl: string) => form.setValue('image', imgUrl);
+  const setImage = (imgUrl: string) => form.setValue("image", imgUrl);
 
   const { imagesArray, loadingImages, getTitleImagesAction } = useAddImage();
 
@@ -50,7 +50,7 @@ export const useAddPost = ({
    */
   const loadImageAction = useCallback(() => {
     // Get the title from the form
-    const titleExist = form.getValues('name');
+    const titleExist = form.getValues("name");
     // If image already exists, do not fetch images again
     if (imageExist) return;
     // If title exists, fetch images related to the title
@@ -62,12 +62,12 @@ export const useAddPost = ({
       // This is important to prevent unnecessary API calls when the title is empty.
       //todo translation
       toast({
-        variant: 'destructive',
-        title: 'No title provided',
-        description: 'Please enter a title to fetch images.',
+        variant: "destructive",
+        title: "No title provided",
+        description: "Please enter a title to fetch images.",
       });
     }
-  }, []);
+  }, [form, getTitleImagesAction, imageExist, toast]);
 
   const {
     data: newPost,
@@ -83,9 +83,9 @@ export const useAddPost = ({
     if (errorCreateNewPost) {
       //todo translation
       toast({
-        variant: 'destructive',
-        title: 'New post not created',
-        description: 'There was a problem with creating new post.',
+        variant: "destructive",
+        title: "New post not created",
+        description: "There was a problem with creating new post.",
       });
     }
   }, [errorCreateNewPost, toast]);
@@ -106,7 +106,7 @@ export const useAddPost = ({
         ...values,
       });
     } else {
-      router.push('/login');
+      router.push("/login");
     }
   };
 

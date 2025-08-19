@@ -13,7 +13,7 @@ import { TUpdateSubCat } from "@/server/controllers/subCategory/validationSchema
 
 export const useUpdateSubCat = (
   subCatData: TSubCategory,
-  onClose: Dispatch<SetStateAction<boolean>>
+  onClose: Dispatch<SetStateAction<boolean>>,
 ) => {
   const {
     error: errorUpdatedSubCat,

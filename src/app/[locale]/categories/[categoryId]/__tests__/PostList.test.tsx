@@ -39,7 +39,7 @@ describe("PostList component", () => {
     const elem = screen.getByText(posts[0].name); //ACT
 
     await waitFor(
-      () => expect(elem).toBeInTheDocument() //ASSERT
+      () => expect(elem).toBeInTheDocument(), //ASSERT
     );
   });
 

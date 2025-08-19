@@ -15,7 +15,7 @@ export default async function CategoryPage(props: TParams) {
       </Suspense>
       <Suspense
         fallback={
-          <PageTitle title={"Loading..."} transitionname={`category-name`} />
+          <PageTitle title={"Loading..."} transitionname={"category-name"} />
         }
       >
         <CategoryPageContent params={props.params} />

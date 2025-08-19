@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 export const EducationIcon = ({
   className,
@@ -15,8 +15,8 @@ export const EducationIcon = ({
     <g transform="translate(0,-288.53332)">
       <path
         style={{
-          fill: 'currentColor',
-          stroke: 'none',
+          fill: "currentColor",
+          stroke: "none",
           strokeWidth: 0.26458335,
           fillOpacity: 1,
         }}

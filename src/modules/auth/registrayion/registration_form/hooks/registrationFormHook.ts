@@ -42,7 +42,7 @@ export const useRegistrationForm = () => {
         },
         {
           shouldFocus: true,
-        }
+        },
       );
     }
   }, [errorCreateNewUser, form]);

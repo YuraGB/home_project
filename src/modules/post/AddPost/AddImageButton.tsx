@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 
 export const AddImageButton = ({ loadAction }: { loadAction: () => void }) => {
   return (

@@ -1,5 +1,5 @@
-import { db } from '@/db';
-import { pushSubscriptions } from '@/db/drizzle/schemas/subscription';
+import { db } from "@/db";
+import { pushSubscriptions } from "@/db/drizzle/schemas/subscription";
 
 type Params = {
   userId: number;
@@ -26,7 +26,7 @@ export const createOrUpdateSubscribe = async ({
 
     return { success: true };
   } catch (e) {
-    console.error('DB Error:', e);
+    console.error("DB Error:", e);
     return { success: false, error: e };
   }
 };

@@ -1,10 +1,10 @@
-import { db } from '@/db';
-import { eq } from 'drizzle-orm';
-import logger from '@/server/lib/logger';
+import { db } from "@/db";
+import { eq } from "drizzle-orm";
+import logger from "@/server/lib/logger";
 import {
   NewPushSubscription,
   pushSubscriptions,
-} from '@/db/drizzle/schemas/subscription';
+} from "@/db/drizzle/schemas/subscription";
 
 export const getSubscriptionService = async (
   id: number,

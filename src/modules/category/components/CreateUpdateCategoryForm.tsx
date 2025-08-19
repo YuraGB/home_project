@@ -5,16 +5,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { FormattedMessage } from 'react-intl';
-import { Input } from '@/components/ui/input';
-import { ReactNode } from 'react';
-import { SubmitHandler, UseFormReturn } from 'react-hook-form';
-import { NewCategory } from '@/modules/category/hooks/schema/useAddCategorySchema';
-import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { TopRatedIcon } from '@/modules/category/components/categoryIcons/TopRated';
-import { EducationIcon } from '@/modules/category/components/categoryIcons/EducationIcon';
+} from "@/components/ui/form";
+import { FormattedMessage } from "react-intl";
+import { Input } from "@/components/ui/input";
+import { ReactNode } from "react";
+import { SubmitHandler, UseFormReturn } from "react-hook-form";
+import { NewCategory } from "@/modules/category/hooks/schema/useAddCategorySchema";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { TopRatedIcon } from "@/modules/category/components/categoryIcons/TopRated";
+import { EducationIcon } from "@/modules/category/components/categoryIcons/EducationIcon";
 
 type TProps = {
   children: ReactNode;
@@ -34,15 +34,15 @@ export const CreateUpdateCategoryForm = ({
         className="w-1/2 space-y-2"
       >
         <FormField
-          defaultValue={''}
+          defaultValue={""}
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired={true}>
                 <FormattedMessage
-                  defaultMessage={'Name of the category'}
-                  id={'name'}
+                  defaultMessage={"Name of the category"}
+                  id={"name"}
                 />
               </FormLabel>
               <FormControl>
@@ -60,15 +60,15 @@ export const CreateUpdateCategoryForm = ({
           )}
         />
         <FormField
-          defaultValue={''}
+          defaultValue={""}
           control={form.control}
           name="description"
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired={true}>
                 <FormattedMessage
-                  defaultMessage={'Description'}
-                  id={'description'}
+                  defaultMessage={"Description"}
+                  id={"description"}
                 />
               </FormLabel>
               <FormControl>
@@ -86,15 +86,15 @@ export const CreateUpdateCategoryForm = ({
           )}
         />
         <FormField
-          defaultValue={''}
+          defaultValue={""}
           control={form.control}
           name="categoryIcon"
           render={({ field }) => (
             <FormItem>
               <FormLabel isRequired={false}>
                 <FormattedMessage
-                  defaultMessage={'Icon for the category'}
-                  id={'categoryIcon'}
+                  defaultMessage={"Icon for the category"}
+                  id={"categoryIcon"}
                 />
               </FormLabel>
               <FormControl>

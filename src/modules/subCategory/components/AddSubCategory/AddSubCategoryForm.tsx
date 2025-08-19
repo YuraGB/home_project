@@ -11,7 +11,7 @@ export const AddSubCategoryForm = (props: TPropsAddForm): ReactNode => {
 
   return (
     <SubCategoryForm form={form} onSubmitAction={onSubmit}>
-      <Button type='submit' disabled={loadingNewSubCategory}>
+      <Button type="submit" disabled={loadingNewSubCategory}>
         {loadingNewSubCategory ? (
           <FormattedMessage
             id={"savingSubCategory"}

@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import { Button } from '../ui/button';
-import { useApiKey } from './hooks/useApiKey';
+import { ReactNode } from "react";
+import { Button } from "../ui/button";
+import { useApiKey } from "./hooks/useApiKey";
 
 /**
  * ApiKey component to display or generate an API key.

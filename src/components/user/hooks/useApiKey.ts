@@ -1,7 +1,7 @@
-import { useMutationApi } from '@/hooks/apiCalls/mutation';
-import { toast } from '@/hooks/use-toast';
-import { generateApiKey } from '@/server/controllers/user/userService';
-import { User } from 'next-auth';
+import { useMutationApi } from "@/hooks/apiCalls/mutation";
+import { toast } from "@/hooks/use-toast";
+import { generateApiKey } from "@/server/controllers/user/userService";
+import { User } from "next-auth";
 
 export const useApiKey = () => {
   const {
@@ -17,13 +17,13 @@ export const useApiKey = () => {
       .writeText(apiKey)
       .then(() => {
         toast({
-          title: 'API Key copied to clipboard',
-          description: 'You can now paste it wherever you need.',
-          variant: 'default',
+          title: "API Key copied to clipboard",
+          description: "You can now paste it wherever you need.",
+          variant: "default",
         });
       })
       .catch((err) => {
-        console.error('Не вдалося скопіювати: ', err);
+        console.error("Не вдалося скопіювати: ", err);
       });
   };
 

@@ -15,12 +15,12 @@ export const AddCategoryForm = ({
 }): ReactNode => {
   const { onSubmit, form, loadingNewCategory } = useAddCategoryForm(
     userId,
-    onCloseAction
+    onCloseAction,
   );
 
   return (
     <CreateUpdateCategoryForm form={form} onSubmitAction={onSubmit}>
-      <Button type='submit' disabled={loadingNewCategory} className={"w-full"}>
+      <Button type="submit" disabled={loadingNewCategory} className={"w-full"}>
         {loadingNewCategory ? (
           <FormattedMessage id={"savingCategory"} defaultMessage={"Saving"} />
         ) : (
