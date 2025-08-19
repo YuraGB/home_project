@@ -10,7 +10,6 @@ export const getCategoryData = async (categoryId: string) => {
 
   const url = `${baseUrl}/api/category?userId=${session.user.id}&categoryId=${categoryId}`;
 
-  console.log('fetch', url);
   const pageData = await fetch(url, {
     next: { tags: ['categoryData'] },
   })

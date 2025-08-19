@@ -99,6 +99,7 @@
     "@types/node": "^20",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
+    "@types/web-push": "^3.6.4",
     "babel-jest": "^29.7.0",
     "babel-plugin-react-compiler": "^19.0.0-beta-a7bf2bd-20241110",
     "drizzle-kit": "^0.31.4",
@@ -116,6 +117,7 @@
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.2",
-    "typescript": "^5"
+    "typescript": "^5",
+    "web-push": "^3.6.7"
   }
 }

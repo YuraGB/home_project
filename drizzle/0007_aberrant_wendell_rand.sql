@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX "push_subscriptions_user_id_unique" ON "push_subscriptions" USING btree ("userId");

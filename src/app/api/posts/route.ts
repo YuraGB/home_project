@@ -1,16 +1,12 @@
 // app/api/posts/route.ts
 import { getAllPosts } from '@/server/controllers/post/postService';
+import { isAuthenticatedByApiKey } from '@/server/lib/isAuthentikated';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
-  const authHeader = req.headers.get('authorization');
-  if (!authHeader) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  const canContinue = isAuthenticatedByApiKey(req);
 
-  const [scheme, token] = authHeader.split(' ');
-
-  if (scheme !== 'Bearer' || !token) {
+  if (!canContinue) {
     return new Response(
       JSON.stringify({ error: 'Invalid Authorization header' }),
       {
@@ -20,7 +16,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const result = await getAllPosts(token);
+    const result = await getAllPosts(canContinue);
     return NextResponse.json(result, {
       status: 200,
       headers: { 'x-vercel-cache-tag': 'categoriyData' },

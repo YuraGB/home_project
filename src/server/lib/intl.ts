@@ -1,25 +1,15 @@
-"server-only";
+import enUS from '@/i18n/en.json';
+import ukUA from '@/i18n/uk.json';
 
-import { createIntl } from "@formatjs/intl";
+const locales = {
+  'en-US': enUS,
+  'uk-UA': ukUA,
+};
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export default async function getIntl(locale = "en-US") {
-  let messages;
+export default async function getIntl(locale?: string) {
+  const safeLocale = Object.keys(locales).includes(locale ?? '')
+    ? (locale as keyof typeof locales)
+    : 'en-US';
 
-  if (locale === "en-US") {
-    messages = (await import(`@/i18n/en.json`)).default;
-  }
-
-  if (locale === "uk-UA") {
-    messages = (await import(`@/i18n/uk.json`)).default;
-  }
-
-  return createIntl({
-    locale,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    messages,
-    onError: (e) => {
-      console.log(e);
-    },
-  });
+  return { locale: safeLocale, messages: locales[safeLocale] };
 }

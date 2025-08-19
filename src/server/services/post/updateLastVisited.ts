@@ -9,7 +9,7 @@ export const updateLastVisited = async (
   try {
     const [result] = await db
       .update(postsSchema)
-      .set({ lastVisited: new Date() })
+      .set({ lastVisited: new Date(), hasUpdates: false })
       .where(eq(postsSchema.id, id))
       .returning();
 

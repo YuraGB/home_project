@@ -51,7 +51,6 @@ export const useUpdateCategory = (
 
   const onSubmit = (values: NewCategory) => {
     if (category.id && category.userId) {
-      console.log('Updating category', values);
       updateAction({
         ...values,
         userId: category.userId,

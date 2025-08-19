@@ -15,6 +15,7 @@ import { useProfile } from '@/components/user/hooks/useProfile';
 import Link from 'next/link';
 import { ApiKey } from './apiKey';
 import { LogOut } from './LogOut';
+import SubscribeButton from '../subscribtion/Subscribtion';
 
 export const Profile = () => {
   const { userData, logOut } = useProfile();
@@ -31,6 +32,10 @@ export const Profile = () => {
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>Profile</DropdownMenuLabel>
         <DropdownMenuSeparator />
+
+        <DropdownMenuItem>
+          <SubscribeButton userId={userData.id} />
+        </DropdownMenuItem>
 
         <DropdownMenuItem>
           <ApiKey apiKey={userData.apikey} email={userData.email} />
