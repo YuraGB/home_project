@@ -7,6 +7,7 @@ import { revalidatePath } from "next/cache";
 import { getPostsByUserIdAndId } from "@/server/services/post/getPostsByUserIdAndId";
 import logger from "@/server/lib/logger";
 import { getCurrentUser } from "@/server/lib/getCurrentUser";
+import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
 
 export const updateRevalidate = async (
   data: TUpdatePostData & { rating: boolean },
@@ -27,7 +28,7 @@ export const updateRevalidate = async (
 export const canUpdate = async (
   userId: number,
   postId: number,
-): Promise<boolean> => {
+): Promise<TDBPost | false | null> => {
   const user = await getCurrentUser();
 
   if (user === null) {
@@ -44,8 +45,12 @@ export const canUpdate = async (
 
   // Was this post created by the this user
   const post = await getPostsByUserIdAndId(userId, postId);
+  if (!post) {
+    logger.error(`Post with id: ${postId} not found for user: ${userId}`);
+    return false;
+  }
 
-  return !!post;
+  return post;
 };
 
 export const canDelete = async (postId: number): Promise<boolean> => {

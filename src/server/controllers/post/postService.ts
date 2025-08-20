@@ -40,7 +40,7 @@ export const createNewPost = async (
 
   // Validate image if it exists
   // If the image is a base64 string, we need to upload it to the host
-  if (validatedData.image) {
+  if (validatedData.image && validatedData.image.startsWith("data:")) {
     const uploadImageToTheHost = await uploadBase64Image(validatedData.image);
     if (!uploadImageToTheHost) {
       logger.error("Create new post: Error uploading image to the host");
@@ -140,7 +140,7 @@ export const updatePostData = async (
 
   // Validate image if it exists
   // If the image is a base64 string, we need to upload it to the host
-  if (validatedData.image) {
+  if (validatedData.image || validatedData.image.includes("data:image")) {
     const uploadImageToTheHost = await uploadBase64Image(validatedData.image);
     if (!uploadImageToTheHost) {
       logger.error("Create new post: Error uploading image to the host");
