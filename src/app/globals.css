@@ -1,5 +1,6 @@
 @import "../styles/components.css";
 @import "../styles/viewTransition.css";
+@import "../styles/animations.css";
 
 @tailwind base;
 @tailwind components;
