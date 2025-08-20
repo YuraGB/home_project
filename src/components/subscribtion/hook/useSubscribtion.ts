@@ -1,16 +1,15 @@
-import { useState } from "react";
+"use client";
+import { useEffect } from "react";
+import { useMutationApi } from "@/hooks/apiCalls/mutation";
+import { pushSubscribe } from "@/server/controllers/subscribe/pushSubscribe";
+import { useQueryClient } from "@tanstack/react-query";
+import { urlBase64ToUint8Array } from "@/lib/helpers";
 
-// Хелпер для конвертації ключа
-function urlBase64ToUint8Array(base64String: string) {
-  const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
-  const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
+export const useSubscridtion = ({ userId }: { userId: number }) => {
+  const queryClient = useQueryClient();
 
-  const rawData = atob(base64);
-  return Uint8Array.from([...rawData].map((c) => c.charCodeAt(0)));
-}
-
-export const useSubscridtion = (userId: number) => {
-  const [subscribed, setSubscribed] = useState(false);
+  const { mutate: saveSubscribeAction, data: savedSubscribe } =
+    useMutationApi(pushSubscribe);
 
   async function subscribe() {
     // Реєстрація service worker
@@ -24,17 +23,19 @@ export const useSubscridtion = (userId: number) => {
       ),
     });
 
-    await fetch("/api/subscribe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, subscription }),
+    saveSubscribeAction({
+      userId,
+      subscription: JSON.stringify(subscription),
     });
-
-    setSubscribed(true);
   }
+
+  useEffect(() => {
+    if (savedSubscribe) {
+      queryClient.invalidateQueries({ queryKey: [`subscription/${userId}`] });
+    }
+  }, [savedSubscribe, queryClient, userId]);
 
   return {
     subscribe,
-    subscribed,
   };
 };

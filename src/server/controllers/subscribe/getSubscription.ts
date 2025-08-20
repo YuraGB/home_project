@@ -1,9 +1,10 @@
+"use server";
 import { getSubscriptionService } from "@/server/services/subscribe/getSubscriptionService";
 
 export const getSubscription = async (userId: number) => {
-  const subscriptions = await getSubscriptionService(Number(userId));
+  const subscribtion = await getSubscriptionService(Number(userId));
 
-  if (!subscriptions) return null;
+  if (!subscribtion) return null;
 
-  return subscriptions;
+  return subscribtion;
 };

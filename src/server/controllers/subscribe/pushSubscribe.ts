@@ -1,3 +1,4 @@
+"use server";
 import { createOrUpdateSubscribe } from "@/server/services/subscribe/createUpdateSubscribe";
 import { getUserById } from "@/server/services/user/getUserById";
 

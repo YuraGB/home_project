@@ -18,7 +18,7 @@ import { LogOut } from "./LogOut";
 import SubscribeButton from "../subscribtion/Subscribtion";
 
 export const Profile = () => {
-  const { userData, logOut } = useProfile();
+  const { userData, logOut, subscribtion } = useProfile();
 
   if (!userData) {
     return <Link href={"/login"}>Login</Link>;
@@ -34,7 +34,7 @@ export const Profile = () => {
         <DropdownMenuSeparator />
 
         <DropdownMenuItem>
-          <SubscribeButton userId={userData.id} />
+          <SubscribeButton userId={userData.id} subscribtion={subscribtion} />
         </DropdownMenuItem>
 
         <DropdownMenuItem>
