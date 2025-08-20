@@ -138,13 +138,12 @@ export const updatePostData = async (
     lastVisited: new Date(),
   });
 
-  // Validate image if it exists
-  // If the image is a base64 string, we need to upload it to the host
-  if (validatedData.image || validatedData.image.includes("data:image")) {
+  // if the image is new or changed, we need to upload it to the host
+  if (validatedData.image !== ableToUpdate.image) {
     const uploadImageToTheHost = await uploadBase64Image(validatedData.image);
     if (!uploadImageToTheHost) {
-      logger.error("Create new post: Error uploading image to the host");
-      throw new Error("Error uploading image to the host");
+      logger.error("Update post: Error uploading image to the host");
+      // throw new Error("Error uploading image to the host");
     }
     rest.image = uploadImageToTheHost;
   }
