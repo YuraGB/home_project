@@ -8,6 +8,7 @@ import { getPostsByUserIdAndId } from "@/server/services/post/getPostsByUserIdAn
 import logger from "@/server/lib/logger";
 import { getCurrentUser } from "@/server/lib/getCurrentUser";
 import { TDBPost } from "@/db/drizzle/schemas/postsSchema";
+import { locales as defaultLocales } from "@/server/lib/intl";
 
 export const updateRevalidate = async (
   data: TUpdatePostData & { rating: boolean },
@@ -53,6 +54,7 @@ export const canUpdate = async (
   return post;
 };
 
+// does this user able to delete posts
 export const canDelete = async (postId: number): Promise<boolean> => {
   const user = await getCurrentUser();
 
@@ -74,4 +76,50 @@ export const canDelete = async (postId: number): Promise<boolean> => {
     );
   }
   return userCanDelete;
+};
+
+// Revalidate the path after updating a post
+// This function is used to revalidate the cache after a post is updated
+// It will revalidate the path for the post's category and subcategory
+// If the subcategory is not provided, it will only revalidate the category path
+// If the category is not provided, it will throw an error
+export const updatedPostRevalidate = async (data: TDBPost, locale?: string) => {
+  const subCategoryId = data.subCategoryId;
+  const categoryId = data.categoryId;
+
+  // categoryId is required for revalidation
+  if (!categoryId) {
+    logger.error("Update post: No category id provided");
+    throw new Error("No category id provided");
+  }
+
+  if (locale) {
+    if (subCategoryId) {
+      revalidatePath(
+        `/${locale}"/categories/${categoryId}/subCategory/${subCategoryId}"`,
+      );
+      return;
+    }
+
+    revalidatePath(`/${locale}/categories/${categoryId}`);
+    return;
+  }
+
+  // If locale is not provided, revalidate for all default locales
+  if (!defaultLocales) {
+    logger.error("Update post: No default locales provided");
+    throw new Error("No default locales provided");
+  }
+
+  Object.values(defaultLocales).forEach((locale) => {
+    if (subCategoryId) {
+      revalidatePath(
+        `/${locale}/categories/${categoryId}/subCategory/${subCategoryId}`,
+      );
+      return;
+    }
+
+    revalidatePath(`/${locale}/categories/${categoryId}`);
+  });
+  return;
 };

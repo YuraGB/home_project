@@ -11,6 +11,7 @@ export const PostListLayout = ({
   posts: TPostWithRating[] | null;
   postListType?: string | null;
 }): ReactNode => {
+  if (!posts || posts.length === 0) return null;
   switch (postListType) {
     case "topRate":
       return (

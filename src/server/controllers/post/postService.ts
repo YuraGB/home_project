@@ -22,6 +22,7 @@ import { deletePost } from "@/server/services/post/deletePost";
 import {
   canDelete,
   canUpdate,
+  updatedPostRevalidate,
   updateRevalidate,
 } from "@/server/controllers/post/helper";
 import { uploadBase64Image } from "@/server/lib/uploadImageToHost";
@@ -208,5 +209,11 @@ export const updateLastVisitedPost = async (postId: number) => {
     throw new Error("Post id should by provided");
   }
 
-  return await updateLastVisited(postId);
+  const updatedPost = await updateLastVisited(postId);
+
+  if (updatedPost) {
+    updatedPostRevalidate(updatedPost);
+  }
+
+  return !!updatedPost;
 };

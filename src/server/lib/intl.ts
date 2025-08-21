@@ -1,7 +1,7 @@
 import enUS from "@/i18n/en.json";
 import ukUA from "@/i18n/uk.json";
 
-const locales = {
+export const locales = {
   "en-US": enUS,
   "uk-UA": ukUA,
 };

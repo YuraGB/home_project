@@ -1,11 +1,11 @@
 import logger from "@/server/lib/logger";
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
-import { postsSchema } from "@/db/drizzle/schemas/postsSchema";
+import { postsSchema, TDBPost } from "@/db/drizzle/schemas/postsSchema";
 
 export const updateLastVisited = async (
   id: number,
-): Promise<boolean | null> => {
+): Promise<TDBPost | null> => {
   try {
     const [result] = await db
       .update(postsSchema)
@@ -13,7 +13,7 @@ export const updateLastVisited = async (
       .where(eq(postsSchema.id, id))
       .returning();
 
-    return !!result;
+    return result;
   } catch (e) {
     logger.error((e as Error).message);
     return null;
