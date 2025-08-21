@@ -88,7 +88,7 @@ export const updateRating = async ({
       );
     } else {
       // do we need revalidate the category page?!
-      //  revalidatePath(`/${locale}/${categoryId}`);
+      //revalidatePath(`/${locale}/categories/${categoryId}`);
     }
   }
   return updRate;
