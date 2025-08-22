@@ -30,8 +30,8 @@
   }
 }
 
-
-.icon, #logo-second {
+.icon,
+#logo-second {
   height: 100%;
 }
 
@@ -45,7 +45,6 @@
   stroke: #bd9f67;
   stroke-width: 1px;
 }
-
 
 .bottom-text {
   position: absolute;
@@ -165,22 +164,38 @@
 
 @keyframes trail {
   0% {
-    background: linear-gradient(90deg, rgba(189, 159, 103, 0) 90%, rgb(189, 159, 103) 100%);
+    background: linear-gradient(
+      90deg,
+      rgba(189, 159, 103, 0) 90%,
+      rgb(189, 159, 103) 100%
+    );
     opacity: 0;
   }
 
   30% {
-    background: linear-gradient(90deg, rgba(189, 159, 103, 0) 70%, rgb(189, 159, 103) 100%);
+    background: linear-gradient(
+      90deg,
+      rgba(189, 159, 103, 0) 70%,
+      rgb(189, 159, 103) 100%
+    );
     opacity: 1;
   }
 
   70% {
-    background: linear-gradient(90deg, rgba(189, 159, 103, 0) 70%, rgb(189, 159, 103) 100%);
+    background: linear-gradient(
+      90deg,
+      rgba(189, 159, 103, 0) 70%,
+      rgb(189, 159, 103) 100%
+    );
     opacity: 1;
   }
 
   95% {
-    background: linear-gradient(90deg, rgba(189, 159, 103, 0) 90%, rgb(189, 159, 103) 100%);
+    background: linear-gradient(
+      90deg,
+      rgba(189, 159, 103, 0) 90%,
+      rgb(189, 159, 103) 100%
+    );
     opacity: 0;
   }
 }
