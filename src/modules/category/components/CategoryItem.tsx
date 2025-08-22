@@ -3,6 +3,7 @@ import { TCategory } from "@/db/drizzle/schemas/categorySchema";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { CategoryIcon } from "./CategoryIcon";
+import cssStyles from "./styles/category.module.css";
 
 const ActionBox = dynamic(() =>
   import("@/components/actionBox").then((mod) => mod.ActionBox),
@@ -30,7 +31,7 @@ export const CategoryItem = ({
   if (!category.id) return null;
 
   return (
-    <section className="rounded relative bg-gradient-to-r from-transparent to-[#7392b3]">
+    <section className={cssStyles.card}>
       <ActionBox>
         <UpdateCategoryButton category={category} />
         <DeleteCategoryButton category={category} />
@@ -41,10 +42,13 @@ export const CategoryItem = ({
           pathname: `/${locale}/categories/${category.id}`,
         }}
         prefetch={true}
-        className="flex items-center justify-end p-2 gap-2 text-white border border-darkGold border-solid mb-2 rounded-sm hover:bg-darkGold hover:text-white transition-colors duration-300"
+        className="z-10 flex items-center justify-end p-2 gap-2 text-white rounded-sm hover:text-slate-300 transition-colors duration-300"
       >
-        <h3 className="p-5 pb-2 mb-2 w-full border-b-2 border-white border-solid flex items-end justify-between gap-2">
-          <CategoryIcon categoryIconName={category.categoryIcon} />
+        <h3 className="p-5 pb-2 mb-2 w-full border-b-2 border-transparent border-solid flex items-end justify-between gap-2">
+          <CategoryIcon
+            categoryIconName={category.categoryIcon}
+            classes={cssStyles.icon}
+          />
           {category.name}
         </h3>
       </Link>

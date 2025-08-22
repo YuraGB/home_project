@@ -111,6 +111,7 @@ export const updatedPostRevalidate = async (data: TDBPost, locale?: string) => {
     throw new Error("No default locales provided");
   }
 
+  // Revalidate for all default locales
   Object.keys(defaultLocales).forEach((locale) => {
     if (subCategoryId) {
       revalidatePath(
