@@ -21,6 +21,7 @@
   "postUrl": "The url of the post",
   "postDescription": "The description of the post",
   "newPostDialogTitle": "The new post",
+  "newSubCatDialogTitle": "The new sub category",
   "addNewPostBtn": "Create new post",
   "savePost": "Save new post",
   "postImage": "The image of the post",

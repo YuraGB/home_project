@@ -34,7 +34,7 @@ export const PostItem = ({
 
   return (
     <div
-      className={`relative rounded border overflow-hidden  ${className ?? ""} ${post.hasUpdates ? "hasUpdates pulse" : ""}`}
+      className={`relative rounded border overflow-hidden ${className ?? ""} ${post.hasUpdates ? "has-updates pulse" : ""}`}
       style={style}
     >
       <div className={wrapperClass}>

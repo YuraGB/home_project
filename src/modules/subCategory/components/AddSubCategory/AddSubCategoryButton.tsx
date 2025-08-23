@@ -42,7 +42,7 @@ export const AddSubCategoryButton = ({
           <DialogHeader>
             <DialogTitle>
               <FormattedMessage
-                id={"newPostDialogTitle"}
+                id={"newSubCatDialogTitle"}
                 defaultMessage={"The new sub category"}
               />
             </DialogTitle>

@@ -17,7 +17,7 @@ export const AddImage = ({
 }): ReactNode => {
   if (loadingImages) {
     return (
-      <section className="flex flex-col mx-[15px] items-center">
+      <section className="flex flex-col mx-[15px] items-center justify-center align-middle">
         <h3 className="font-bold w-full pt-6 px-2">
           <FormattedMessage
             id={"loadingImages"}
