@@ -1,3 +1,4 @@
+import { updatedPostRevalidate } from "@/server/controllers/post/helper";
 import { isAuthenticatedByApiKey } from "@/server/lib/isAuthentikated";
 import logger from "@/server/lib/logger";
 import { updatePostResource } from "@/server/services/post/updatePostResource";
@@ -36,8 +37,17 @@ export async function PATCH(req: NextRequest) {
       apiKey: canContinue,
     });
 
+    if (!wasUpdated) {
+      return NextResponse.json({
+        wasUpdated: false,
+      });
+    }
+
+    // Trigger revalidation for the updated post
+    updatedPostRevalidate(wasUpdated);
+
     return NextResponse.json({
-      wasUpdated,
+      wasUpdated: true,
     });
   } catch (e) {
     logger.error(`The postwasn't apdated: ${(e as Error).message}`);

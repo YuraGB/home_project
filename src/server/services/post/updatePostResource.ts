@@ -1,7 +1,7 @@
 import logger from "@/server/lib/logger";
 import { db } from "@/db";
 import { and, eq } from "drizzle-orm";
-import { postsSchema } from "@/db/drizzle/schemas/postsSchema";
+import { postsSchema, TDBPost } from "@/db/drizzle/schemas/postsSchema";
 import { usersTable } from "@/db/drizzle/schemas/userSchema";
 
 export const updatePostResource = async ({
@@ -10,7 +10,7 @@ export const updatePostResource = async ({
 }: {
   postId: number;
   apiKey: string;
-}): Promise<boolean | null> => {
+}): Promise<TDBPost | null> => {
   const updated = await db
     .update(postsSchema)
     .set({ hasUpdates: true })
@@ -33,5 +33,5 @@ export const updatePostResource = async ({
     throw new Error("Post not found or API key invalid");
   }
 
-  return !!updated[0];
+  return updated[0];
 };
