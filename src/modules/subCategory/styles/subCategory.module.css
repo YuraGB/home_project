@@ -10,6 +10,20 @@
   transition: all 0.5s ease-in-out;
   width: 300px;
 
+  a {
+    align-items: center;
+    color: #bd9f67;
+    display: flex;
+    font-size: 1.2rem;
+    font-weight: 500;
+    height: 100%;
+    justify-content: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    width: 100%;
+    z-index: 1;
+  }
+
   h3 {
     transition: all 0.5s ease-in-out;
   }
