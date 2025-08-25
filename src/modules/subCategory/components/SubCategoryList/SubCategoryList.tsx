@@ -18,7 +18,9 @@ export const SubCategoryList = ({
   ));
 
   return (
-    <section className={"border-b relative max-w-full py-4 subCategory-slider"}>
+    <section
+      className={"border-b relative max-w-full py-4 sub-category-slider"}
+    >
       <Slider config={{ speed: 5000 }}>{listOfSubCategories}</Slider>
     </section>
   );

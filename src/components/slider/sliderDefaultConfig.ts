@@ -3,14 +3,14 @@ import { SwiperOptions } from "swiper/types";
 export const configDefault: SwiperOptions = {
   spaceBetween: 10,
   slidesPerView: "auto",
-  autoplay: {
-    delay: 500,
-    disableOnInteraction: false,
-    pauseOnMouseEnter: true,
-    waitForTransition: true,
-  },
+  // autoplay: {
+  //   delay: 500,
+  //   disableOnInteraction: false,
+  //   pauseOnMouseEnter: true,
+  //   waitForTransition: true,
+  // },
   speed: 2000,
-  loop: true,
+  //loop: true,
   navigation: true,
   scrollbar: { draggable: true },
   modules: [], //[Navigation, A11y, Autoplay]

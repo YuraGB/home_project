@@ -1,11 +1,18 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-prettier/recommended",
+    "stylelint-config-tailwindcss"
+  ],
   "plugins": ["stylelint-order"],
   "rules": {
     "color-hex-length": "short",
     "block-no-empty": true,
     "declaration-block-no-duplicate-properties": true,
     "order/properties-alphabetical-order": true,
-    "color-function-notation": "modern"
+    "custom-property-pattern": null,
+    "color-function-notation": "modern",
+    "declaration-property-value-no-unknown": true,
+    "no-duplicate-selectors": true
   }
 }

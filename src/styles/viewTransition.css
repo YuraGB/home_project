@@ -1,5 +1,5 @@
 ::view-transition-old(category-name) {
-  animation: fadeOut 0.5s ease-in forwards;
+  animation: fade-out 0.5s ease-in forwards;
 }
 
 ::view-transition-new(category-name) {
@@ -7,25 +7,26 @@
 }
 
 ::view-transition-old(sub-category-name) {
-  animation: fadeOut 1s ease-in forwards;
+  animation: fade-out 1s ease-in forwards;
 }
 
 ::view-transition-new(sub-category-name) {
-  animation: fadeIn 1s ease-out forwards;
+  animation: fade-in 1s ease-out forwards;
 }
 
-@keyframes fadeOut {
+@keyframes fade-out {
   to {
     opacity: 0;
     transform: translateY(-10px) scale(0.95);
   }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0;
     transform: translateY(10px) scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);

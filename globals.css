@@ -1,4 +1,4 @@
-@import "./_styles/components.css";
+@import url("./_styles/components.css");
 
 @tailwind base;
 @tailwind components;
@@ -35,18 +35,20 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --gold: rgb(236, 174, 18);
-    --darkGold: rgb(78, 59, 2);
-    --green: rgb(48, 80, 80);
-    --lightGreen: rgb(83, 140, 140);
-    --textBreadcrumbs: rgb(78, 59, 2);
+    --gold: rgb(236 174 18);
+    --darkGold: rgb(78 59 2);
+    --green: rgb(48 80 80);
+    --lightGreen: rgb(83 140 140);
+    --textBreadcrumbs: rgb(78 59 2);
   }
+
   html {
     --color-primary: #4285f4;
     --color-secondary: #34a853;
     --color-buttons: #fbbc05;
     --color-typography: #ea4335;
   }
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -80,6 +82,7 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
