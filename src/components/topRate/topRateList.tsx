@@ -5,6 +5,9 @@ import { formatRows } from "@/server/lib/topRateformatRow";
 import { TopRateRow } from "@/components/topRate/topRateRow";
 import { PostsList } from "@/modules/post/PostsList";
 
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 export const TopRateList = ({
   posts,
 }: {
