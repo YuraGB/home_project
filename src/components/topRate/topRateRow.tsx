@@ -4,6 +4,7 @@ import { TPostWithRating } from "@/server/lib/formatPostData";
 import { Slider } from "@/components/slider";
 import { SwiperSlide } from "swiper/react";
 import { PostItem } from "@/modules/post/PostItem";
+import classes from "@/components/topRate/style/topRated.module.css";
 
 export const TopRateRow = ({
   posts,
@@ -14,8 +15,8 @@ export const TopRateRow = ({
     <section className={"rate-row h-[130px] relative slider-container"}>
       <Slider
         navigation={{
-          prevEl: ".arrow-container.left",
-          nextEl: ".arrow-container.right",
+          prevEl: `.${classes.container}.${classes.left}`,
+          nextEl: `.${classes.container}.${classes.right}`,
         }}
       >
         {posts.map((post) => (
@@ -25,15 +26,15 @@ export const TopRateRow = ({
         ))}
       </Slider>
 
-      <div className="arrow-container left">
-        <div className="arrow"></div>
-        <div className="arrow"></div>
-        <div className="arrow"></div>
+      <div className={`${classes.container} ${classes.left}`}>
+        <div className={`${classes.arrow}`}></div>
+        <div className={`${classes.arrow}`}></div>
+        <div className={`${classes.arrow}`}></div>
       </div>
-      <div className="arrow-container right">
-        <div className="arrow"></div>
-        <div className="arrow"></div>
-        <div className="arrow"></div>
+      <div className={`${classes.container} ${classes.right}`}>
+        <div className={`${classes.arrow}`}></div>
+        <div className={`${classes.arrow}`}></div>
+        <div className={`${classes.arrow}`}></div>
       </div>
     </section>
   );
