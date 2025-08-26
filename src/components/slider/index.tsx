@@ -8,17 +8,16 @@ import "swiper/css/autoplay";
 import { A11y, Autoplay, Navigation } from "swiper/modules";
 import { configDefault } from "@/components/slider/sliderDefaultConfig";
 
-type Props = {
-  children: ReactNode[];
-  config?: SwiperProps | NonNullable<unknown>;
+type Props = SwiperProps & {
+  children: ReactNode;
 };
 
-export const Slider = ({ children, config = {} }: Props): ReactNode => {
+export const Slider = (props: Props): ReactNode => {
   const modules = [Navigation, A11y, Autoplay];
   const configurations = {
     ...configDefault,
     modules,
-    ...config,
+    ...props,
   };
-  return <Swiper {...configurations}>{children}</Swiper>;
+  return <Swiper {...configurations}>{props.children}</Swiper>;
 };
