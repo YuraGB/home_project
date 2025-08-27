@@ -13,5 +13,13 @@ export const ListOfCategories = async ({ params }: TLocaleParams) => {
     <CategoryItem category={category} key={category.id} locale={locale} />
   ));
 
-  return <article className={"columns-3 w-full "}>{list}</article>;
+  return (
+    <article
+      className={
+        "lg:columns-3 sm:columns-2 align-middle justify-center items-center place-items-center columns-1 w-full "
+      }
+    >
+      {list}
+    </article>
+  );
 };

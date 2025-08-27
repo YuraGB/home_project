@@ -192,14 +192,26 @@
   cursor: pointer;
 }
 
-.container:hover .arrow {
+.arrow-container:hover .arrow {
   top: 50%;
 }
 
 .arrow-container:hover .arrow::before {
-  transform: translate(-50%, -50%) rotateZ(-130deg) rotate(90deg);
+  transform: translate(0%, -50%) rotateZ(-130deg) rotate(90deg);
 }
 
 .arrow-container:hover .arrow::after {
-  transform: translate(-50%, -50%) rotateZ(-60deg) rotate(90deg);
+  transform: translate(0%, -50%) rotateZ(-60deg) rotate(90deg);
+}
+
+@media (width <= 768px) {
+  .arrow-container {
+    &.left {
+      left: 60px;
+    }
+
+    &.right {
+      right: -30px;
+    }
+  }
 }

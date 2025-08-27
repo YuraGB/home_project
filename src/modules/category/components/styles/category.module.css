@@ -197,3 +197,10 @@
     opacity: 0;
   }
 }
+
+@media (width <= 768px) {
+  .card {
+    margin: 0 auto 15px;
+    width: 90%;
+  }
+}

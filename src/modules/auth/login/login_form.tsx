@@ -21,9 +21,7 @@ export function LoginForm() {
 
   return (
     <article
-      className={
-        "grid grid-cols-2 lg:grid-cols-2 w-full grid-rows-[100px,1fr] lg:grid-rows-1"
-      }
+      className={"grid lg:grid-cols-2 w-full grid-rows-[100px,1fr] grid-rows-1"}
     >
       <motion.div
         className={
@@ -41,7 +39,7 @@ export function LoginForm() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="w-2/3 space-y-6"
+            className="w-full sm:w-2/3 space-y-6"
           >
             <FormField
               defaultValue={""}
@@ -116,7 +114,7 @@ export function LoginForm() {
           href={"registration"}
           aria-label={"registration link"}
           className={
-            "absolute top-[-100px] right-[100%] lg:top-1/2 lg:right-[-60px] lg:transform lg:-translate-y-1/2 p-4 pl-5 pb-5 border rounded-[50%]"
+            "absolute top-[-100px] lg:right-[100%] lg:top-1/2 lg:right-[-60px] lg:transform lg:-translate-y-1/2 p-4 pl-5 pb-5 border rounded-[50%]"
           }
         >
           <UserPlus />

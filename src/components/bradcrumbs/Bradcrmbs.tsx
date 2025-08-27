@@ -25,7 +25,7 @@ export const Bradcrmbs = ({
   if (!bradcrumbs) return null;
 
   return (
-    <Breadcrumb>
+    <Breadcrumb className="self-start">
       <BreadcrumbList>
         <BreadcrumbItem>
           <LinkWithLocale href={"/"}>
