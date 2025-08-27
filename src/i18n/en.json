@@ -50,5 +50,6 @@
   "updatePost": "Update the post",
   "updateSubCategory": "Update the sub category",
   "loadingImages": "Loading images",
-  "categoryIcon": "Category icon"
+  "categoryIcon": "Category icon",
+  "chooseIcon": "Choose icon which will represent category"
 }

@@ -19,7 +19,13 @@ export const TopRateList = ({
   const ratedList = Object.keys(rest)
     .sort((a, b) => Number(b) - Number(a))
     .map((rate, index) => {
-      return <TopRateRow key={`rate-${rate}-${index}`} posts={rest[rate]} />;
+      return (
+        <TopRateRow
+          key={`rate-${rate}-${index}`}
+          posts={rest[rate]}
+          sliderCount={"slider-" + index}
+        />
+      );
     });
 
   if (noRating.length > 0) {

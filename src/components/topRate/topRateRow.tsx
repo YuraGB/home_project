@@ -4,19 +4,22 @@ import { TPostWithRating } from "@/server/lib/formatPostData";
 import { Slider } from "@/components/slider";
 import { SwiperSlide } from "swiper/react";
 import { PostItem } from "@/modules/post/PostItem";
-import classes from "@/components/topRate/style/topRated.module.css";
 
 export const TopRateRow = ({
   posts,
+  sliderCount,
 }: {
   posts: Array<TPostWithRating>;
+  sliderCount: string;
 }): ReactNode => {
+  console.log("Rendering TopRateRow with key:", sliderCount);
   return (
     <section className={"rate-row h-[130px] relative slider-container"}>
       <Slider
         navigation={{
-          prevEl: `.${classes.container}.${classes.left}`,
-          nextEl: `.${classes.container}.${classes.right}`,
+          prevEl: `.arrow-container.left` + "." + sliderCount,
+          nextEl: `.arrow-container.right` + "." + sliderCount,
+          disabledClass: "swiper-button-disabled",
         }}
       >
         {posts.map((post) => (
@@ -26,15 +29,15 @@ export const TopRateRow = ({
         ))}
       </Slider>
 
-      <div className={`${classes.container} ${classes.left}`}>
-        <div className={`${classes.arrow}`}></div>
-        <div className={`${classes.arrow}`}></div>
-        <div className={`${classes.arrow}`}></div>
+      <div className={`arrow-container left ` + sliderCount}>
+        <div className={`arrow`}></div>
+        <div className={`arrow`}></div>
+        <div className={`arrow`}></div>
       </div>
-      <div className={`${classes.container} ${classes.right}`}>
-        <div className={`${classes.arrow}`}></div>
-        <div className={`${classes.arrow}`}></div>
-        <div className={`${classes.arrow}`}></div>
+      <div className={`arrow-container right ` + sliderCount}>
+        <div className={`arrow`}></div>
+        <div className={`arrow`}></div>
+        <div className={`arrow`}></div>
       </div>
     </section>
   );

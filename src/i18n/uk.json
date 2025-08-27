@@ -45,5 +45,6 @@
   "updateCategory": "Update category",
   "updatePost": "Update the post",
   "loadingImages": "Loading images",
-  "categoryIcon": "Category icon"
+  "categoryIcon": "Category icon",
+  "chooseIcon": "Choose icon which will represent category"
 }

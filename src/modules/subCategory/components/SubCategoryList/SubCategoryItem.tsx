@@ -35,7 +35,7 @@ export const SubCategoryItem = ({
       </ActionBox>
 
       <Link href={`${pathName}/subCategory/${item.id}`} className={"text-gold"}>
-        <span className="inline-block font-bold text-gold">{item.name}</span>
+        <span className="inline-block font-serif text-gold">{item.name}</span>
       </Link>
     </div>
   );

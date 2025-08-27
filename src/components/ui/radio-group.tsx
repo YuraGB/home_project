@@ -39,7 +39,7 @@ function RadioGroupItem({
         <span className="relative  w-fit flex items-center justify-center">
           {props.children}
           <RadioGroupPrimitive.Indicator data-slot="radio-group-indicator">
-            <div className="absolute w-full h-full bg-slate-500 top-0 left-0 z-[-1]" />
+            <div className="absolute border-teal-400 border-[2px] top-[-2px] left-[-2px] right-[-2px] bottom-[-2px] z-[-1]" />
           </RadioGroupPrimitive.Indicator>
         </span>
       ) : (

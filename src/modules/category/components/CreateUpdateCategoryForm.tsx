@@ -1,6 +1,7 @@
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -97,6 +98,12 @@ export const CreateUpdateCategoryForm = ({
                   id={"categoryIcon"}
                 />
               </FormLabel>
+              <FormDescription>
+                <FormattedMessage
+                  defaultMessage={"Choose icon which will represent category"}
+                  id={"chooseIcon"}
+                />
+              </FormDescription>
               <FormControl>
                 <RadioGroup
                   defaultValue="topRated"
