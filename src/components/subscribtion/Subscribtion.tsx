@@ -24,7 +24,7 @@ export default function SubscribeButton({
       }
       variant={"ghost"}
     >
-      {subscribtion.subscribed ? "✅ Subscribed" : "🔔 Subscribe to Push"}
+      {subscribtion.subscribed ? "✅ Notification " : "🔔 Set Notifications"}
     </Button>
   );
 }
