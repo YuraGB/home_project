@@ -74,5 +74,6 @@ export const useRegistrationForm = () => {
     form,
     onSubmit,
     loading: isLoading,
+    gettingUser: status === "authenticated" || status === "loading",
   };
 };

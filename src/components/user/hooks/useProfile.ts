@@ -5,6 +5,7 @@ export const useProfile = () => {
   const { data } = useSession();
 
   const subscribtion = useGetSubscription(data?.user?.id);
+
   const logOut = () => {
     signOut();
   };

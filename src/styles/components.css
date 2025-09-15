@@ -215,3 +215,13 @@
     }
   }
 }
+
+.disabled-form {
+  /* background: rgb(128 128 128 / 70%); */
+  opacity: 0.4;
+
+  input,
+  button {
+    pointer-events: none;
+  }
+}

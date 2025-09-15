@@ -17,7 +17,7 @@ import { LinkWithLocale } from "@/components/linkWithLocale/LinkWithLocale";
 import { useRegistrationForm } from "./hooks/registrationFormHook";
 
 const RegistrationForm = (): ReactNode => {
-  const { form, onSubmit, loading } = useRegistrationForm();
+  const { form, onSubmit, loading, gettingUser } = useRegistrationForm();
   return (
     <article
       className={
@@ -40,7 +40,7 @@ const RegistrationForm = (): ReactNode => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="w-full sm:w-2/3 space-y-6"
+            className={`w-full sm:w-2/3 space-y-6  ${gettingUser ? "disabled-form" : ""}`}
           >
             <FormField
               defaultValue={""}
@@ -120,7 +120,11 @@ const RegistrationForm = (): ReactNode => {
                 </FormItem>
               )}
             />
-            <Button type="submit" className={"w-full"}>
+            <Button
+              type="submit"
+              className={"w-full"}
+              disabled={loading.current}
+            >
               {loading.current ? (
                 <LoaderCircle className={"animate-spin"} />
               ) : (

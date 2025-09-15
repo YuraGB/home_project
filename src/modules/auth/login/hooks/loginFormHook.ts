@@ -10,11 +10,14 @@ export const useLoginFormHook = (): {
   form: UseFormReturn;
   onSubmit: (values: FieldValues) => void;
   loading: RefObject<boolean>;
+  gettingUser: boolean;
 } => {
   const router = useRouter();
   const isLoading = useRef<boolean>(false);
   const formSchema = useValidationSchema();
+
   const { data: session, status } = useSession();
+
   const form = useForm<FieldValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,5 +55,6 @@ export const useLoginFormHook = (): {
     form,
     onSubmit,
     loading: isLoading,
+    gettingUser: status === "authenticated" || status === "loading",
   };
 };

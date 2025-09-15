@@ -47,7 +47,9 @@ export async function PATCH(req: NextRequest) {
     updatedPostRevalidate(wasUpdated);
 
     return NextResponse.json({
-      wasUpdated: true,
+      wasUpdated: {
+        name: wasUpdated.name,
+      },
     });
   } catch (e) {
     logger.error(`The postwasn't apdated: ${(e as Error).message}`);
