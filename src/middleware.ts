@@ -36,7 +36,7 @@ export async function middleware(request: NextRequestWithAuth) {
   // Redirect if there is no locale and login
   request.nextUrl.pathname = `/${defaultLocale}${!token ? "/" + newPathName : pathname}`;
 
-  // return NextResponse.redirect(request.nextUrl);
+  return NextResponse.redirect(request.nextUrl);
 }
 
 export const config = {
