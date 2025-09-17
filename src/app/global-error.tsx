@@ -14,7 +14,7 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <html>
+    <html lang="en">
       <head>
         <title>Something went wrong | Favly</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

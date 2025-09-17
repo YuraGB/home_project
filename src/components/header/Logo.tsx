@@ -5,11 +5,11 @@ export const Logo = () => {
   return (
     <Image
       src={LogoImage}
-      alt={"logo of the site"}
+      alt={"The Favly logo"}
       width={150}
       height={100}
-      loading={"eager"}
       priority={true}
+      fetchPriority="high"
     />
   );
 };
