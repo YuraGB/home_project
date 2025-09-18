@@ -22,7 +22,7 @@ self.addEventListener("notificationclick", event => {
 self.addEventListener('pushsubscriptionchange', async () => {
   console.log('🔄 Subscription expired, creating new one...');
   // public key
-  const applicationServerKey = urlB64ToUint8Array('BBFbkRmthDinCCyEVhSDbI8-9h1AIdDudkHE4xmJvaO_XwWJ2xzsKS6-Ijexgt7glPHfJcTXuRsG09wfiyPBqkw');
+  const applicationServerKey = urlBase64ToUint8Array('BBFbkRmthDinCCyEVhSDbI8-9h1AIdDudkHE4xmJvaO_XwWJ2xzsKS6-Ijexgt7glPHfJcTXuRsG09wfiyPBqkw');
   const newSubscription = await self.registration.pushManager.subscribe({
     userVisibleOnly: true,
     applicationServerKey,
@@ -35,3 +35,11 @@ self.addEventListener('pushsubscriptionchange', async () => {
   });
 });
 
+
+// helper
+function urlBase64ToUint8Array(base64String) {
+  const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
+  const rawData = atob(base64);
+  return Uint8Array.from([...rawData].map((c) => c.charCodeAt(0)));
+}
