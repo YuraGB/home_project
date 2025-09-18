@@ -11,6 +11,9 @@ export const useSubscridtion = ({ userId }: { userId: number }) => {
   const { mutate: saveSubscribeAction, data: savedSubscribe } =
     useMutationApi(pushSubscribe);
 
+  const { mutate: onDeleteSubscribtion, data: subscrWasDeleted } =
+    useMutationApi(unSubscribeUser);
+
   async function subscribe() {
     // Реєстрація service worker
     const registration = await navigator.serviceWorker.register("/sw.js");
@@ -29,13 +32,45 @@ export const useSubscridtion = ({ userId }: { userId: number }) => {
     });
   }
 
+  async function unSubscribeUser() {
+    try {
+      // 1. Чекаємо поки service worker готовий
+      const registration = await navigator.serviceWorker.ready;
+
+      // 2. Дістаємо поточний subscription (якщо є)
+      const subscription = await registration.pushManager.getSubscription();
+
+      if (!subscription) {
+        console.log("❌ No active subscription found");
+        return { success: false, message: "No active subscription" };
+      }
+
+      // 3. Відписуємо у браузері
+      const unsubscribed = await subscription.unsubscribe();
+
+      if (!unsubscribed) {
+        console.warn("⚠️ Subscription could not be unsubscribed in browser");
+        return { success: false, message: "Unsubscribe failed in browser" };
+      }
+
+      // 4. Відправляємо запит на бекенд, щоб видалити subscription
+      onDeleteSubscribtion({ userId });
+
+      return { success: true };
+    } catch (error) {
+      console.error("❌ Error unsubscribing:", error);
+      return { success: false, error };
+    }
+  }
+
   useEffect(() => {
-    if (savedSubscribe) {
+    if (savedSubscribe || subscrWasDeleted) {
       queryClient.invalidateQueries({ queryKey: [`subscription/${userId}`] });
     }
-  }, [savedSubscribe, queryClient, userId]);
+  }, [savedSubscribe, queryClient, userId, subscrWasDeleted]);
 
   return {
     subscribe,
+    unSubscribeUser,
   };
 };
