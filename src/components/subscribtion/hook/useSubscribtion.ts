@@ -15,6 +15,7 @@ export const useSubscridtion = ({ userId }: { userId: number }) => {
     useMutationApi(unSubscribeUser);
 
   async function subscribe() {
+    console.log("sdsd");
     // Реєстрація service worker
     const registration = await navigator.serviceWorker.register("/sw.js");
 

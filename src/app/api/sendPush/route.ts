@@ -1,6 +1,7 @@
 import webpush from "web-push";
 import { NextRequest, NextResponse } from "next/server";
 import { getSubscription } from "@/server/controllers/subscribe/getSubscription";
+import { deleteSubscribtion } from "@/server/services/subscribe/deleteSubscribtion";
 
 webpush.setVapidDetails(
   `mailto:${process.env.VAPID_EMAIL!}`,
@@ -15,7 +16,6 @@ export async function POST(req: NextRequest) {
     body,
   }: { userId: number; title: string; body: string } = await req.json();
   const subscription = await getSubscription(userId);
-
   if (!subscription) {
     return NextResponse.json(
       { error: "No subscription found" },
@@ -30,6 +30,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Push error:", err);
+
+    //delete subscr
+    deleteSubscribtion(userId);
     return NextResponse.json({ error: "Push failed" }, { status: 500 });
   }
 }

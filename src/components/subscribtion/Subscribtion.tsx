@@ -10,13 +10,13 @@ export default function SubscribeButton({
   userId: number;
   subscribtion: TSubscription;
 }) {
-  const { subscribe, unSubscribeUser } = useSubscridtion({
+  const { subscribe } = useSubscridtion({
     userId,
   });
 
   return (
     <Button
-      onClick={subscribtion.subscribed ? subscribe : unSubscribeUser}
+      onClick={subscribe}
       disabled={
         subscribtion.loadingSubscribes || subscribtion?.subscribed
           ? true
