@@ -4,6 +4,7 @@ import { useMutationApi } from "@/hooks/apiCalls/mutation";
 import { pushSubscribe } from "@/server/controllers/subscribe/pushSubscribe";
 import { useQueryClient } from "@tanstack/react-query";
 import { urlBase64ToUint8Array } from "@/lib/helpers";
+import { unSubscribeUser } from "@/server/controllers/subscribe/unSubscribeUser";
 
 export const useSubscridtion = ({ userId }: { userId: number }) => {
   const queryClient = useQueryClient();
@@ -15,7 +16,6 @@ export const useSubscridtion = ({ userId }: { userId: number }) => {
     useMutationApi(unSubscribeUser);
 
   async function subscribe() {
-    console.log("sdsd");
     // Реєстрація service worker
     const registration = await navigator.serviceWorker.register("/sw.js");
 
@@ -33,7 +33,7 @@ export const useSubscridtion = ({ userId }: { userId: number }) => {
     });
   }
 
-  async function unSubscribeUser() {
+  async function unSubscribe() {
     try {
       // 1. Чекаємо поки service worker готовий
       const registration = await navigator.serviceWorker.ready;
@@ -72,6 +72,6 @@ export const useSubscridtion = ({ userId }: { userId: number }) => {
 
   return {
     subscribe,
-    unSubscribeUser,
+    unSubscribe,
   };
 };

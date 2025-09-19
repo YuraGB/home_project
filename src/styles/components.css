@@ -225,3 +225,14 @@
     pointer-events: none;
   }
 }
+
+.background-placeholder {
+  background: linear-gradient(
+    to bottom,
+    #4d6d96 0%,
+    #6e8fb9 30%,
+    #7fa6cf 60%,
+    #3a4d60 85%,
+    #243240 100%
+  );
+}

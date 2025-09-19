@@ -9,7 +9,7 @@ const Background3D = dynamic(
 export const Background = (): ReactNode => {
   return (
     <article
-      className={`z-[-1] min-h-[700px] fixed w-full h-dvh top-0 left-0 bg-slate-600`}
+      className={`z-[-1] min-h-[700px] fixed w-full h-dvh top-0 left-0 background-placeholder`}
     >
       <Background3D />
     </article>

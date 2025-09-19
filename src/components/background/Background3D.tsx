@@ -25,7 +25,7 @@ export function Background3D(): ReactNode {
       performance={{ min: 0.5 }}
       camera={{ fov: 75, near: 0.1, far: 1000, position: [0, 10, 300] }}
       shadows={true}
-      className={"z-[-1]"}
+      className={"z-[-1] opacity-0 animate-fadeIn"}
     >
       <directionalLight
         position={[-100, 90, 550]}
