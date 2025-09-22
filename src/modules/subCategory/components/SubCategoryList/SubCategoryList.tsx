@@ -11,6 +11,7 @@ export const SubCategoryList = ({
   sub_categories: TSubCategory[] | null;
 }): ReactNode => {
   if (!sub_categories?.length) return null;
+
   const listOfSubCategories = sub_categories.map((item) => (
     <SwiperSlide key={item.id}>
       <SubCategoryItem item={item} />

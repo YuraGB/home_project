@@ -18,7 +18,7 @@ export const AddImage = ({
   if (loadingImages) {
     return (
       <section className="flex flex-col mx-[15px] items-center justify-center align-middle">
-        <h3 className="font-bold w-full pt-6 px-2">
+        <h3 className="font-bold w-full pt-6 px-2 mb-4">
           <FormattedMessage
             id={"loadingImages"}
             defaultMessage={"Loading images..."}

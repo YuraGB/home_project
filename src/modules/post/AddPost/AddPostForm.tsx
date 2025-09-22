@@ -23,7 +23,7 @@ export const AddPostForm = (props: TPropsAddForm): ReactNode => {
   } = useAddPost(props);
   return (
     <>
-      <section className="text-center mb-4">
+      <section className="text-center mb-4 w-full">
         {showAddImageButton ? (
           <AddImageButton loadAction={loadImageAction} />
         ) : null}

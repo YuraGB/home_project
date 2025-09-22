@@ -2,22 +2,16 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]";
 import { formatPostData } from "@/server/lib/formatPostData";
 import { getServerSession } from "next-auth";
-import { baseUrl } from "@/lib/constants";
+import { getCatalogByUserIdWithData } from "@/server/services/catalog/getCatalogByUserIDWithData";
 
 export const getCategoryData = async (categoryId: string) => {
   const session = await getServerSession(authOptions);
   if (!session || !session.user) return null;
 
-  const url = `${baseUrl}/api/category?userId=${session.user.id}&categoryId=${categoryId}`;
-
-  const pageData = await fetch(url, {
-    next: { tags: ["categoryData"] },
-  })
-    .then((res) => res.json())
-    .catch((e) => {
-      console.log(e);
-      return null;
-    });
+  const pageData = await getCatalogByUserIdWithData(
+    Number(session.user.id),
+    Number(categoryId),
+  );
 
   if (!pageData) return null;
 

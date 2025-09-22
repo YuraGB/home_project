@@ -4,7 +4,7 @@ import {
 } from "@/modules/post/hooks/schema/validationSchemaAddPost";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { useMutationApi } from "@/hooks/apiCalls/mutation";
@@ -41,33 +41,10 @@ export const useAddPost = ({
 
   const setImage = (imgUrl: string) => form.setValue("image", imgUrl);
 
-  const { imagesArray, loadingImages, getTitleImagesAction } = useAddImage();
-
-  /**
-   * This function is used to load images based on the title input.
-   * It checks if an image already exists, and if not, it fetches images related to the title.
-   * If the title input is empty, it does not fetch any images.
-   */
-  const loadImageAction = useCallback(() => {
-    // Get the title from the form
-    const titleExist = form.getValues("name");
-    // If image already exists, do not fetch images again
-    if (imageExist) return;
-    // If title exists, fetch images related to the title
-    if (titleExist) {
-      getTitleImagesAction(titleExist);
-    } else {
-      // If no title is provided, show a toast notification
-      // to inform the user that they need to enter a title to fetch images.
-      // This is important to prevent unnecessary API calls when the title is empty.
-      //todo translation
-      toast({
-        variant: "destructive",
-        title: "No title provided",
-        description: "Please enter a title to fetch images.",
-      });
-    }
-  }, [form, getTitleImagesAction, imageExist, toast]);
+  const { imagesArray, loadingImages, loadImageAction } = useAddImage(
+    form,
+    imageExist,
+  );
 
   const {
     data: newPost,

@@ -3,7 +3,7 @@ import { Bradcrmbs } from "@/components/bradcrumbs/Bradcrmbs";
 import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
 import { getAllSubCategories } from "@/server/services/subCategory/getAllSubCategories";
 import { PostListLayout } from "@/components/postListLayout";
-import { getSubCategoryPage } from "@/modules/subCategory/hooks copy/useSubCategory";
+import { getSubCategoryPage } from "@/modules/subCategory/hooks/useSubCategory";
 import { AddPostButton } from "@/modules/post/AddPost/AddPostButton";
 import { PageTitle } from "@/components/pageTitle";
 

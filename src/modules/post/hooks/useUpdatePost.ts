@@ -44,7 +44,10 @@ export const useUpdatePost = ({ post, onCloseAction }: TPropsUpdateForm) => {
   const setImage = (imgUrl: string) => form.setValue("image", imgUrl);
   const imageExist = form.watch("image");
 
-  const { imagesArray, loadingImages } = useAddImage();
+  const { imagesArray, loadingImages, loadImageAction } = useAddImage(
+    form,
+    imageExist,
+  );
 
   useEffect(() => {
     if (errorUpdatePost) {
@@ -81,5 +84,6 @@ export const useUpdatePost = ({ post, onCloseAction }: TPropsUpdateForm) => {
     imageExist,
     loadingImages,
     setImage,
+    loadImageAction,
   };
 };

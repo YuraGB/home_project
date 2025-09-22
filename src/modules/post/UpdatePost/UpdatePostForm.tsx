@@ -5,6 +5,7 @@ import { FormattedMessage } from "react-intl";
 import { TPostWithRating } from "@/server/lib/formatPostData";
 import { useUpdatePost } from "@/modules/post/hooks/useUpdatePost";
 import { AddImage } from "../AddPost/AddImage";
+import { AddImageButton } from "../AddPost/AddImageButton";
 
 export type TPropsUpdateForm = {
   post: TPostWithRating;
@@ -20,27 +21,36 @@ export const UpdatePostForm = (props: TPropsUpdateForm): ReactNode => {
     imagesArray,
     loadingImages,
     setImage,
+    loadImageAction,
   } = useUpdatePost(props);
 
   return (
-    <CreateUpdatePostForm form={form} onSubmitAction={onSubmit}>
-      <AddImage
-        listImages={imagesArray}
-        loadingImages={loadingImages}
-        setImage={setImage}
-        imageExist={imageExist}
-      />
+    <>
+      <section className="text-center mb-4 w-full">
+        {!loadingImages && !imagesArray?.length ? (
+          <AddImageButton loadAction={loadImageAction} />
+        ) : null}
 
-      <Button type="submit" disabled={loadingUpdatePost}>
-        {loadingUpdatePost ? (
-          <FormattedMessage id={"savingPost"} defaultMessage={"Saving"} />
-        ) : (
-          <FormattedMessage
-            id={"updatePost"}
-            defaultMessage={"Update the post"}
-          />
-        )}
-      </Button>
-    </CreateUpdatePostForm>
+        <AddImage
+          listImages={imagesArray}
+          loadingImages={loadingImages}
+          setImage={setImage}
+          imageExist={imageExist}
+        />
+      </section>
+
+      <CreateUpdatePostForm form={form} onSubmitAction={onSubmit}>
+        <Button type="submit" disabled={loadingUpdatePost}>
+          {loadingUpdatePost ? (
+            <FormattedMessage id={"savingPost"} defaultMessage={"Saving"} />
+          ) : (
+            <FormattedMessage
+              id={"updatePost"}
+              defaultMessage={"Update the post"}
+            />
+          )}
+        </Button>
+      </CreateUpdatePostForm>
+    </>
   );
 };
