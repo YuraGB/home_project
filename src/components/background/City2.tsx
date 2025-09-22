@@ -5,7 +5,7 @@ import { motion } from "framer-motion-3d";
 import * as THREE from "three";
 
 export function City2() {
-  const { nodes, materials } = useGLTF("/models/mirrors_age/scene.gltf");
+  const { nodes, materials } = useGLTF("/models/mirrors_age/scene.glb");
   const { cameraControlRef, position, cityRef } = useCityAnimation();
   return (
     <>
@@ -244,4 +244,4 @@ export function City2() {
   );
 }
 
-useGLTF.preload("/models/mirrors_age/scene.gltf");
+useGLTF.preload("/models/mirrors_age/scene.glb");

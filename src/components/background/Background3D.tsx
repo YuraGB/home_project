@@ -53,7 +53,7 @@ export function Background3D(): ReactNode {
           azimuth={0.25}
         />
         <Ocean />
-        <Model />
+        {typeof window !== "undefined" && <Model />}
       </Suspense>
 
       <fog attach="fog" args={["#aabbcc", 200, 400]} />

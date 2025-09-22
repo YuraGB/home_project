@@ -1,5 +1,7 @@
 "use client"; // Error _modules must be Client Components
 
+import { DefaultPageLayout } from "@/components/pageLayout/defaultPageLayout";
+import { Button } from "@/components/ui/button";
 import { type ReactNode, useEffect } from "react";
 
 export default function Error({
@@ -15,19 +17,21 @@ export default function Error({
   }, [error]);
 
   return (
-    <div>
-      <h2>Something went wrong!</h2>
-      <button
-        type={"button"}
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => {
-            reset();
+    <DefaultPageLayout>
+      <div>
+        <h2>Something went wrong!</h2>
+        <Button
+          type={"button"}
+          onClick={
+            // Attempt to recover by trying to re-render the segment
+            () => {
+              reset();
+            }
           }
-        }
-      >
-        Try again
-      </button>
-    </div>
+        >
+          Try again
+        </Button>
+      </div>
+    </DefaultPageLayout>
   );
 }
