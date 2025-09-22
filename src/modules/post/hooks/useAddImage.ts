@@ -36,7 +36,7 @@ export const useAddImage = <T extends FieldValues = FieldValues>(
         description: "Please enter a title to fetch images.",
       });
     }
-  }, [form, getTitleImagesAction, imageExist, toast]);
+  }, [form, getTitleImagesAction, imageExist]);
 
   return {
     imagesArray,
