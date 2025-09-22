@@ -1,15 +1,16 @@
 import type { NextConfig } from "next";
+import withBundleAnalyzer from "@next/bundle-analyzer";
 
 const nextConfig: NextConfig = {
-  //  output: "standalone",
   experimental: {
     reactCompiler: true,
     viewTransition: true,
-    // ppr: "incremental",
   },
   compress: true,
   trailingSlash: false,
   transpilePackages: ["three"],
 };
 
-export default nextConfig;
+export default withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+})(nextConfig);
