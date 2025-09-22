@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: true,
     viewTransition: true,
+    optimizeCss: true,
   },
   compress: true,
   trailingSlash: false,
