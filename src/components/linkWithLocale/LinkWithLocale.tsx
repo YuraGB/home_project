@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { useIntl } from "react-intl";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import { AnchorHTMLAttributes } from "react";
 
 type TLink = {
@@ -14,6 +14,7 @@ export const LinkWithLocale = ({
   children,
   ...rest
 }: TLink &
+  LinkProps &
   Omit<
     AnchorHTMLAttributes<HTMLAnchorElement>,
     "referrerPolicy"

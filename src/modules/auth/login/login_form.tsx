@@ -113,6 +113,7 @@ export function LoginForm() {
         <LinkWithLocale
           href={"registration"}
           aria-label={"registration link"}
+          prefetch={true}
           className={
             "absolute top-[-100px] lg:right-[-60px] lg:top-1/2 lg:transform lg:-translate-y-1/2 p-4 pl-5 pb-5 border rounded-[50%]"
           }

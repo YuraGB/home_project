@@ -22,6 +22,7 @@ export const PostInfo = ({ post, children }: TPostInfo): ReactNode => {
         rel={"noreferrer"}
         className={"z-[1] mt-auto"}
         onClick={() => updateVisit(post.id)}
+        prefetch={true}
       >
         <h4
           className={

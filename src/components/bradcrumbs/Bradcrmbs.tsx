@@ -28,7 +28,7 @@ export const Bradcrmbs = ({
     <Breadcrumb className="self-start">
       <BreadcrumbList>
         <BreadcrumbItem>
-          <LinkWithLocale href={"/"}>
+          <LinkWithLocale href={"/"} prefetch={true}>
             <House className="text-textBrdcrumbs" size={16} />
           </LinkWithLocale>
         </BreadcrumbItem>

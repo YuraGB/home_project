@@ -37,6 +37,7 @@ export const SubCategoryItem = ({
       <Link
         href={`${pathName}/subCategory/${item.id}`}
         className={"text-gold absolute flex"}
+        prefetch={true}
       >
         <span className="inline-block font-serif text-gold">{item.name}</span>
       </Link>

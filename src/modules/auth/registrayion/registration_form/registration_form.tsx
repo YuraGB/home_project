@@ -136,6 +136,7 @@ const RegistrationForm = (): ReactNode => {
         <LinkWithLocale
           href={"login"}
           aria-label={"login link"}
+          prefetch={true}
           className={
             "absolute top-[-100px] left-0 lg:top-1/2 lg:left-[-60px] lg:transform lg:-translate-y-1/2 p-4 pr-5 pb-5 border rounded-[50%]"
           }

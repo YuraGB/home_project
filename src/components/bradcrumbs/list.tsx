@@ -19,7 +19,11 @@ export const List = ({
       return (
         <Fragment key={b.name}>
           <BreadcrumbItem>
-            <Link href={`/${b.url}`} className="text-textBrdcrumbs">
+            <Link
+              href={`/${b.url}`}
+              className="text-textBrdcrumbs"
+              prefetch={true}
+            >
               {b.name}
             </Link>
           </BreadcrumbItem>

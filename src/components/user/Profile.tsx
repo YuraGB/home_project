@@ -21,7 +21,11 @@ export const Profile = () => {
   const { userData, logOut, subscribtion } = useProfile();
 
   if (!userData) {
-    return <Link href={"/login"}>Login</Link>;
+    return (
+      <Link href={"/login"} prefetch={true}>
+        Login
+      </Link>
+    );
   }
 
   return (
