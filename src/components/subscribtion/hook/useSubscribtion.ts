@@ -75,10 +75,13 @@ export const useSubscridtion = ({ userId }: { userId: number }) => {
   useEffect(() => {
     if (savedSubscribe || subscrWasDeleted) {
       queryClient.invalidateQueries({ queryKey: [`subscription/${userId}`] });
-      toast({
-        title: "Notification is set",
-        description: "You will receive brouser notifications",
-      });
+
+      if (savedSubscribe) {
+        toast({
+          title: "Notification is set",
+          description: "You will receive brouser notifications",
+        });
+      }
     }
   }, [savedSubscribe, queryClient, userId, subscrWasDeleted]);
 
