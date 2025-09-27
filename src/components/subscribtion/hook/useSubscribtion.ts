@@ -5,6 +5,7 @@ import { pushSubscribe } from "@/server/controllers/subscribe/pushSubscribe";
 import { useQueryClient } from "@tanstack/react-query";
 import { urlBase64ToUint8Array } from "@/lib/helpers";
 import { unSubscribeUser } from "@/server/controllers/subscribe/unSubscribeUser";
+import { toast } from "@/hooks/use-toast";
 
 export const useSubscridtion = ({ userId }: { userId: number }) => {
   const queryClient = useQueryClient();
@@ -16,6 +17,13 @@ export const useSubscridtion = ({ userId }: { userId: number }) => {
     useMutationApi(unSubscribeUser);
 
   async function subscribe() {
+    // Перевірка дозволів
+    const permission = await Notification.requestPermission();
+    if (permission !== "granted") {
+      console.warn("❌ User denied notifications");
+      return;
+    }
+
     // Реєстрація service worker
     const registration = await navigator.serviceWorker.register("/sw.js");
 
@@ -67,6 +75,10 @@ export const useSubscridtion = ({ userId }: { userId: number }) => {
   useEffect(() => {
     if (savedSubscribe || subscrWasDeleted) {
       queryClient.invalidateQueries({ queryKey: [`subscription/${userId}`] });
+      toast({
+        title: "Notification is set",
+        description: "You will receive brouser notifications",
+      });
     }
   }, [savedSubscribe, queryClient, userId, subscrWasDeleted]);
 
