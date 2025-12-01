@@ -1,17 +1,14 @@
 import React from "react";
 import { CameraControls, useGLTF } from "@react-three/drei";
 import { useCityAnimation } from "@/components/background/hooks/useCityAnimation";
-import { motion } from "framer-motion-3d";
 import * as THREE from "three";
 
 export function City2() {
   const { nodes, materials } = useGLTF("/models/mirrors_age/scene.glb");
-  const { cameraControlRef, position, cityRef } = useCityAnimation();
+  const { cameraControlRef, cityRef } = useCityAnimation();
   return (
     <>
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-expect-error */}
-      <motion.group dispose={null} position={position} scale={3} ref={cityRef}>
+      <group dispose={null} scale={3} ref={cityRef}>
         <group rotation={[-Math.PI / 2, 0, 0]}>
           <CameraControls ref={cameraControlRef} />
           <mesh
@@ -239,7 +236,7 @@ export function City2() {
             material={materials["glass.001"]}
           />
         </group>
-      </motion.group>
+      </group>
     </>
   );
 }
