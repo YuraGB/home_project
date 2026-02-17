@@ -11,6 +11,8 @@ describe("PostList component", () => {
       name: "Post 1",
       url: "post-1",
       subCategoryId: 1,
+      hasUpdates: null,
+      lastVisited: null,
       description: "Content of post",
       createdAt: new Date(),
       categoryId: 1,
@@ -21,6 +23,8 @@ describe("PostList component", () => {
     {
       id: 2,
       name: "Post 2",
+      hasUpdates: null,
+      lastVisited: null,
       url: "post-2",
       subCategoryId: 1,
       description: "Content of post",

@@ -11,6 +11,8 @@ describe("PostItem component", () => {
     categoryId: 1,
     name: "Post 1",
     description: "Description of post",
+    hasUpdates: false,
+    lastVisited: null,
     url: "https://www.google.com",
     createdAt: new Date(),
     id: 1,
