@@ -46,7 +46,7 @@ export const useUpdatePost = ({ post, onCloseAction }: TPropsUpdateForm) => {
 
   const { imagesArray, loadingImages, loadImageAction } = useAddImage(
     form,
-    imageExist,
+    // imageExist,
   );
 
   useEffect(() => {
