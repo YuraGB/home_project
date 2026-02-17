@@ -15,7 +15,7 @@ type Database =
 
 let db: Database;
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "production") {
   // Use Vercel(Neon) Postgres drizzle in production
   process.env.DATABASE_URL = process.env.POSTGRES_URL;
   db = drizzleVercel();
