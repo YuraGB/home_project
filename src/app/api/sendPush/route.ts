@@ -3,13 +3,17 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSubscription } from "@/server/controllers/subscribe/getSubscription";
 import { deleteSubscribtion } from "@/server/services/subscribe/deleteSubscribtion";
 
-webpush.setVapidDetails(
-  `mailto:${process.env.VAPID_EMAIL!}`,
-  process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
-  process.env.VAPID_PRIVATE_KEY!,
-);
-
 export async function POST(req: NextRequest) {
+  if (!process.env.VAPID_PUBLIC_KEY || !process.env.VAPID_PRIVATE_KEY) {
+    throw new Error("Missing VAPID keys");
+  }
+
+  webpush.setVapidDetails(
+    "mailto:example@gmail.com",
+    process.env.VAPID_PUBLIC_KEY,
+    process.env.VAPID_PRIVATE_KEY,
+  );
+
   const {
     userId,
     title,
