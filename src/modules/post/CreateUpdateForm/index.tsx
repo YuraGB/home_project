@@ -10,7 +10,7 @@ import {
 import { FormattedMessage } from "react-intl";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { SubmitHandler, UseFormReturn } from "react-hook-form";
 import { NewPost } from "@/modules/post/hooks/schema/validationSchemaAddPost";
 

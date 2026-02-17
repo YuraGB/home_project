@@ -12,7 +12,6 @@ export const TopRateRow = ({
   posts: Array<TPostWithRating>;
   sliderCount: string;
 }): ReactNode => {
-  console.log("Rendering TopRateRow with key:", sliderCount);
   return (
     <section className={"rate-row h-[130px] relative slider-container"}>
       <Slider

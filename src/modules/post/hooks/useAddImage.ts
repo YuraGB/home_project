@@ -21,7 +21,7 @@ export const useAddImage = <T extends FieldValues = FieldValues>(
       "name" as unknown as import("react-hook-form").Path<T>,
     );
     // If image already exists, do not fetch images again
-    if (imageExist) return;
+    // if (imageExist) return;
     // If title exists, fetch images related to the title
     if (titleExist) {
       getTitleImagesAction(titleExist);
