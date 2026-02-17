@@ -5,6 +5,25 @@ import { TextEncoder, TextDecoder } from "util";
 
 global.ResizeObserver = ResizeObserver;
 
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({
+    refresh: jest.fn(),
+    push: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+  }),
+  usePathname: () => "/mocked-path",
+}));
+
+jest.mock("./src/modules/post/hooks/useUpdateLastVisit.ts", () => ({
+  useUpdateLastVisit: () => ({ mutate: jest.fn() }),
+}));
+
+jest.mock("next-auth", () => ({
+  __esModule: true,
+  default: jest.fn(),
+}));
+
 global.fetch = jest.fn(() =>
   Promise.resolve({
     json: () => Promise.resolve({}),
