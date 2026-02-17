@@ -133,7 +133,7 @@
     "babel-plugin-react-compiler": "^19.0.0-beta-a7bf2bd-20241110",
     "critters": "^0.0.23",
     "cross-env": "^10.0.0",
-    "drizzle-kit": "^0.18.1",
+    "drizzle-kit": "^0.31.9",
     "eslint": "^8",
     "eslint-config-next": "^15.3.3",
     "eslint-config-prettier": "^9.1.0",
