@@ -24,7 +24,7 @@ export const AddPostForm = (props: TPropsAddForm): ReactNode => {
   return (
     <>
       <section className="text-center mb-4 w-full">
-        {showAddImageButton || loadingImages ? (
+        {showAddImageButton ? (
           <AddImageButton loadAction={loadImageAction} />
         ) : null}
 

@@ -22,6 +22,14 @@ export const imagesUrlToBase64 = async (
           return null;
         }
 
+        // Validate max size of the image
+        const contentLength = Number(response.headers.get("content-length"));
+        const MAX_IMAGE_SIZE = 10 * 1024 * 1024; // 10MB
+        if (contentLength && contentLength > MAX_IMAGE_SIZE) {
+          console.warn("Image too large:", item.original);
+          return null;
+        }
+
         const arrayBuffer = await response.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
 

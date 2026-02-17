@@ -26,7 +26,8 @@ export const useAddPost = ({
   const router = useRouter();
   const { locale } = useIntl();
 
-  const formSchema = useNewPostValidationSchema();
+  const formSchema: ReturnType<typeof useNewPostValidationSchema> =
+    useNewPostValidationSchema();
   const form = useForm<NewPost>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -43,7 +44,7 @@ export const useAddPost = ({
 
   const { imagesArray, loadingImages, loadImageAction } = useAddImage(
     form,
-    imageExist,
+    // imageExist,
   );
 
   const {
@@ -87,7 +88,7 @@ export const useAddPost = ({
     }
   };
 
-  const showAddImageButton = !imageExist && !loadingImages;
+  const showAddImageButton = !imageExist || !loadingImages;
 
   return {
     loadingNewPost,
