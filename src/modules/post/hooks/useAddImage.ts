@@ -5,7 +5,7 @@ import { toast } from "@/hooks/use-toast";
 
 export const useAddImage = <T extends FieldValues = FieldValues>(
   form: UseFormReturn<T>,
-  imageExist?: string,
+  // imageExist?: string,
 ) => {
   const { getTitleImagesAction, imagesArray, loadingImages } =
     useGetTitleImages();
@@ -36,7 +36,7 @@ export const useAddImage = <T extends FieldValues = FieldValues>(
         description: "Please enter a title to fetch images.",
       });
     }
-  }, [form, getTitleImagesAction, imageExist]);
+  }, [form, getTitleImagesAction]);
 
   return {
     imagesArray,
