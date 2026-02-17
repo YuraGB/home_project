@@ -10,14 +10,14 @@ const ActionBox = dynamic(() =>
   import("@/components/actionBox").then((mod) => mod.ActionBox),
 );
 const UpdateSubCategoryButton = dynamic(() =>
-  import(
-    "@/modules/subCategory/components/UpdateSubCategory/UpdateSubCategoryButton"
-  ).then((mod) => mod.UpdateSubCategoryButton),
+  import("@/modules/subCategory/components/UpdateSubCategory/UpdateSubCategoryButton").then(
+    (mod) => mod.UpdateSubCategoryButton,
+  ),
 );
 const DeleteSubCategoryButton = dynamic(() =>
-  import(
-    "@/modules/subCategory/components/DeleteSubCategory/DeleteSubCategory"
-  ).then((mod) => mod.DeleteSubCategoryButton),
+  import("@/modules/subCategory/components/DeleteSubCategory/DeleteSubCategory").then(
+    (mod) => mod.DeleteSubCategoryButton,
+  ),
 );
 
 export const SubCategoryItem = ({

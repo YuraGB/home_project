@@ -13,9 +13,9 @@ import { FormattedMessage } from "react-intl";
 
 import dynamic from "next/dynamic";
 const AddPostForm = dynamic(() =>
-  import(
-    "@/modules/subCategory/components/AddSubCategory/AddSubCategoryForm"
-  ).then((mod) => mod.AddSubCategoryForm),
+  import("@/modules/subCategory/components/AddSubCategory/AddSubCategoryForm").then(
+    (mod) => mod.AddSubCategoryForm,
+  ),
 );
 
 export const AddSubCategoryButton = ({

@@ -10,15 +10,15 @@ const ActionBox = dynamic(() =>
 );
 
 const DeleteCategoryButton = dynamic(() =>
-  import(
-    "@/modules/category/components/CategoryItemActions/DeleteCategory/DeleteCategoryButton"
-  ).then((mod) => mod.DeleteCategoryButton),
+  import("@/modules/category/components/CategoryItemActions/DeleteCategory/DeleteCategoryButton").then(
+    (mod) => mod.DeleteCategoryButton,
+  ),
 );
 
 const UpdateCategoryButton = dynamic(() =>
-  import(
-    "@/modules/category/components/CategoryItemActions/UpdateCategory/UpdateCategoryButton"
-  ).then((mod) => mod.UpdateCategoryButton),
+  import("@/modules/category/components/CategoryItemActions/UpdateCategory/UpdateCategoryButton").then(
+    (mod) => mod.UpdateCategoryButton,
+  ),
 );
 
 export const CategoryItem = ({
